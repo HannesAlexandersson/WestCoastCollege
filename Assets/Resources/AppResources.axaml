@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!--  set up global resources -->
+
+  <FontFamily x:Key="IconFont"> <!--the font for the icons-->
+  avares://WestCoastCollege/Assets/Fonts/Phosphor/Phosphor.ttf#Phosphor
+  </FontFamily>
+  <FontFamily x:Key="HeaderFont">
+    avares://WestCoastCollege/Assets/Fonts/Bebas_Neue/BebasNeue-Regular.ttf#Bebas Neue
+  </FontFamily>
+  <FontFamily x:Key="TextFont">
+    avares://WestCoastCollege/Assets/Fonts/Advisor/AdvisorSSK.ttf#AdvisorSSK
+  </FontFamily>
+</ResourceDictionary>

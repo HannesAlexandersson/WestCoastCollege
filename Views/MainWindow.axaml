@@ -5,18 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="WestCoastCollege.Views.MainWindow"
-        x:DataType="vm:MainViewModel"
-        Icon="/Assets/avalonia-logo.ico"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/Images/WCE.png"
         Title="WestCoastCollege">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainViewModel />
+        <vm:MainWindowViewModel>
+
+        </vm:MainWindowViewModel>
     </Design.DataContext>
+    <StackPanel>
+        <Grid ColumnDefinitions="*, *, *">
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" >
+                <Button Grid.Column="0" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToHomeCommand}" >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
+                        <Label FontFamily="{DynamicResource HeaderFont}" Content="Go Home" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0 20 0 0" >
+                <Image Width="300" Source="/Assets/Images/best.png" />
+            </StackPanel>
+        </Grid>
 
-    <TextBox Text="{Binding Greeting}"
-             HorizontalAlignment="Center"
-             VerticalAlignment="Center" />
+        <Border Background="{DynamicResource PrimaryBgGradient}" Padding="10" />
 
+
+        <UserControl Grid.Row="1" Padding="20" Content="{Binding CurrentView}" />
+    </StackPanel>
 </Window>

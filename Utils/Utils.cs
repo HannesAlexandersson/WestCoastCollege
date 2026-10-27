@@ -1,8 +1,11 @@
-using WestCoastEducation.Classes;
-using WestCoastEducation.Enums;
-using WestCoastEducation.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using WestCoastCollege.Classes;
+using WestCoastCollege.Enums;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation;
+namespace WestCoastCollege;
 
 public class Helper
 {
@@ -748,22 +751,22 @@ public class Helper
     public static void SimulateInsertToDb(string fName, string lName)
     {
 
-        Thread.Sleep(550);
-        Console.WriteLine("Please wait while the system connects to the database...");
-        Thread.Sleep(550);
-        Console.WriteLine("....");
-        Thread.Sleep(550);
-        Console.WriteLine("Connecting to database...");
-        Thread.Sleep(550);
-        Console.WriteLine("....");
-        Thread.Sleep(550);
-        Console.WriteLine("Attempting to write to disk...");
-        Thread.Sleep(550);
-        Console.WriteLine("....");
-        Thread.Sleep(550);
-        Console.WriteLine("Writing to disk...");
-        Thread.Sleep(550);
-        Console.WriteLine($"{fName} {lName} added to the database!");
+        /*  Thread.Sleep(550);
+         Console.WriteLine("Please wait while the system connects to the database...");
+         Thread.Sleep(550);
+         Console.WriteLine("....");
+         Thread.Sleep(550);
+         Console.WriteLine("Connecting to database...");
+         Thread.Sleep(550);
+         Console.WriteLine("....");
+         Thread.Sleep(550);
+         Console.WriteLine("Attempting to write to disk...");
+         Thread.Sleep(550);
+         Console.WriteLine("....");
+         Thread.Sleep(550);
+         Console.WriteLine("Writing to disk...");
+         Thread.Sleep(550);
+         Console.WriteLine($"{fName} {lName} added to the database!"); */
     }
     public static bool CheckForDuplicates<T>(List<T> list, T newObject) where T : class
     {

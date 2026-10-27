@@ -1,7 +1,8 @@
-﻿using WestCoastEducation.Classes;
+﻿using System;
+using WestCoastCollege.Classes;
 
 
-namespace WestCoastEducation.Models;
+namespace WestCoastCollege.Models;
 
 public record class Teacher : Person // teacher inherits from the baseclass 'Person'
 

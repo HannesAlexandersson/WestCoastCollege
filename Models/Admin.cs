@@ -1,7 +1,7 @@
 using System;
-using WestCoastEducation.Enums;
+using WestCoastCollege.Enums;
 
-namespace WestCoastEducation.Models;
+namespace WestCoastCollege.Models;
 
 public record class Admin : AdminPersonel
 {

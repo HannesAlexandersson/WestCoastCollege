@@ -1,4 +1,6 @@
-namespace WestCoastEducation.Interfaces;
+using System.Collections.Generic;
+
+namespace WestCoastCollege.Interfaces;
 
 public interface IService<T> where T : class
 {

@@ -1,4 +1,4 @@
-namespace WestCoastEducation.Enums;
+namespace WestCoastCollege.Enums;
 
 public enum AccessLevelEnum
 {

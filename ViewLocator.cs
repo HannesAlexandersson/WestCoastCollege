@@ -19,19 +19,14 @@ public class ViewLocator : IDataTemplate
         if (param is null)
             return null; // early return, return null if the incoming data is null
 
-        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);// matches the view files with corresponding viewmodel, replace ViewModel with only View
+        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.InvariantCulture);// matches the view files with corresponding viewmodel, replace ViewModel with only View
         var type = Type.GetType(name); // use the viewName string, find it, load it into memory, check what type it is (presumably a class)
-
-        if (type != null)
-        {
-            return (Control)Activator.CreateInstance(type)!;// retype to Control type, and create instance 
-        }
-
-        return new TextBlock { Text = "Page not Found: " + name }; // if nothing is found return and single textblock with the text not found
+        if (type is null) return null;
+        var control = (Control)Activator.CreateInstance(type)!; // retype to Control type, and create instance 
+        control.DataContext = param; // set the datacontext to the data from the argument list whatever that is
+        Console.WriteLine(control);
+        return control;
     }
 
-    public bool Match(object? data)
-    {
-        return data is ViewModelBase; // controls if the type is of the viewmodelbase type
-    }
+    public bool Match(object? data) => data is ViewModelBase; // controls if the type is of the viewmodelbase type
 }

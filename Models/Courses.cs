@@ -1,6 +1,7 @@
-using WestCoastEducation.Enums;
+using System;
+using WestCoastCollege.Enums;
 
-namespace WestCoastEducation.Models;
+namespace WestCoastCollege.Models;
 
 public record class Course
 {

@@ -1,12 +1,14 @@
 using System;
-using WestCoastEducation.Classes;
-using WestCoastEducation.Interfaces;
-using WestCoastEducation.Models;
+using System.Collections.Generic;
+using WestCoastCollege.Classes;
+using WestCoastCollege.Interfaces;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Factories;
+namespace WestCoastCollege.Factories;
 
 public class StudentFactory : IStudentFactory
 {
+
     public Student Create(string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, Guid studentId, List<Course> enrolledCourses)
     {
         return new Student

@@ -1,7 +1,7 @@
 using System;
-using WestCoastEducation.Models;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Interfaces;
+namespace WestCoastCollege.Interfaces;
 
 public interface IFactory<T> where T : AdminPersonel
 {

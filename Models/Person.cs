@@ -1,6 +1,7 @@
-﻿using WestCoastEducation.Classes;
+﻿using System.Collections.Generic;
+using WestCoastCollege.Classes;
 
-namespace WestCoastEducation.Models;
+namespace WestCoastCollege.Models;
 
 public record class Person
 {

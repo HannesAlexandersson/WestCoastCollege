@@ -1,8 +1,9 @@
-using System;
-using WestCoastEducation.Interfaces;
-using WestCoastEducation.Models;
 
-namespace WestCoastEducation.Classes;
+using System.Collections.Generic;
+using WestCoastCollege.Interfaces;
+using WestCoastCollege.Models;
+
+namespace WestCoastCollege.Classes;
 // a class that tells the DI services how to obtains the required lists needed to create the managers
 public class ApplicationData
 {

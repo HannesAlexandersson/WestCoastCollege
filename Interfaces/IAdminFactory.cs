@@ -1,9 +1,10 @@
 using System;
-using WestCoastEducation.Classes;
-using WestCoastEducation.Enums;
-using WestCoastEducation.Models;
+using System.Collections.Generic;
+using WestCoastCollege.Classes;
+using WestCoastCollege.Enums;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Interfaces;
+namespace WestCoastCollege.Interfaces;
 
 public interface IAdminFactory
 {

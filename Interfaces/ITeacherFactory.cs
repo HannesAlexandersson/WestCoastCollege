@@ -1,8 +1,9 @@
 using System;
-using WestCoastEducation.Classes;
-using WestCoastEducation.Models;
+using System.Collections.Generic;
+using WestCoastCollege.Classes;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Interfaces;
+namespace WestCoastCollege.Interfaces;
 
 public interface ITeacherFactory
 {

@@ -1,5 +1,8 @@
 ﻿
-namespace WestCoastEducation.Models;
+using System;
+using System.Collections.Generic;
+
+namespace WestCoastCollege.Models;
 
 
 public record class Student : Person // Student inherits from the baseclass 'Person'

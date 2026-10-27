@@ -1,0 +1,8 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Add Resources Here -->
+  <Color x:Key="PrimaryTextColor" >#eae8e8</Color>
+  <Color x:Key="PrimaryBgColor" >#2B0841</Color>
+  <Color x:Key="PrimaryDanger">#FFFB0303</Color>
+  <Color x:Key="PrimarySafe">#03C303</Color>
+</ResourceDictionary>

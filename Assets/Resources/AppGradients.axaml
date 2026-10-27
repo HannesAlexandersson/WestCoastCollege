@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <!-- Add Resources Here -->
+  <SolidColorBrush x:Key="PrimaryText" Color="{DynamicResource PrimaryTextColor}" />
+  <SolidColorBrush x:Key="PrimaryBg" Color="{DynamicResource PrimaryBgColor}" />
+  <SolidColorBrush x:Key="Danger" Color="{DynamicResource PrimaryDanger}" />
+  <SolidColorBrush x:Key="Safe" Color="{DynamicResource PrimarySafe}" />
+  <!-- <SolidColorBrush x:Key="PrimaryTextColor">#eae8e8</SolidColorBrush> -->
+  <!--  <SolidColorBrush x:Key="PrimaryBg">#030331</SolidColorBrush> -->
+  <!-- <SolidColorBrush x:Key="PrimaryBg">#2B0841</SolidColorBrush> -->
+  <SolidColorBrush x:Key="PrimaryBtnBgColor">#4F2472</SolidColorBrush>
+  <SolidColorBrush x:Key="PrimaryBorderColor">#FF00FF</SolidColorBrush>
+
+  <LinearGradientBrush x:Key="PrimaryBgGradient" StartPoint="0% 0%" EndPoint="100% 0%" >
+    <GradientStop Offset="0" Color="#2B0841" />
+    <GradientStop Offset="1" Color="#48088C" />
+  </LinearGradientBrush>
+</ResourceDictionary>

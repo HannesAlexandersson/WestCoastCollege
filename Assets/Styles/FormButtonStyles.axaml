@@ -1,0 +1,35 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Button Classes="form" >
+            <StackPanel Orientation="Horizontal">
+                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" Padding="0 4 0 0" />
+                <Label Content="Test btn" />
+            </StackPanel>
+        </Button>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+
+    <Style Selector="Button.form">
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
+        <Setter Property="Background" Value="{DynamicResource PrimaryBg}" />
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Padding" Value="30 15"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="50" />
+    </Style>
+
+    <Style Selector="Button.form:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource PrimaryText}"/>
+        <Setter Property="Foreground" Value="{DynamicResource PrimaryBorderColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBg}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+</Styles>

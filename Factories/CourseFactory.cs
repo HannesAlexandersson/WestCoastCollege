@@ -1,9 +1,9 @@
 using System;
-using WestCoastEducation.Enums;
-using WestCoastEducation.Interfaces;
-using WestCoastEducation.Models;
+using WestCoastCollege.Enums;
+using WestCoastCollege.Interfaces;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Factories;
+namespace WestCoastCollege.Factories;
 // the factorys job is to create the course objects
 public class CourseFactory : ICourseFactory
 {

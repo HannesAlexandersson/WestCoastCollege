@@ -1,8 +1,8 @@
 using System;
-using WestCoastEducation.Enums;
-using WestCoastEducation.Models;
+using WestCoastCollege.Enums;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Interfaces;
+namespace WestCoastCollege.Interfaces;
 
 public interface ICourseFactory
 {

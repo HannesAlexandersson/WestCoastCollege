@@ -1,9 +1,10 @@
 using System;
-using WestCoastEducation.Classes;
-using WestCoastEducation.Interfaces;
-using WestCoastEducation.Models;
+using System.Collections.Generic;
+using WestCoastCollege.Classes;
+using WestCoastCollege.Interfaces;
+using WestCoastCollege.Models;
 
-namespace WestCoastEducation.Factories;
+namespace WestCoastCollege.Factories;
 
 public class TeacherFactory : ITeacherFactory
 {

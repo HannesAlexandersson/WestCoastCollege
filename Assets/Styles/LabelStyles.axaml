@@ -1,0 +1,23 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <!-- Add Controls for Previewer Here -->
+      <StackPanel Spacing="50">
+        <Label Classes="form" Content="Test"/>
+        <Label Content="Test"/>
+
+      </StackPanel>
+    </Border>
+  </Design.PreviewWith>
+
+  <!-- Add Styles Here -->
+  <Style Selector="Label">
+    <Setter Property="FontSize" Value="20"/>
+  </Style>
+
+  <Style Selector="Label.form">
+    <Setter Property="FontSize" Value="15"/>
+    <Setter Property="Padding" Value="0 5" />
+  </Style>
+</Styles>
