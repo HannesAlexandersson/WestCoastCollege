@@ -17,21 +17,21 @@ public class ViewLocator : IDataTemplate
     public Control? Build(object? param)
     {
         if (param is null)
-            return null;
-        
-        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);
-        var type = Type.GetType(name);
+            return null; // early return, return null if the incoming data is null
+
+        var name = param.GetType().FullName!.Replace("ViewModel", "View", StringComparison.Ordinal);// matches the view files with corresponding viewmodel, replace ViewModel with only View
+        var type = Type.GetType(name); // use the viewName string, find it, load it into memory, check what type it is (presumably a class)
 
         if (type != null)
         {
-            return (Control)Activator.CreateInstance(type)!;
+            return (Control)Activator.CreateInstance(type)!;// retype to Control type, and create instance 
         }
-        
-        return new TextBlock { Text = "Not Found: " + name };
+
+        return new TextBlock { Text = "Page not Found: " + name }; // if nothing is found return and single textblock with the text not found
     }
 
     public bool Match(object? data)
     {
-        return data is ViewModelBase;
+        return data is ViewModelBase; // controls if the type is of the viewmodelbase type
     }
 }
