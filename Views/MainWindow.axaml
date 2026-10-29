@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:WestCoastCollege.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:enums="using:WestCoastCollege.Enums"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="WestCoastCollege.Views.MainWindow"
@@ -17,7 +18,7 @@
     <StackPanel>
         <Grid ColumnDefinitions="*, *, *">
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" >
-                <Button Grid.Column="0" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToHomeCommand}" >
+                <Button Grid.Column="0" Command="{Binding GoToCommand}" CommandParameter="{x:Static enums:PageViewsEnum.Home}" >
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
                         <Label FontFamily="{DynamicResource HeaderFont}" Content="Go Home" />

@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Avalonia.Controls;
 using WestCoastCollege.Classes;
 using WestCoastCollege.Enums;
 using WestCoastCollege.Models;
 
-namespace WestCoastCollege;
+namespace WestCoastCollege.Utils;
 
 public class Helper
 {
@@ -810,5 +811,21 @@ public class Helper
         }
 
         return false;
+    }
+
+    public static PageViewsEnum GetPageViewsEnum(string enumName)
+    {
+        return enumName switch
+        {
+            "home" => PageViewsEnum.Home,
+            "student" => PageViewsEnum.Students,
+            "teacher" => PageViewsEnum.Teachers,
+            "course" => PageViewsEnum.Courses,
+            "admin" => PageViewsEnum.Admins,
+            "handler" => PageViewsEnum.Handlers,
+            _ => throw new ArgumentException(
+           $"Error when loading the page: {enumName}", nameof(enumName))
+        };
+
     }
 }
