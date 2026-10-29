@@ -1,0 +1,42 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.ExpandedStudentView"
+             x:DataType="vm:ExpandedStudentViewModel">
+  <Design.DataContext>
+    <vm:ExpandedStudentViewModel></vm:ExpandedStudentViewModel>
+  </Design.DataContext>
+  <StackPanel Spacing="5">
+    <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
+      <TextBlock Text="{Binding Student.FirstName}" FontSize="35" />
+      <TextBlock Text="{Binding Student.LastName}" FontSize="35" />
+    </StackPanel>
+    <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
+      <TextBlock Text="Student ID: " FontSize="15" />
+      <TextBlock Text="{Binding Student.StudentId}" FontSize="15" />
+    </StackPanel>
+    <Border
+      BorderBrush="White"
+      BorderThickness="0 0 0 2"
+      Padding="0 0 0 10" />
+
+    <Grid RowDefinitions="auto, auto, auto, auto" ColumnDefinitions="">
+      <StackPanel Spacing="5">
+        <ItemsControl ItemsSource="{Binding Student.Addresses}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Spacing="5">
+                <TextBlock Text="{Binding StreetAddress}" />
+                <TextBlock Text="{Binding PostalCode}" />
+                <TextBlock Text="{Binding City}" />
+              </StackPanel>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </StackPanel>
+    </Grid>
+  </StackPanel>
+</UserControl>

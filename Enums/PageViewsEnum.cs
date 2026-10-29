@@ -5,6 +5,8 @@ public enum PageViewsEnum // this shall help our factory to create correct viewm
     Unknown,
     Home,
     Students,
+    EditStudent,
+    GoToStudent,
     Teachers,
     Courses,
     Handlers,

@@ -3,7 +3,7 @@
   <Design.PreviewWith>
     <Border Padding="20">
       <!-- Add Controls for Previewer Here -->
-      <TextBlock Text="Test" />
+      <TextBlock Classes="pageTitle" Text="Title Test" />
     </Border>
   </Design.PreviewWith>
 

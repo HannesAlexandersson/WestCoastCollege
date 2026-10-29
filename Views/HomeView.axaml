@@ -19,7 +19,7 @@
 
                   <Button Grid.Column="0"
                           Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCommand}"
-                          CommandParameter="{x:Static enums:PageViewsEnum.Teachers}"
+                          CommandParameter="{x:Static enums:PageViewsEnum.Students}"
                           >
 
                         <StackPanel Orientation="Horizontal">

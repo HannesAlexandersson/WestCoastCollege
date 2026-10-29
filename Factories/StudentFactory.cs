@@ -9,7 +9,7 @@ namespace WestCoastCollege.Factories;
 public class StudentFactory : IStudentFactory
 {
 
-    public Student Create(string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, Guid studentId, List<Course> enrolledCourses)
+    public Student Create(string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, List<Course> enrolledCourses)
     {
         return new Student
         {
@@ -18,7 +18,7 @@ public class StudentFactory : IStudentFactory
             PhoneNumber = phoneNumber,
             Addresses = addresses,
             Email = email,
-            StudentId = studentId,
+            StudentId = Guid.NewGuid().ToString(),
             EnrolledCourses = enrolledCourses
         };
     }

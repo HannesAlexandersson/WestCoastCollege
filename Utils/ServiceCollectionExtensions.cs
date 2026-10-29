@@ -27,11 +27,11 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<IStudentFactory, StudentFactory>();
 
 
-        collection.AddTransient<IService<Course>, CourseServices>(); // IF anyone ever wants the Iservice then we give then the servoice
-        collection.AddTransient<IService<Student>, StudentServices>();
-        collection.AddTransient<IService<Teacher>, TeacherServices>();
-        collection.AddTransient<IService<Admin>, AdminServices>();
-        collection.AddTransient<IService<Handler>, HandlerServices>();
+        collection.AddTransient<IService<Student, StudentRestDb>, StudentServices>();
+        // collection.AddTransient<IService<Course>, CourseServices>(); // IF anyone ever wants the Iservice then we give then the servoice
+        // collection.AddTransient<IService<Teacher>, TeacherServices>();
+        // collection.AddTransient<IService<Admin>, AdminServices>();
+        // collection.AddTransient<IService<Handler>, HandlerServices>();
 
         collection.AddTransient(typeof(IHttpService<>), typeof(HttpService<>));
 

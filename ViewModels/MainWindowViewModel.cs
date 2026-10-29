@@ -22,9 +22,12 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [RelayCommand]
-    private void GoTo(PageViewsEnum destination)
+    private void GoTo(PageViewsEnum destination)// insteead of having 6 different "goto" methods with command decoration I have one generic
     {
-        Console.WriteLine("You pressed: " + destination);
-        CurrentView = _factory.LoadPageViewModel(destination); // insteead of having 6 different "goto" methods with command decoration
+        CurrentView = _factory.LoadPageViewModel(destination);
     }
+    [RelayCommand]
+    private void GoToEditStudent(string studentId) => CurrentView = _factory.LoadPageViewModel(PageViewsEnum.EditStudent, studentId);
+    [RelayCommand]
+    private void GoToStudent(string studentId) => CurrentView = _factory.LoadPageViewModel(PageViewsEnum.GoToStudent, studentId);
 }

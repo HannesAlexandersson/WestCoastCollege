@@ -24,7 +24,7 @@ public class ViewLocator : IDataTemplate
         if (type is null) return null;
         var control = (Control)Activator.CreateInstance(type)!; // retype to Control type, and create instance 
         control.DataContext = param; // set the datacontext to the data from the argument list whatever that is
-        Console.WriteLine(control);
+
         return control;
     }
 
