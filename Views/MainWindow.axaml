@@ -21,15 +21,11 @@
             <StackPanel VerticalAlignment="Top"
                         HorizontalAlignment="Left"
                         Margin="10">
-                <Button Grid.Column="0"
-                        Command="{Binding GoToCommand}"
-                        CommandParameter="{x:Static enums:PageViewsEnum.Home}">
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Center">
-                        <Label FontFamily="{DynamicResource IconFont}"
-                               Content="&#xe2c2;" />
+                <Button Command="{Binding GoBackCommand}">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
                         <Label FontFamily="{DynamicResource HeaderFont}"
-                               Content="Go Home" />
+                               Content="{Binding BackButtonText}" />
                     </StackPanel>
                 </Button>
             </StackPanel>

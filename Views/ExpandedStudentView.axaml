@@ -6,37 +6,133 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="WestCoastCollege.Views.ExpandedStudentView"
              x:DataType="vm:ExpandedStudentViewModel">
+
   <Design.DataContext>
     <vm:ExpandedStudentViewModel></vm:ExpandedStudentViewModel>
   </Design.DataContext>
-  <StackPanel Spacing="5">
-    <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
-      <TextBlock Text="{Binding Student.FirstName}" FontSize="35" />
-      <TextBlock Text="{Binding Student.LastName}" FontSize="35" />
-    </StackPanel>
-    <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
-      <TextBlock Text="Student ID: " FontSize="15" />
-      <TextBlock Text="{Binding Student.StudentId}" FontSize="15" />
-    </StackPanel>
-    <Border
-      BorderBrush="White"
-      BorderThickness="0 0 0 2"
-      Padding="0 0 0 10" />
 
-    <Grid RowDefinitions="auto, auto, auto, auto" ColumnDefinitions="">
-      <StackPanel Spacing="5">
-        <ItemsControl ItemsSource="{Binding Student.Addresses}">
-          <ItemsControl.ItemTemplate>
-            <DataTemplate>
-              <StackPanel Spacing="5">
-                <TextBlock Text="{Binding StreetAddress}" />
-                <TextBlock Text="{Binding PostalCode}" />
-                <TextBlock Text="{Binding City}" />
-              </StackPanel>
-            </DataTemplate>
-          </ItemsControl.ItemTemplate>
-        </ItemsControl>
+
+  <Grid RowDefinitions="Auto, Auto, *">
+
+
+    <Grid Grid.Row="0" Margin="0,0,0,5">
+      <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <!-- Namn -->
+        <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
+          <TextBlock Text="{Binding Student.FirstName}" FontSize="35" />
+          <TextBlock Text="{Binding Student.LastName}" FontSize="35" />
+        </StackPanel>
+        <!-- ID -->
+        <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
+          <TextBlock Text="Student ID: " FontSize="15" />
+          <TextBlock Text="{Binding Student.StudentId}" FontSize="15" />
+        </StackPanel>
+      </StackPanel>
+
+      <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditStudentCommand}"
+                CommandParameter="{Binding Student.StudentId}"
+                FontFamily="{DynamicResource IconFont}"
+                Content="&#xE3AE;"
+                Classes="safe" />
+
+        <Button Command="{Binding $parent[UserControl].((vm:StudentsViewModel)DataContext).DeleteCommand}"
+                CommandParameter="{Binding Student.StudentId}"
+                FontFamily="{DynamicResource IconFont}"
+                Content="&#xE4F6;"
+                Classes="danger" />
       </StackPanel>
     </Grid>
-  </StackPanel>
+
+
+    <Border Grid.Row="1"
+            BorderBrush="White"
+            BorderThickness="0 0 0 2"
+            Margin="0,0,0,5" />
+
+
+    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+      <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="15">
+
+        <!-- Email and phone -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="250, *"
+              RowDefinitions="Auto, Auto, Auto"
+              ColumnSpacing="10"
+              RowSpacing="5">
+          <TextBlock Grid.Row="0" Text="Personal information: " FontWeight="Bold"
+                     FontSize="18" TextDecorations="Underline" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Email:" />
+          <TextBlock Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Student.Email}" />
+
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="Phone number:" />
+          <TextBlock Grid.Row="2" Grid.Column="1"
+                     Text="{Binding Student.PhoneNumber}" />
+        </Grid>
+
+        <!-- Addresses -->
+        <StackPanel Grid.Row="1" Spacing="10">
+          <TextBlock Text="Addresses: "
+                     FontWeight="Bold"
+                     FontSize="18"
+                     TextDecorations="Underline" />
+          <ItemsControl ItemsSource="{Binding Student.Addresses}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+
+                <Grid Margin="0,0,0,15"
+                      ColumnDefinitions="250, *"
+                      RowDefinitions="Auto, Auto, Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="5">
+
+                  <TextBlock Grid.Row="0" Grid.Column="0"  Text="Street name and number : " />
+                  <TextBlock Grid.Row="0" Grid.Column="1"  Text="{Binding StreetAddress}" />
+
+                  <TextBlock Grid.Row="1" Grid.Column="0"  Text="Postal Code: " />
+                  <TextBlock Grid.Row="1" Grid.Column="1"  Text="{Binding PostalCode}" />
+
+                  <TextBlock Grid.Row="2" Grid.Column="0"  Text="City: " />
+                  <TextBlock Grid.Row="2" Grid.Column="1"  Text="{Binding City}" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+
+        <!-- Enrolled courses -->
+        <StackPanel Grid.Row="2" Spacing="10">
+          <TextBlock Text="Courses: "
+                     FontWeight="Bold"
+                     FontSize="18"
+                     TextDecorations="Underline" />
+
+          <ItemsControl ItemsSource="{Binding Student.EnrolledCourses}">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+
+                <Grid Margin="0,0,0,15"
+                      ColumnDefinitions="250, *"
+                      RowDefinitions="Auto, Auto, Auto"
+                      ColumnSpacing="10"
+                      RowSpacing="5">
+
+                  <TextBlock Grid.Row="0" Grid.Column="0" Text="Course title: " />
+                  <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Title}" />
+
+                  <TextBlock Grid.Row="1" Grid.Column="0" Text="Course length (weeks): " />
+                  <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CourseLength}" />
+
+                  <TextBlock Grid.Row="2" Grid.Column="0" Text="Location: " />
+                  <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding CourseType}" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+
+      </Grid>
+    </ScrollViewer>
+  </Grid>
 </UserControl>

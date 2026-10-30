@@ -15,13 +15,13 @@ public partial class StudentsViewModel : ViewModelBase
     [ObservableProperty]
     public partial Student? SelectedStudent { get; set; }
     [ObservableProperty]
-    public partial ObservableCollection<Student> Students { get; set; } = []; // instead of generic list and array we use ObservableCollection for auto updating the collection whenever it changes
+    public partial ObservableCollection<Student> Students { get; set; } = [];
 
 
-    /*  public StudentsViewModel()
-     {
-         PageTitle = "Students";
-     } */
+    public StudentsViewModel()
+    {
+        PageTitle = "Students";
+    }
     public StudentsViewModel(IService<Student, StudentRestDb> service)
     {
         PageTitle = "Students";
@@ -29,13 +29,6 @@ public partial class StudentsViewModel : ViewModelBase
 
         Init();
     }
-
-    [RelayCommand]
-    public void Edit(string itemNumber)
-    {
-        Console.WriteLine("Edit clicked" + itemNumber);
-    }
-
 
     [RelayCommand]
     public async Task Delete(string id)

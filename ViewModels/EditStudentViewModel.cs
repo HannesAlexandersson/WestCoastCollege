@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using WestCoastCollege.Enums;
 using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
 using WestCoastCollege.Services;
@@ -13,7 +14,7 @@ public partial class EditStudentViewModel : ViewModelBase
 {
     private readonly IService<Student, StudentRestDb> _studentService;
     private readonly string _studentId = string.Empty;
-    /*TODO ADD ALL THE PROPERTY FIELDS!!!*/
+
     [ObservableProperty]
     public partial string StudentId { get; set; } = string.Empty;
     [ObservableProperty]
@@ -25,7 +26,7 @@ public partial class EditStudentViewModel : ViewModelBase
     [ObservableProperty]
     public partial string EmailOfStudent { get; set; } = string.Empty;
 
-    //addressess and courses???
+    //TODO  addressess and courses???
     /*  [ObservableProperty]
       public partial List<Address> Addresses { get; set; } = []; */
     /* [ObservableProperty]
