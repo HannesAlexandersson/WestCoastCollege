@@ -25,11 +25,12 @@
 
   <!-- Add Styles Here -->
   <Style Selector="Button">
-    <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" /> <!-- What property is it I want to modify? -->
+    <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
     <Setter Property="Background" Value="{DynamicResource PrimaryBtnBgColor}" />
     <Setter Property="Padding" Value="15 7" />
     <Setter Property="CornerRadius" Value="25 5 25 5" />
     <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="FontFamily" Value="{DynamicResource HeaderText}" />
   </Style>
 
   <Style Selector="Button:pointerover /template/ ContentPresenter">
@@ -39,7 +40,7 @@
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
   </Style>
-  <!-- FontFamily="{DynamicResource IconFont}" Content="&#xE4F6;" Foreground="Red" Background="Transparent" Padding="10 0 0 10"  -->
+
   <Style Selector="Button.danger">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource Danger}" />
