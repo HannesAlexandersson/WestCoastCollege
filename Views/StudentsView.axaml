@@ -18,7 +18,9 @@
               Margin="10 10 0 0">
         <StackPanel Orientation="Horizontal">
           <Label FontFamily="{DynamicResource IconFont}"
-                 Content="&#xE73E;" />
+                 Content="&#xE4D0;"
+                 VerticalAlignment="Center"
+                 FontSize="25" />
           <Label Content="Add a new student" />
         </StackPanel>
       </Button>

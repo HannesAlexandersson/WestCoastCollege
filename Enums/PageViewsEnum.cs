@@ -8,7 +8,15 @@ public enum PageViewsEnum // this shall help our factory to create correct viewm
     EditStudent,
     GoToStudent,
     Teachers,
+    EditTeacher,
+    GoToTeacher,
     Courses,
+    EditCourse,
+    GoToCourse,
     Handlers,
+    EditHandler,
+    GoToHandler,
     Admins,
+    EditAdmin,
+    GoToAdmin
 }

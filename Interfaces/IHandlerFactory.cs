@@ -17,7 +17,6 @@ public interface IHandlerFactory
         List<Address> addresses,
         string? email,
         FieldOfKnowledge[] subjectFields,
-        Course[] teachingCourses,
         Guid teacherId,
         Course[] handlingCourses,
         AccessLevelEnum accessLevel

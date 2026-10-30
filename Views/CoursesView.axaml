@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.CoursesView"
+             x:DataType="vm:CoursesViewModel">
+  <Design.DataContext>
+    <vm:CoursesViewModel></vm:CoursesViewModel>
+  </Design.DataContext>
+  <Grid RowDefinitions="Auto, Auto, *">
+    <Grid Grid.Row="0" ColumnDefinitions="*, Auto, *">
+
+      <Button Grid.Column="0"
+              HorizontalAlignment="Left"
+              Margin="10 10 0 0">
+        <StackPanel Orientation="Horizontal">
+          <Label FontFamily="{DynamicResource IconFont}"
+                 Content="&#xE258;"
+                 VerticalAlignment="Center"
+                 FontSize="25" />
+          <Label Content="Add a new Course" />
+        </StackPanel>
+      </Button>
+
+      <TextBlock Grid.Column="1"
+                 Classes="pageTitle"
+                 FontWeight="Bold"
+                 TextDecorations="Underline"
+                 Text="{Binding PageTitle}"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Bottom"
+                 />
+    </Grid>
+
+    <Border Grid.Row="1"
+            BorderBrush="White"
+            BorderThickness="0 0 0 2"
+            Padding="0 0 0 10" />
+
+    <ScrollViewer Grid.Row="2"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+
+      <ItemsControl ItemsSource="{Binding Courses}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Grid ColumnDefinitions="Auto, 400, 150, 150, *, 35, 35" RowSpacing="5" ColumnSpacing="5">
+              <Button Grid.Column="0"
+                      Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCourseCommand}"
+                      CommandParameter="{Binding CourseId}"
+                      >
+                <StackPanel Orientation="Horizontal">
+                  <Label FontFamily="{DynamicResource IconFont}"
+                         Content="&#xE3D4;"
+                         VerticalAlignment="Center"
+                         />
+                  <Label  Content="Expand" VerticalAlignment="Center" />
+                </StackPanel>
+              </Button>
+              <Label Grid.Column="1" Content="{Binding Title}" />
+              <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="5">
+                <Label Content="{Binding CourseLength}" />
+                <Label Content="weeks" />
+              </StackPanel>
+              <Label Grid.Column="3" Content="{Binding CourseType}" />
+
+              <Button Grid.Column="5"
+                      Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditCourseCommand}"
+                      CommandParameter="{Binding CourseId}"
+                      FontFamily="{DynamicResource IconFont}"
+                      Content="&#xE3AE;"
+                      Classes="safe"
+                      HorizontalAlignment="Left" />
+              <Button Grid.Column="6"
+                      Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
+                      CommandParameter="{Binding CourseId}"
+                      FontFamily="{DynamicResource IconFont}"
+                      Content="&#xE4F6;"
+                      Classes="danger"
+                      HorizontalAlignment="Left" />
+            </Grid>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+  </Grid>
+</UserControl>

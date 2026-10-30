@@ -532,8 +532,7 @@ public class Helper
             Email = personData.Email,
             PhoneNumber = personData.PhoneNumber,
             Addresses = personData.Addresses,
-            SubjectFields = subjectFields,
-            TeachingCourses = teachingCourses.ToArray()
+            SubjectFields = subjectFields
         };
 
 
@@ -799,11 +798,7 @@ public class Helper
                     existingCourse.CourseLength == newCourse.CourseLength &&
                     existingCourse.StartDate == newCourse.StartDate &&
                     existingCourse.EndDate == newCourse.EndDate &&
-                    existingCourse.CourseType == newCourse.CourseType &&
-                    existingCourse.CoursePersonnelIds.Length ==
-                        newCourse.CoursePersonnelIds.Length &&
-                    existingCourse.CoursePersonnelIds.All(id =>
-                        newCourse.CoursePersonnelIds.Contains(id)))
+                    existingCourse.CourseType == newCourse.CourseType)
                 {
                     return true;
                 }

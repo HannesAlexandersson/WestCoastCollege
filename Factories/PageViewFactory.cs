@@ -14,6 +14,7 @@ public class PageViewFactory : IPageViewFactory
         {
             PageViewsEnum.Home => new HomeViewModel(),
             PageViewsEnum.Students => new StudentsViewModel(new StudentServices()),
+            PageViewsEnum.Courses => new CoursesViewModel(new CourseServices()),
             _ => throw new InvalidOperationException("What ypu wanted could not be found"),
         };
 
@@ -25,6 +26,8 @@ public class PageViewFactory : IPageViewFactory
         {
             PageViewsEnum.EditStudent => new EditStudentViewModel(studentId, new StudentServices()),
             PageViewsEnum.GoToStudent => new ExpandedStudentViewModel(studentId, new StudentServices()),
+            /* PageViewsEnum.EditCourse => new EditCourseViewModel(courseId, new CourseServices()),
+            PageViewsEnum.GoToCourse => new ExpandedCourseViewModel(courseId, new CourseServices()), */
             _ => throw new InvalidOperationException("What ypu wanted could not be found"),
         };
     }
