@@ -6,14 +6,15 @@
 
       <StackPanel>
 
-        <Button FontSize="20" >
-          <StackPanel Orientation="Horizontal">
-            <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
-            <Label Content="Test btn" />
-          </StackPanel>
-        </Button>
+        <!-- <Button FontSize="20" >
+        <StackPanel Orientation="Horizontal">
+        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
+        <Label Content="Test btn" />
+        </StackPanel>
+        </Button> -->
 
         <Button Classes="danger" FontFamily="{DynamicResource IconFont}" Content="&#xe4a6;" />
+        <Button Classes="safe" FontFamily="{DynamicResource IconFont}" Content="&#xe4a6;" />
 
 
       </StackPanel>
@@ -42,10 +43,12 @@
   <Style Selector="Button.danger">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource Danger}" />
+    <Setter Property="Padding" Value="10 0 0 10" />
   </Style>
   <Style Selector="Button.safe">
     <Setter Property="Background" Value="Transparent" />
     <Setter Property="Foreground" Value="{DynamicResource Safe}" />
+    <Setter Property="Padding" Value="10 0 0 10" />
   </Style>
   <Style Selector="Button.danger:pointerover /template/ ContentPresenter">
     <Setter Property="Background" Value="Transparent" />

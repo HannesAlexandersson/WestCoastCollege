@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="using:WestCoastCollege.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:enums="using:WestCoastCollege.Enums"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="WestCoastCollege.Views.MainWindow"
@@ -14,24 +15,35 @@
 
         </vm:MainWindowViewModel>
     </Design.DataContext>
-    <StackPanel>
-        <Grid ColumnDefinitions="*, *, *">
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10" >
-                <Button Grid.Column="0" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToHomeCommand}" >
+    <Grid RowDefinitions="Auto, Auto, *">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*, *, *">
+            <StackPanel VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Margin="10">
+                <Button Command="{Binding GoBackCommand}">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
-                        <Label FontFamily="{DynamicResource HeaderFont}" Content="Go Home" />
+                        <Label FontFamily="{DynamicResource HeaderFont}"
+                               Content="{Binding BackButtonText}" />
                     </StackPanel>
                 </Button>
             </StackPanel>
-            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="0 20 0 0" >
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Vertical"
+                        Margin="0 20 0 0">
                 <Image Width="300" Source="/Assets/Images/best.png" />
             </StackPanel>
         </Grid>
 
-        <Border Background="{DynamicResource PrimaryBgGradient}" Padding="10" />
+        <Border Grid.Row="1"
+                Background="{DynamicResource PrimaryBgGradient}"
+                Padding="10" />
 
+        <ContentControl Grid.Row="2"
+                        Padding="20"
+                        Content="{Binding CurrentView}" />
 
-        <UserControl Grid.Row="1" Padding="20" Content="{Binding CurrentView}" />
-    </StackPanel>
+    </Grid>
 </Window>

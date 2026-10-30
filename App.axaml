@@ -9,6 +9,16 @@
         <local:ViewLocator />
     </Application.DataTemplates>
 
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="Assets/Resources/ColorsResources.axaml" /> <!-- colors must be read first or else the other resources wont find the colors-->
+                <ResourceInclude Source="Assets/Resources/AppResources.axaml" /> <!-- resources like fonts etc -->
+                <ResourceInclude Source="Assets/Resources/AppGradients.axaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+
     <Application.Styles>
         <FluentTheme />
         <StyleInclude Source="Assets/Styles/AppStyles.axaml"></StyleInclude>
@@ -20,13 +30,5 @@
 
     </Application.Styles>
 
-    <Application.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceInclude Source="Assets/Resources/ColorsResources.axaml" /> <!-- colors must be read first or else the other resources wont find the colors-->
-                <ResourceInclude Source="Assets/Resources/AppResources.axaml" /> <!-- resources like fonts etc -->
-                <ResourceInclude Source="Assets/Resources/AppGradients.axaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Application.Resources>
+
 </Application>
