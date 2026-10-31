@@ -3,8 +3,8 @@
     <Design.PreviewWith>
         <Button Classes="form" >
             <StackPanel Orientation="Horizontal">
-                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" Padding="0 4 0 0" />
-                <Label Content="Test btn" />
+                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" VerticalAlignment="Center" />
+                <Label Content="Test btn" VerticalAlignment="Center" />
             </StackPanel>
         </Button>
     </Design.PreviewWith>
@@ -15,10 +15,11 @@
         <Setter Property="Foreground" Value="{DynamicResource PrimaryText}" />
         <Setter Property="Background" Value="{DynamicResource PrimaryBg}" />
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Padding" Value="30 15"/>
+        <Setter Property="Padding" Value="30 10"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Center" />
-        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="MinWidth" Value="100" />
         <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="CornerRadius" Value="50" />

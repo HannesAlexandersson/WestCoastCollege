@@ -11,7 +11,7 @@ public class CourseFactory : ICourseFactory
     {
         return new Course
         {
-            CourseId = Guid.NewGuid(),
+            CourseId = Guid.NewGuid().ToString(),
             Title = title,
             CourseLength = courseLength,
             StartDate = startDate,

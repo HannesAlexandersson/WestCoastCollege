@@ -50,15 +50,8 @@
               <Button Grid.Column="0"
                       Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCourseCommand}"
                       CommandParameter="{Binding CourseId}"
-                      >
-                <StackPanel Orientation="Horizontal">
-                  <Label FontFamily="{DynamicResource IconFont}"
-                         Content="&#xE3D4;"
-                         VerticalAlignment="Center"
-                         />
-                  <Label  Content="Expand" VerticalAlignment="Center" />
-                </StackPanel>
-              </Button>
+                      Content="Expand"
+                      />
               <Label Grid.Column="1" Content="{Binding Title}" />
               <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="5">
                 <Label Content="{Binding CourseLength}" />

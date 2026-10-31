@@ -11,8 +11,8 @@
   </Design.DataContext>
 
   <Grid RowDefinitions="Auto, Auto, *">
-
     <Grid Grid.Row="0" ColumnDefinitions="*, Auto, *">
+
       <Button Grid.Column="0"
               HorizontalAlignment="Left"
               Margin="10 10 0 0">

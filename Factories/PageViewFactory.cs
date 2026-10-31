@@ -20,14 +20,14 @@ public class PageViewFactory : IPageViewFactory
 
     }
 
-    public ViewModelBase LoadPageViewModel(PageViewsEnum page, string studentId)
+    public ViewModelBase LoadPageViewModel(PageViewsEnum page, string id)
     {
         return page switch
         {
-            PageViewsEnum.EditStudent => new EditStudentViewModel(studentId, new StudentServices()),
-            PageViewsEnum.GoToStudent => new ExpandedStudentViewModel(studentId, new StudentServices()),
-            /* PageViewsEnum.EditCourse => new EditCourseViewModel(courseId, new CourseServices()),
-            PageViewsEnum.GoToCourse => new ExpandedCourseViewModel(courseId, new CourseServices()), */
+            PageViewsEnum.EditStudent => new EditStudentViewModel(id, new StudentServices()),
+            PageViewsEnum.GoToStudent => new ExpandedStudentViewModel(id, new StudentServices()),
+            PageViewsEnum.EditCourse => new EditCourseViewModel(id, new CourseServices(), new CourseFactory(), new TeacherServices()),
+            PageViewsEnum.GoToCourse => new ExpandedCourseViewModel(id, new CourseServices()),
             _ => throw new InvalidOperationException("What ypu wanted could not be found"),
         };
     }
