@@ -10,21 +10,20 @@ namespace WestCoastCollege.ViewModels;
 public partial class ExpandedCourseViewModel : ViewModelBase
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
+    private string _id = string.Empty;
     [ObservableProperty]
     public partial Course? Course { get; set; }
 
-    public ExpandedCourseViewModel()
-    {
+    public ExpandedCourseViewModel() { }
 
-    }
-    public ExpandedCourseViewModel(string courseId, IService<Course, CourseRestDb> courseService)
+    public ExpandedCourseViewModel(IService<Course, CourseRestDb> courseService)
     {
         _courseService = courseService;
-        Init(courseId);
     }
 
-    private async void Init(string id)
+    public async void Init(string id)
     {
+        _id = id;
         await LoadCourse(id);
     }
 

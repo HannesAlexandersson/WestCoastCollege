@@ -17,7 +17,7 @@ public partial class EditCourseViewModel : ViewModelBase
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
     private readonly IService<Teacher, TeacherRestDb> _teacherService;
-    private readonly string _courseId = string.Empty;
+    private string _courseId = string.Empty;
     private readonly CourseFactory _courseFactory;
     [ObservableProperty]
     private ObservableCollection<Teacher> _teachers = [];
@@ -45,17 +45,16 @@ public partial class EditCourseViewModel : ViewModelBase
     {
         PageTitle = "Edit a course info";
     }
-    public EditCourseViewModel(string courseId, IService<Course, CourseRestDb> service, CourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService)
+    public EditCourseViewModel(IService<Course, CourseRestDb> service, CourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService)
     {
         _courseService = service;
         _teacherService = teacherService;
         PageTitle = "Edit a course info";
-        _courseId = courseId;
         _courseFactory = courseFactory;
-        Init();
     }
-    private async void Init()
+    public async void Init(string id)
     {
+        _courseId = id;
         await GetCourse();
         await LoadTeachers();
 
