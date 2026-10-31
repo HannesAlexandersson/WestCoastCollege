@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WestCoastCollege.Enums;
+using WestCoastCollege.Factories;
 using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
 using WestCoastCollege.Services;
@@ -12,8 +13,9 @@ namespace WestCoastCollege.ViewModels;
 
 public partial class EditStudentViewModel : ViewModelBase
 {
-    private readonly IService<Student, StudentRestDb> _studentService;
+    private readonly IService<Student, StudentRestDb>? _studentService;
     private readonly string _studentId = string.Empty;
+    private readonly StudentFactory _studentFactory;
 
     [ObservableProperty]
     public partial string StudentId { get; set; } = string.Empty;
@@ -49,6 +51,14 @@ public partial class EditStudentViewModel : ViewModelBase
         _studentId = studentId;
         Init();
     }
+    public EditStudentViewModel(string studentId, IService<Student, StudentRestDb> service, StudentFactory studentFactory)
+    {
+        PageTitle = "Edit a students data: " + studentId;
+        _studentService = service;
+        _studentId = studentId;
+        _studentFactory = studentFactory;
+        Init();
+    }
 
     private async void Init()
     {
@@ -57,7 +67,7 @@ public partial class EditStudentViewModel : ViewModelBase
 
     private async Task GetStudent()
     {
-        var student = await _studentService.Find(_studentId);
+        var student = await _studentService!.Find(_studentId);
         // set the other propertys here !!!
         StudentId = student.StudentId;
         FirstNameOfStudent = student.FirstName;
@@ -78,7 +88,17 @@ public partial class EditStudentViewModel : ViewModelBase
             PhoneNumber = PhoneNumberOfStudent,
             Email = EmailOfStudent
         };
+        /* TODO: Add factorycreation with courses etc
+           Student student = _studentFactory.Create
+          (
+              StudentId.ToString(),
+              FirstNameOfStudent,
+              LastNameOfStudent,
+              PhoneNumberOfStudent,
+              EmailOfStudent
+         ) */
+        ;
 
-        await _studentService.Update(student, _studentId);
+        await _studentService!.Update(student, _studentId);
     }
 }

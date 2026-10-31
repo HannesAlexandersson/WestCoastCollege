@@ -17,7 +17,6 @@ public interface IAdminFactory
         List<Address> addresses,
         string? email,
          FieldOfKnowledge[] subjectFields,
-            Course[] teachingCourses,
             Guid teacherId,
             AccessLevelEnum accessLevel,
             bool isSuperAdmin

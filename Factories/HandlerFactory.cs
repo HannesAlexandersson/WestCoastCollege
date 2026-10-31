@@ -9,7 +9,7 @@ namespace WestCoastCollege.Factories;
 
 public class HandlerFactory : IHandlerFactory
 {
-    public Handler Create(DateTime dateOfEmployment, string officeLocation, string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, FieldOfKnowledge[] subjectFields, Course[] teachingCourses, Guid teacherId, Course[] handlingCourses, AccessLevelEnum accessLevel)
+    public Handler Create(DateTime dateOfEmployment, string officeLocation, string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, FieldOfKnowledge[] subjectFields, Guid teacherId, Course[] handlingCourses, AccessLevelEnum accessLevel)
     {
         return new Handler
         {
@@ -21,7 +21,6 @@ public class HandlerFactory : IHandlerFactory
             Addresses = addresses,
             Email = email,
             TeacherId = teacherId,
-            TeachingCourses = teachingCourses,
             HandlingCourses = handlingCourses,
             SubjectFields = subjectFields,
             AccessLevel = accessLevel

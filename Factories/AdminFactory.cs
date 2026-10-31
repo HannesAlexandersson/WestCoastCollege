@@ -9,7 +9,7 @@ namespace WestCoastCollege.Factories;
 
 public class AdminFactory : IAdminFactory
 {
-    public Admin Create(DateTime dateOfEmployment, string officeLocation, string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, FieldOfKnowledge[] subjectFields, Course[] teachingCourses, Guid teacherId, AccessLevelEnum accessLevel, bool isSuperAdmin)
+    public Admin Create(DateTime dateOfEmployment, string officeLocation, string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, FieldOfKnowledge[] subjectFields, Guid teacherId, AccessLevelEnum accessLevel, bool isSuperAdmin)
     {
         return new Admin
         {
@@ -22,7 +22,6 @@ public class AdminFactory : IAdminFactory
             Email = email,
             TeacherId = teacherId,
             SubjectFields = subjectFields,
-            TeachingCourses = teachingCourses,
             AccessLevel = accessLevel,
             IsSuperAdmin = isSuperAdmin
         };

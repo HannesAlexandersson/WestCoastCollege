@@ -5,6 +5,7 @@ using WestCoastCollege.Classes;
 using WestCoastCollege.Factories;
 using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
+using WestCoastCollege.RestDbModels;
 using WestCoastCollege.Services;
 using WestCoastCollege.ViewModels;
 
@@ -28,7 +29,7 @@ public static class ServiceCollectionExtensions
 
 
         collection.AddTransient<IService<Student, StudentRestDb>, StudentServices>();
-        // collection.AddTransient<IService<Course>, CourseServices>(); // IF anyone ever wants the Iservice then we give then the servoice
+        collection.AddTransient<IService<Course, CourseRestDb>, CourseServices>(); // IF anyone ever wants the Iservice then we give then the servoice
         // collection.AddTransient<IService<Teacher>, TeacherServices>();
         // collection.AddTransient<IService<Admin>, AdminServices>();
         // collection.AddTransient<IService<Handler>, HandlerServices>();

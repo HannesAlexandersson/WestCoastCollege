@@ -1,0 +1,78 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             xmlns:enums="using:WestCoastCollege.Enums"
+             xmlns:models="using:WestCoastCollege.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.EditCourseView"
+             x:DataType="vm:EditCourseViewModel">
+  <Design.DataContext>
+    <vm:EditCourseViewModel>
+    </vm:EditCourseViewModel>
+  </Design.DataContext>
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <StackPanel Background="{DynamicResource PrimaryBgGradient}"  >
+      <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" Margin="0 15 0 0" />
+
+      <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="10 30" >
+
+        <StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="20">
+
+            <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="auto, auto, auto, auto, Auto" ColumnDefinitions="200, 200">
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="Title" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding TitleOfCourse}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="Course Length in Weeks" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding LengthOfCourse}"  />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="StartDate Of Course" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding StartDateOfCourse}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="EndDate Of Course" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Text="{Binding EndDateOfCourse}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" Content="Assign a Teacher" />
+              <ComboBox Grid.Column="1" Grid.Row="4"
+                        ItemsSource="{Binding Teachers}"
+                        SelectedItem="{Binding SelectedTeacher}">
+
+                <ComboBox.ItemTemplate>
+                  <DataTemplate x:DataType="models:Teacher">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                      <TextBlock Text="{Binding FirstName}" />
+                      <TextBlock Text="{Binding LastName}" />
+                    </StackPanel>
+                  </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+              </ComboBox>
+
+            </Grid>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" Margin="0 30 0 0">
+            <Button Classes="form" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCommand}"  CommandParameter="{x:Static enums:PageViewsEnum.Courses}" >
+              <StackPanel Orientation="Horizontal">
+                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe08a;" VerticalAlignment="Center" />
+                <Label Content="Exit" VerticalAlignment="Center" />
+              </StackPanel>
+            </Button>
+
+            <Button Classes="form"  Command="{Binding SaveCommand}">
+              <StackPanel Orientation="Horizontal">
+                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe248;" VerticalAlignment="Center" />
+                <Label Content="Save" VerticalAlignment="Center" />
+              </StackPanel>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+
+
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+
+</UserControl>

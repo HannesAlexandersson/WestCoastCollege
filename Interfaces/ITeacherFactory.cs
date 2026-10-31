@@ -14,7 +14,6 @@ public interface ITeacherFactory
             List<Address> addresses,
             string? email,
             FieldOfKnowledge[] subjectFields,
-            Course[] teachingCourses,
             Guid teacherId
     );
 }

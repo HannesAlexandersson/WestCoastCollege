@@ -24,7 +24,7 @@
 
                         <StackPanel Orientation="Horizontal">
                               <Label FontFamily="{DynamicResource IconFont}"
-                                     Content="&#xE73E;" />
+                                     Content="&#xE73E;" VerticalAlignment="Center" />
                               <Label Content="Students" />
                         </StackPanel>
                   </Button>
@@ -34,7 +34,7 @@
                           CommandParameter="{x:Static enums:PageViewsEnum.Teachers}" >
                         <StackPanel Orientation="Horizontal">
                               <Label FontFamily="{DynamicResource IconFont}"
-                                     Content="&#xE600;" />
+                                     Content="&#xE600;" VerticalAlignment="Center" />
                               <Label Content="Teachers" />
                         </StackPanel>
                   </Button>
@@ -43,7 +43,7 @@
                           CommandParameter="{x:Static enums:PageViewsEnum.Courses}" >
                         <StackPanel Orientation="Horizontal">
                               <Label FontFamily="{DynamicResource IconFont}"
-                                     Content="&#xE758;" />
+                                     Content="&#xE758;" VerticalAlignment="Center" />
                               <Label Content="Courses" />
                         </StackPanel>
                   </Button>
@@ -59,7 +59,7 @@
                           CommandParameter="{x:Static enums:PageViewsEnum.Admins}" >
                         <StackPanel Orientation="Horizontal">
                               <Label FontFamily="{DynamicResource IconFont}"
-                                     Content="&#xE198;" />
+                                     Content="&#xE198;" VerticalAlignment="Center" />
                               <Label Content="Admins" />
                         </StackPanel>
                   </Button>
@@ -67,7 +67,7 @@
                   <Button Grid.Column="1" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCommand}" CommandParameter="{x:Static enums:PageViewsEnum.Handlers}" >
                         <StackPanel Orientation="Horizontal">
                               <Label FontFamily="{DynamicResource IconFont}"
-                                     Content="&#xE6F8;" />
+                                     Content="&#xE6F8;" VerticalAlignment="Center" />
                               <Label Content="Handlers" />
                         </StackPanel>
                   </Button>

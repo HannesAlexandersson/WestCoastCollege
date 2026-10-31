@@ -11,14 +11,16 @@
   </Design.DataContext>
 
   <Grid RowDefinitions="Auto, Auto, *">
-
     <Grid Grid.Row="0" ColumnDefinitions="*, Auto, *">
+
       <Button Grid.Column="0"
               HorizontalAlignment="Left"
               Margin="10 10 0 0">
         <StackPanel Orientation="Horizontal">
           <Label FontFamily="{DynamicResource IconFont}"
-                 Content="&#xE73E;" />
+                 Content="&#xE4D0;"
+                 VerticalAlignment="Center"
+                 FontSize="25" />
           <Label Content="Add a new student" />
         </StackPanel>
       </Button>
@@ -38,7 +40,8 @@
 
     <ScrollViewer Grid.Row="2"
                   HorizontalScrollBarVisibility="Auto"
-                  VerticalScrollBarVisibility="Auto">
+                  VerticalScrollBarVisibility="Auto"
+                  Margin="10 0">
       <ItemsControl ItemsSource="{Binding Students}">
         <ItemsControl.ItemTemplate>
           <DataTemplate>

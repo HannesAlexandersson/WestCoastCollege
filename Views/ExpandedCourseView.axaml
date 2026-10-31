@@ -1,0 +1,155 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             xmlns:model="using:WestCoastCollege.Classes"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.ExpandedCourseView"
+             x:DataType="vm:ExpandedCourseViewModel">
+  <Design.DataContext>
+    <vm:ExpandedCourseViewModel></vm:ExpandedCourseViewModel>
+  </Design.DataContext>
+
+  <Grid RowDefinitions="Auto, Auto, *">
+
+
+    <Grid Grid.Row="0" Margin="0,0,0,5">
+      <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        <!-- Title -->
+        <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
+          <TextBlock Text="{Binding Course.Title}" FontSize="35" />
+        </StackPanel>
+
+        <!-- ID -->
+        <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
+          <TextBlock Text="Course ID: " FontSize="15" />
+          <TextBlock Text="{Binding Course.CourseId}" FontSize="15" />
+        </StackPanel>
+
+      </StackPanel>
+
+      <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditCourseCommand}"
+                CommandParameter="{Binding Course.CourseId}"
+                FontFamily="{DynamicResource IconFont}"
+                Content="&#xE3AE;"
+                Classes="safe" />
+
+        <Button Command="{Binding $parent[UserControl].((vm:CoursesViewModel)DataContext).DeleteCommand}"
+                CommandParameter="{Binding Course.CourseId}"
+                FontFamily="{DynamicResource IconFont}"
+                Content="&#xE4F6;"
+                Classes="danger" />
+      </StackPanel>
+    </Grid>
+
+    <Border Grid.Row="1"
+            BorderBrush="White"
+            BorderThickness="0 0 0 2"
+            Margin="0,0,0,5" />
+    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10 0">
+      <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="15">
+        <Grid Grid.Row="0"
+              ColumnDefinitions="250, *"
+              RowDefinitions="Auto, Auto, Auto, Auto"
+              ColumnSpacing="10"
+              RowSpacing="5"
+              >
+          <TextBlock Grid.Row="0" Text="General information: " FontWeight="Bold"
+                     FontSize="18" TextDecorations="Underline" />
+
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Title:" />
+          <TextBlock Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Course.Title}" />
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="Length (weeks): " />
+          <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Course.CourseLength}" />
+
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="Location: " />
+          <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Course.CourseType}" />
+
+        </Grid>
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="250, *"
+              RowDefinitions="Auto, Auto, Auto"
+              ColumnSpacing="10"
+              RowSpacing="5">
+          <TextBlock Grid.Row="0"  Text="Important Dates: "
+                     FontWeight="Bold"
+                     FontSize="18"
+                     TextDecorations="Underline" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="StartDate:" />
+          <TextBlock Grid.Row="1" Grid.Column="1"
+                     Text="{Binding Course.StartDate}" />
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="EndDate: " />
+          <TextBlock Grid.Row="2" Grid.Column="1"
+                     Text="{Binding Course.EndDate}"
+                     />
+        </Grid>
+
+        <Grid Grid.Row="2"
+              ColumnDefinitions="250, *"
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+              ColumnSpacing="10"
+              RowSpacing="5">
+          <TextBlock Grid.Row="0"  Text="Assigned Teacher: "
+                     FontWeight="Bold"
+                     FontSize="18"
+                     TextDecorations="Underline" />
+          <TextBlock Grid.Row="1" Grid.Column="0" Text="Teacher name:" />
+
+          <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Spacing="4">
+            <TextBlock Text="{Binding Course.CourseTeacher.FirstName}" />
+            <TextBlock Text="{Binding Course.CourseTeacher.LastName}" />
+          </StackPanel>
+
+          <TextBlock Grid.Row="2" Grid.Column="0" Text="Email: " />
+          <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding  Course.CourseTeacher.Email}" />
+
+          <TextBlock Grid.Row="3" Grid.Column="0" Text="PhoneNumber: " />
+          <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding  Course.CourseTeacher.PhoneNumber}" />
+
+          <!-- Sybjectfields -->
+          <StackPanel Grid.Row="4" Spacing="10">
+            <TextBlock Text="Areas of expertise: "
+                       FontWeight="SemiBold"
+                       FontSize="14"
+
+                       />
+            <ItemsControl ItemsSource="{Binding Course.CourseTeacher.SubjectFields}">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate x:DataType="model:FieldOfKnowledge">
+
+                  <TextBlock Text="{Binding NameOfSubject}" />
+
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <!--  <ItemsControl ItemsSource="{Binding Course.CourseTeacher.SubjectFields}">
+            <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="model:FieldOfKnowledge">
+
+            <Grid
+            ColumnDefinitions="250, *"
+            ColumnSpacing="10"
+            RowSpacing="5"
+            Margin="10 0">
+
+            <TextBlock Grid.Column="1"  Text="{Binding NameOfSubject}" />
+            </Grid>
+            </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            </ItemsControl> -->
+          </StackPanel>
+
+
+        </Grid>
+
+      </Grid>
+
+    </ScrollViewer>
+  </Grid>
+
+</UserControl>

@@ -34,13 +34,29 @@ public partial class MainWindowViewModel : ViewModelBase
             PageViewsEnum.GoToStudent or
             PageViewsEnum.EditStudent => PageViewsEnum.Students,
 
+            PageViewsEnum.GoToCourse or
+            PageViewsEnum.EditCourse => PageViewsEnum.Courses,
+
+            PageViewsEnum.GoToTeacher or
+            PageViewsEnum.EditTeacher => PageViewsEnum.Teachers,
+
+            PageViewsEnum.GoToHandler or
+            PageViewsEnum.EditHandler => PageViewsEnum.Handlers,
+
+            PageViewsEnum.GoToAdmin or
+            PageViewsEnum.EditAdmin => PageViewsEnum.Admins,
+
             _ => PageViewsEnum.Home
         };
 
         BackButtonText = BackPage switch
         {
-            PageViewsEnum.Students => "Back to Students",
-            _ => "Go Home"
+            PageViewsEnum.Students => "Go back to Students",
+            PageViewsEnum.Courses => "Go back to Courses",
+            PageViewsEnum.Teachers => "Go back to Teachers",
+            PageViewsEnum.Handlers => "Go back to Handlers",
+            PageViewsEnum.Admins => "Go back to Admins",
+            _ => "Go to Home"
         };
     }
 
@@ -60,14 +76,14 @@ public partial class MainWindowViewModel : ViewModelBase
         UpdateBackButton();
         CurrentView = _factory.LoadPageViewModel(destination);
     }
+
     [RelayCommand]
-    private void GoToEditStudent(string studentId) // since it doesnt let me overload I need specefic methods when i need stuff like id's
+    private void GoToEditStudent(string studentId) // since it doesnt let me overload the GoTo method I will need specefic methods that basicly does the same thing
     {
         _currentPage = PageViewsEnum.EditStudent;
         UpdateBackButton();
 
-        CurrentView = _factory.LoadPageViewModel(
-            PageViewsEnum.EditStudent, studentId);
+        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.EditStudent, studentId);
     }
 
     [RelayCommand]
@@ -76,7 +92,21 @@ public partial class MainWindowViewModel : ViewModelBase
         _currentPage = PageViewsEnum.GoToStudent;
         UpdateBackButton();
 
-        CurrentView = _factory.LoadPageViewModel(
-            PageViewsEnum.GoToStudent, studentId);
+        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.GoToStudent, studentId);
+    }
+    [RelayCommand]
+    private void GoToCourse(string courseId)
+    {
+        _currentPage = PageViewsEnum.GoToCourse;
+        UpdateBackButton();
+        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.GoToCourse, courseId);
+    }
+    [RelayCommand]
+    private void GoToEditCourse(string courseId)
+    {
+        _currentPage = PageViewsEnum.EditCourse;
+        UpdateBackButton();
+
+        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.EditCourse, courseId);
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
@@ -7,10 +8,10 @@ namespace WestCoastCollege.ViewModels;
 
 public partial class ExpandedStudentViewModel : ViewModelBase
 {
-    private readonly IService<Student, StudentRestDb> _studentService;
+    private readonly IService<Student, StudentRestDb>? _studentService;
 
     [ObservableProperty]
-    public partial Student Student { get; set; }
+    public partial Student? Student { get; set; }
 
     public ExpandedStudentViewModel()
     {
@@ -20,11 +21,24 @@ public partial class ExpandedStudentViewModel : ViewModelBase
     public ExpandedStudentViewModel(string studentId, IService<Student, StudentRestDb> studentService)
     {
         _studentService = studentService;
-        LoadStudent(studentId);
+        Init(studentId);
     }
 
-    private async void LoadStudent(string id)
+    private async void Init(string id)
     {
-        Student = await _studentService.Find(id);
+        await LoadStudent(id);
+    }
+
+    private async Task LoadStudent(string id)
+    {
+        try
+        {
+            Student = await _studentService!.Find(id);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
     }
 }
