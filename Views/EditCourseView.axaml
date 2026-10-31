@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:WestCoastCollege.ViewModels"
              xmlns:enums="using:WestCoastCollege.Enums"
+             xmlns:models="using:WestCoastCollege.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="WestCoastCollege.Views.EditCourseView"
              x:DataType="vm:EditCourseViewModel">
@@ -40,7 +41,7 @@
                         SelectedItem="{Binding SelectedTeacher}">
 
                 <ComboBox.ItemTemplate>
-                  <DataTemplate>
+                  <DataTemplate x:DataType="models:Teacher">
                     <StackPanel Orientation="Horizontal" Spacing="5">
                       <TextBlock Text="{Binding FirstName}" />
                       <TextBlock Text="{Binding LastName}" />

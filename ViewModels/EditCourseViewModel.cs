@@ -43,9 +43,7 @@ public partial class EditCourseViewModel : ViewModelBase
 
     public EditCourseViewModel()
     {
-        _courseService = new CourseServices();
         PageTitle = "Edit a course info";
-        Init();
     }
     public EditCourseViewModel(string courseId, IService<Course, CourseRestDb> service, CourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService)
     {
