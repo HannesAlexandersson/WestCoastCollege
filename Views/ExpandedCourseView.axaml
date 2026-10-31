@@ -24,7 +24,7 @@
 
         <!-- ID -->
         <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Center">
-          <TextBlock Text="Student ID: " FontSize="15" />
+          <TextBlock Text="Course ID: " FontSize="15" />
           <TextBlock Text="{Binding Course.CourseId}" FontSize="15" />
         </StackPanel>
 
@@ -49,7 +49,7 @@
             BorderBrush="White"
             BorderThickness="0 0 0 2"
             Margin="0,0,0,5" />
-    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+    <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="10 0">
       <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="15">
         <Grid Grid.Row="0"
               ColumnDefinitions="250, *"
@@ -122,17 +122,26 @@
               <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="model:FieldOfKnowledge">
 
-                  <Grid
-                    ColumnDefinitions="250, *"
-                    ColumnSpacing="10"
-                    RowSpacing="5"
-                    Margin="10 0">
-                    <TextBlock Grid.Column="0"  Text="field: " />
-                    <TextBlock Grid.Column="1"  Text="{Binding NameOfSubject}" />
-                  </Grid>
+                  <TextBlock Text="{Binding NameOfSubject}" />
+
                 </DataTemplate>
               </ItemsControl.ItemTemplate>
             </ItemsControl>
+            <!--  <ItemsControl ItemsSource="{Binding Course.CourseTeacher.SubjectFields}">
+            <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="model:FieldOfKnowledge">
+
+            <Grid
+            ColumnDefinitions="250, *"
+            ColumnSpacing="10"
+            RowSpacing="5"
+            Margin="10 0">
+
+            <TextBlock Grid.Column="1"  Text="{Binding NameOfSubject}" />
+            </Grid>
+            </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            </ItemsControl> -->
           </StackPanel>
 
 
