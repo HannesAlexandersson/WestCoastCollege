@@ -2,6 +2,7 @@ using System;
 using Client.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using WestCoastCollege.Classes;
+using WestCoastCollege.Enums;
 using WestCoastCollege.Factories;
 using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
@@ -17,9 +18,6 @@ public static class ServiceCollectionExtensions
     {
         collection.AddSingleton<MainWindowViewModel>();
         collection.AddSingleton<PageViewFactory>();
-        //collection.AddSingleton<ApplicationData>(); // we also need the appdata as long as the app will live    
-
-
 
         collection.AddTransient<ICourseFactory, CourseFactory>(); // when someone want to use the interface, give them the factory
         collection.AddTransient<IAdminFactory, AdminFactory>();
@@ -27,14 +25,35 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<IHandlerFactory, HandlerFactory>();
         collection.AddTransient<IStudentFactory, StudentFactory>();
 
-
-        collection.AddTransient<IService<Student, StudentRestDb>, StudentServices>();
-        collection.AddTransient<IService<Course, CourseRestDb>, CourseServices>(); // IF anyone ever wants the Iservice then we give then the servoice
+        collection.AddTransient<HomeViewModel>();
+        collection.AddTransient<IService<Student, StudentRestDb>, StudentServices>();// IF anyone ever wants the Iservice then we give then the servoice
+        collection.AddTransient<StudentsViewModel>();
+        collection.AddTransient<EditStudentViewModel>();
+        collection.AddTransient<ExpandedStudentViewModel>();
+        collection.AddTransient<IService<Course, CourseRestDb>, CourseServices>();
+        collection.AddTransient<ExpandedCourseViewModel>();
+        collection.AddTransient<EditCourseViewModel>();
         // collection.AddTransient<IService<Teacher>, TeacherServices>();
+        //   collection.AddTransient<EditTeacherViewModel>();
+        //  collection.AddTransient<ExpandedTeacherViewModel>();
         // collection.AddTransient<IService<Admin>, AdminServices>();
+        //  collection.AddTransient<EditAdminViewModel>();
+        //  collection.AddTransient<ExpandedAdminViewModel>();
         // collection.AddTransient<IService<Handler>, HandlerServices>();
+        //  collection.AddTransient<EditHandlerViewModel>();
+        //   collection.AddTransient<ExpandedHandlerViewModel>();
 
         collection.AddTransient(typeof(IHttpService<>), typeof(HttpService<>));
-
+        collection.AddSingleton<Func<PageViewsEnum, ViewModelBase>>(c => name => name switch
+                {
+                    PageViewsEnum.Home => c.GetRequiredService<HomeViewModel>(),
+                    PageViewsEnum.Students => c.GetRequiredService<StudentsViewModel>(),
+                    PageViewsEnum.EditStudent => c.GetRequiredService<EditStudentViewModel>(),
+                    PageViewsEnum.GoToStudent => c.GetRequiredService<ExpandedStudentViewModel>(),
+                    PageViewsEnum.Courses => c.GetRequiredService<CoursesViewModel>(),
+                    PageViewsEnum.EditCourse => c.GetRequiredService<EditCourseViewModel>(),
+                    PageViewsEnum.GoToCourse => c.GetRequiredService<ExpandedCourseViewModel>(),
+                    _ => throw new ArgumentException("It didnt work")
+                });
     }
 }

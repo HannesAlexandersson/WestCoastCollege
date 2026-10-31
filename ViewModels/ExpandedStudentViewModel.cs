@@ -9,6 +9,7 @@ namespace WestCoastCollege.ViewModels;
 public partial class ExpandedStudentViewModel : ViewModelBase
 {
     private readonly IService<Student, StudentRestDb>? _studentService;
+    private string _studentId = string.Empty;
 
     [ObservableProperty]
     public partial Student? Student { get; set; }
@@ -18,14 +19,14 @@ public partial class ExpandedStudentViewModel : ViewModelBase
 
     }
 
-    public ExpandedStudentViewModel(string studentId, IService<Student, StudentRestDb> studentService)
+    public ExpandedStudentViewModel(IService<Student, StudentRestDb> studentService)
     {
         _studentService = studentService;
-        Init(studentId);
     }
 
-    private async void Init(string id)
+    public async void Init(string id)
     {
+        _studentId = id;
         await LoadStudent(id);
     }
 

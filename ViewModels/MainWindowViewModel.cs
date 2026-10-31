@@ -4,12 +4,13 @@ using CommunityToolkit.Mvvm.Input;
 using WestCoastCollege.Utils;
 using WestCoastCollege.Factories;
 using WestCoastCollege.Enums;
+using WestCoastCollege.Models;
 
 namespace WestCoastCollege.ViewModels;
 
 public partial class MainWindowViewModel : ViewModelBase
 {
-    private readonly PageViewFactory _factory;
+    private readonly PageViewFactory? _factory;
     private PageViewsEnum _currentPage = PageViewsEnum.Home;
     [ObservableProperty]
     public partial ViewModelBase CurrentView { get; set; } = new();
@@ -64,7 +65,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private void GoBack()
     {
         _currentPage = BackPage;
-        CurrentView = _factory.LoadPageViewModel(BackPage);
+        CurrentView = _factory!.LoadPageViewModel(BackPage);
 
         UpdateBackButton();
     }
@@ -74,7 +75,7 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         _currentPage = destination;
         UpdateBackButton();
-        CurrentView = _factory.LoadPageViewModel(destination);
+        CurrentView = _factory!.LoadPageViewModel(destination);
     }
 
     [RelayCommand]
@@ -83,7 +84,8 @@ public partial class MainWindowViewModel : ViewModelBase
         _currentPage = PageViewsEnum.EditStudent;
         UpdateBackButton();
 
-        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.EditStudent, studentId);
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditStudent);
+        ((EditStudentViewModel)CurrentView).Init(studentId); // retyp currentview thats viewmodelbase into editstudentviewmodel and call the  init metod from it and send the id there
     }
 
     [RelayCommand]
@@ -92,14 +94,18 @@ public partial class MainWindowViewModel : ViewModelBase
         _currentPage = PageViewsEnum.GoToStudent;
         UpdateBackButton();
 
-        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.GoToStudent, studentId);
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToStudent);
+        ((ExpandedStudentViewModel)CurrentView).Init(studentId);
     }
     [RelayCommand]
     private void GoToCourse(string courseId)
     {
         _currentPage = PageViewsEnum.GoToCourse;
         UpdateBackButton();
-        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.GoToCourse, courseId);
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToCourse);
+        ((ExpandedCourseViewModel)CurrentView).Init(courseId);
     }
     [RelayCommand]
     private void GoToEditCourse(string courseId)
@@ -107,6 +113,7 @@ public partial class MainWindowViewModel : ViewModelBase
         _currentPage = PageViewsEnum.EditCourse;
         UpdateBackButton();
 
-        CurrentView = _factory.LoadPageViewModel(PageViewsEnum.EditCourse, courseId);
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditCourse);
+        ((EditCourseViewModel)CurrentView).Init(courseId);
     }
 }

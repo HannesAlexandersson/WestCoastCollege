@@ -8,29 +8,16 @@ namespace WestCoastCollege.Factories;
 public class PageViewFactory : IPageViewFactory
 {
 
+    private readonly Func<PageViewsEnum, ViewModelBase> _pageFactory; //func is an anon function
+    public PageViewFactory(Func<PageViewsEnum, ViewModelBase> pageFactory)
+    {
+        _pageFactory = pageFactory; // we place the anon function in the private field _pageFacotry
+    }
+
     public ViewModelBase LoadPageViewModel(PageViewsEnum pageName)
     {
-        return pageName switch
-        {
-            PageViewsEnum.Home => new HomeViewModel(),
-            PageViewsEnum.Students => new StudentsViewModel(new StudentServices()),
-            PageViewsEnum.Courses => new CoursesViewModel(new CourseServices()),
-            _ => throw new InvalidOperationException("What ypu wanted could not be found"),
-        };
-
+        // we call the anon function from the field pagefactory
+        return _pageFactory.Invoke(pageName); // invoke basicly means "run the method", this method we call returns a viewmodelbase object (a vm)
     }
-
-    public ViewModelBase LoadPageViewModel(PageViewsEnum page, string id)
-    {
-        return page switch
-        {
-            PageViewsEnum.EditStudent => new EditStudentViewModel(id, new StudentServices()),
-            PageViewsEnum.GoToStudent => new ExpandedStudentViewModel(id, new StudentServices()),
-            PageViewsEnum.EditCourse => new EditCourseViewModel(id, new CourseServices(), new CourseFactory(), new TeacherServices()),
-            PageViewsEnum.GoToCourse => new ExpandedCourseViewModel(id, new CourseServices()),
-            _ => throw new InvalidOperationException("What ypu wanted could not be found"),
-        };
-    }
-
-
 }
+

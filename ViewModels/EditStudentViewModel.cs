@@ -14,7 +14,7 @@ namespace WestCoastCollege.ViewModels;
 public partial class EditStudentViewModel : ViewModelBase
 {
     private readonly IService<Student, StudentRestDb>? _studentService;
-    private readonly string _studentId = string.Empty;
+    private string _studentId = string.Empty;
     private readonly StudentFactory _studentFactory;
 
     [ObservableProperty]
@@ -33,35 +33,20 @@ public partial class EditStudentViewModel : ViewModelBase
       public partial List<Address> Addresses { get; set; } = []; */
     /* [ObservableProperty]
     public partial List<Course> EnrolledCourses { get; set; } = []; */
-    public EditStudentViewModel()
+    public EditStudentViewModel() { }
+
+
+    public EditStudentViewModel(IService<Student, StudentRestDb> service, StudentFactory studentFactory)
     {
-        _studentService = new StudentServices();
-        PageTitle = "Edit a students data";
-    }
-    public EditStudentViewModel(string studentId)
-    {
-        _studentService = new StudentServices();
-        PageTitle = "Edit a students data" + studentId;
-        _studentId = studentId;
-    }
-    public EditStudentViewModel(string studentId, IService<Student, StudentRestDb> service)
-    {
-        PageTitle = "Edit a students data: " + studentId;
+        PageTitle = "Edit a students data: ";
         _studentService = service;
-        _studentId = studentId;
-        Init();
-    }
-    public EditStudentViewModel(string studentId, IService<Student, StudentRestDb> service, StudentFactory studentFactory)
-    {
-        PageTitle = "Edit a students data: " + studentId;
-        _studentService = service;
-        _studentId = studentId;
         _studentFactory = studentFactory;
-        Init();
+
     }
 
-    private async void Init()
+    public async void Init(string id)
     {
+        _studentId = id;
         await GetStudent();
     }
 
