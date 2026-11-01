@@ -13,7 +13,6 @@ public interface ITeacherFactory
             string phoneNumber,
             List<Address> addresses,
             string? email,
-            FieldOfKnowledge[] subjectFields,
-            Guid teacherId
+            FieldOfKnowledge[] subjectFields
     );
 }

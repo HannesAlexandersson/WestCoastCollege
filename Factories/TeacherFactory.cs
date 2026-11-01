@@ -8,7 +8,7 @@ namespace WestCoastCollege.Factories;
 
 public class TeacherFactory : ITeacherFactory
 {
-    public Teacher Create(string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, FieldOfKnowledge[] subjectFields, Guid teacherId)
+    public Teacher Create(string firstName, string lastName, string phoneNumber, List<Address> addresses, string? email, FieldOfKnowledge[] subjectFields)
     {
         return new Teacher
         {
@@ -18,8 +18,7 @@ public class TeacherFactory : ITeacherFactory
             Addresses = addresses,
             Email = email,
             SubjectFields = subjectFields,
-
-            TeacherId = teacherId
+            TeacherId = Guid.NewGuid().ToString(),
         };
     }
 }

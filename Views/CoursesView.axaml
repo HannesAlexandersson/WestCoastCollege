@@ -67,6 +67,7 @@
                       Content="&#xE3AE;"
                       Classes="safe"
                       HorizontalAlignment="Left" />
+
               <Button Grid.Column="6"
                       Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
                       CommandParameter="{Binding CourseId}"

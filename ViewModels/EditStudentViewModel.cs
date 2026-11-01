@@ -1,22 +1,28 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Avalonia.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using WestCoastCollege.Enums;
-using WestCoastCollege.Factories;
+using WestCoastCollege.Classes;
 using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
-using WestCoastCollege.Services;
+using WestCoastCollege.RestDbModels;
+using System.Linq;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class EditStudentViewModel : ViewModelBase
+public partial class EditStudentViewModel : ViewModelBase, IInitializableViewModel
 {
     private readonly IService<Student, StudentRestDb>? _studentService;
+    private readonly IService<Course, CourseRestDb>? _courseService;
     private string _studentId = string.Empty;
-    private readonly StudentFactory _studentFactory;
+    private readonly IStudentFactory? _studentFactory;
 
+    [ObservableProperty]
+    private ObservableCollection<Course> _courses = [];
+    [ObservableProperty]
+    private Course? _selectedCourse;
     [ObservableProperty]
     public partial string StudentId { get; set; } = string.Empty;
     [ObservableProperty]
@@ -27,63 +33,97 @@ public partial class EditStudentViewModel : ViewModelBase
     public partial string PhoneNumberOfStudent { get; set; } = string.Empty;
     [ObservableProperty]
     public partial string EmailOfStudent { get; set; } = string.Empty;
+    [ObservableProperty]
+    public partial ObservableCollection<Address> StudentAddresses { get; set; } = [];
+    [ObservableProperty]
+    public partial List<Course> StudentEnrolledCourses { get; set; } = [];
+    public EditStudentViewModel()
+    {
+        PageTitle = "Edit a students data: ";
+    }
 
-    //TODO  addressess and courses???
-    /*  [ObservableProperty]
-      public partial List<Address> Addresses { get; set; } = []; */
-    /* [ObservableProperty]
-    public partial List<Course> EnrolledCourses { get; set; } = []; */
-    public EditStudentViewModel() { }
 
-
-    public EditStudentViewModel(IService<Student, StudentRestDb> service, StudentFactory studentFactory)
+    public EditStudentViewModel(IService<Student, StudentRestDb> service, IService<Course, CourseRestDb> courseService, IStudentFactory studentFactory)
     {
         PageTitle = "Edit a students data: ";
         _studentService = service;
+        _courseService = courseService;
         _studentFactory = studentFactory;
 
     }
 
-    public async void Init(string id)
+    public async Task Init(string id)
     {
         _studentId = id;
         await GetStudent();
+        await LoadCourses();
     }
-
-    private async Task GetStudent()
+    private async Task LoadCourses()
     {
-        var student = await _studentService!.Find(_studentId);
-        // set the other propertys here !!!
-        StudentId = student.StudentId;
-        FirstNameOfStudent = student.FirstName;
-        LastNameOfStudent = student.LastName;
-        PhoneNumberOfStudent = student.PhoneNumber;
-        EmailOfStudent = student.Email ?? ""; // emails is not required and can be left empty
+        Courses = new ObservableCollection<Course>(
+            await _courseService!.List()
+        );
+    }
+    private async Task GetStudent()
+    { //TODO fix the edit view, addresses doesnt look agood, is to the side of the rest of the textboxes also add course neds styling, both bg and text are white there is no btns for saving or exit
+        try
+        {
+            var student = await _studentService!.Find(_studentId);
+
+            if (student == null)
+            {
+                Console.WriteLine($"No student found with ID: {_studentId}");
+                return;
+            }
+
+            StudentId = student.StudentId;
+            FirstNameOfStudent = student.FirstName;
+            LastNameOfStudent = student.LastName;
+            PhoneNumberOfStudent = student.PhoneNumber;
+            EmailOfStudent = student.Email ?? "";
+            StudentAddresses = new ObservableCollection<Address>(student.Addresses);
+            StudentEnrolledCourses = student.EnrolledCourses;
+
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception($"No student found with ID: {_studentId}. {ex.Message}");
+        }
 
     }
 
     [RelayCommand]
     private async Task Save()
     {
-        Student student = new()
-        {
-            StudentId = StudentId.ToString(),
-            FirstName = FirstNameOfStudent,
-            LastName = LastNameOfStudent,
-            PhoneNumber = PhoneNumberOfStudent,
-            Email = EmailOfStudent
-        };
-        /* TODO: Add factorycreation with courses etc
-           Student student = _studentFactory.Create
-          (
-              StudentId.ToString(),
-              FirstNameOfStudent,
-              LastNameOfStudent,
-              PhoneNumberOfStudent,
-              EmailOfStudent
-         ) */
-        ;
+        Student student = _studentFactory!.Create
+       (
+           FirstNameOfStudent,
+           LastNameOfStudent,
+           PhoneNumberOfStudent,
+           StudentAddresses.ToList(),
+           EmailOfStudent,
+           StudentEnrolledCourses
+      )
+     ;
 
         await _studentService!.Update(student, _studentId);
+    }
+
+    [RelayCommand]
+    private void AddAddress()
+    {
+        StudentAddresses.Add(new Address
+        {
+            StreetAddress = "",
+            PostalCode = 0.ToString(), // convert it to string rather then try to force user to input in a certain way
+            City = ""
+        });
+    }
+
+    [RelayCommand]
+    private void RemoveAddress(Address address)
+    {
+        StudentAddresses.Remove(address);
     }
 }

@@ -5,6 +5,9 @@ using WestCoastCollege.Utils;
 using WestCoastCollege.Factories;
 using WestCoastCollege.Enums;
 using WestCoastCollege.Models;
+using WestCoastCollege.Interfaces;
+using WestCoastCollege.Classes;
+using System.Threading.Tasks;
 
 namespace WestCoastCollege.ViewModels;
 
@@ -78,42 +81,71 @@ public partial class MainWindowViewModel : ViewModelBase
         CurrentView = _factory!.LoadPageViewModel(destination);
     }
 
+    /*  [RelayCommand]
+     private void GoToSingle(NavigationParameter parameter)
+     {
+         _currentPage = parameter.Page;
+         UpdateBackButton();
+
+         CurrentView = _factory!.LoadPageViewModel(parameter.Page);
+         ((IInitializableViewModel)CurrentView).Init(parameter.Id);
+     } */
+
     [RelayCommand]
-    private void GoToEditStudent(string studentId) // since it doesnt let me overload the GoTo method I will need specefic methods that basicly does the same thing
+    private async Task GoToEditStudent(string studentId) // since it doesnt let me overload the GoTo method I will need specefic methods that basicly does the same thing
     {
         _currentPage = PageViewsEnum.EditStudent;
         UpdateBackButton();
-
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditStudent);
-        ((EditStudentViewModel)CurrentView).Init(studentId); // retyp currentview thats viewmodelbase into editstudentviewmodel and call the  init metod from it and send the id there
+        await ((EditStudentViewModel)CurrentView).Init(studentId); // retyp currentview thats viewmodelbase into editstudentviewmodel and call the  init metod from it and send the id there
     }
 
     [RelayCommand]
-    private void GoToStudent(string studentId)
+    private async Task GoToStudent(string studentId)
     {
         _currentPage = PageViewsEnum.GoToStudent;
         UpdateBackButton();
 
 
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToStudent);
-        ((ExpandedStudentViewModel)CurrentView).Init(studentId);
+        await ((ExpandedStudentViewModel)CurrentView).Init(studentId);
     }
     [RelayCommand]
-    private void GoToCourse(string courseId)
+    private async Task GoToCourse(string courseId)
     {
         _currentPage = PageViewsEnum.GoToCourse;
         UpdateBackButton();
 
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToCourse);
-        ((ExpandedCourseViewModel)CurrentView).Init(courseId);
+        await ((ExpandedCourseViewModel)CurrentView).Init(courseId);
     }
     [RelayCommand]
-    private void GoToEditCourse(string courseId)
+    private async Task GoToEditCourse(string courseId)
     {
         _currentPage = PageViewsEnum.EditCourse;
         UpdateBackButton();
 
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditCourse);
-        ((EditCourseViewModel)CurrentView).Init(courseId);
+        await ((EditCourseViewModel)CurrentView).Init(courseId);
+    }
+    [RelayCommand]
+    private async Task GoToTeacher(string teacherId)
+    {
+        _currentPage = PageViewsEnum.GoToTeacher;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToTeacher);
+        await ((ExpandedTeacherViewModel)CurrentView).Init(teacherId);
+    }
+
+
+    [RelayCommand]
+    private async Task GoToEditTeacher(string teacherId)
+    {
+        _currentPage = PageViewsEnum.EditTeacher;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditTeacher);
+        await ((EditTeacherViewModel)CurrentView).Init(teacherId);
     }
 }

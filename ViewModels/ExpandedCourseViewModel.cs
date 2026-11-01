@@ -7,10 +7,10 @@ using WestCoastCollege.RestDbModels;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class ExpandedCourseViewModel : ViewModelBase
+public partial class ExpandedCourseViewModel : ViewModelBase, IInitializableViewModel
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
-    private string _id = string.Empty;
+    private string _courseId = string.Empty;
     [ObservableProperty]
     public partial Course? Course { get; set; }
 
@@ -21,17 +21,17 @@ public partial class ExpandedCourseViewModel : ViewModelBase
         _courseService = courseService;
     }
 
-    public async void Init(string id)
+    public async Task Init(string id)
     {
-        _id = id;
-        await LoadCourse(id);
+        _courseId = id;
+        await LoadCourse();
     }
 
-    private async Task LoadCourse(string id)
+    private async Task LoadCourse()
     {
         try
         {
-            Course = await _courseService!.Find(id);
+            Course = await _courseService!.Find(_courseId);
         }
         catch (Exception ex)
         {

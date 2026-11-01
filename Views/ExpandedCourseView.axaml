@@ -30,7 +30,7 @@
 
       </StackPanel>
 
-      <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+      <StackPanel Spacing="5" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
         <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditCourseCommand}"
                 CommandParameter="{Binding Course.CourseId}"
                 FontFamily="{DynamicResource IconFont}"
@@ -112,12 +112,12 @@
           <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding  Course.CourseTeacher.PhoneNumber}" />
 
           <!-- Sybjectfields -->
-          <StackPanel Grid.Row="4" Spacing="10">
-            <TextBlock Text="Areas of expertise: "
-                       FontWeight="SemiBold"
-                       FontSize="14"
+          <TextBlock Grid.Row="4" Grid.Column="0" Text="Areas of expertise: "
+                     FontWeight="SemiBold"
+                     FontSize="14"
 
-                       />
+                     />
+          <StackPanel Grid.Row="4" Grid.Column="1" Spacing="10">
             <ItemsControl ItemsSource="{Binding Course.CourseTeacher.SubjectFields}">
               <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="model:FieldOfKnowledge">
@@ -127,21 +127,6 @@
                 </DataTemplate>
               </ItemsControl.ItemTemplate>
             </ItemsControl>
-            <!--  <ItemsControl ItemsSource="{Binding Course.CourseTeacher.SubjectFields}">
-            <ItemsControl.ItemTemplate>
-            <DataTemplate x:DataType="model:FieldOfKnowledge">
-
-            <Grid
-            ColumnDefinitions="250, *"
-            ColumnSpacing="10"
-            RowSpacing="5"
-            Margin="10 0">
-
-            <TextBlock Grid.Column="1"  Text="{Binding NameOfSubject}" />
-            </Grid>
-            </DataTemplate>
-            </ItemsControl.ItemTemplate>
-            </ItemsControl> -->
           </StackPanel>
 
 

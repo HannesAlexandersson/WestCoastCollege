@@ -9,5 +9,5 @@ public record class Teacher : Person
 
 {
     public FieldOfKnowledge[] SubjectFields { get; set; } = [];
-    public Guid TeacherId { get; set; }
+    public string TeacherId { get; set; } = string.Empty;
 }

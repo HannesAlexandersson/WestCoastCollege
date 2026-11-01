@@ -1,0 +1,89 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             xmlns:classes="using:WestCoastCollege.Classes"
+             xmlns:models="using:WestCoastCollege.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.EditStudentView"
+             x:DataType="vm:EditStudentViewModel">
+  <Design.DataContext>
+    <vm:EditStudentViewModel>
+    </vm:EditStudentViewModel>
+  </Design.DataContext>
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <StackPanel Background="{DynamicResource PrimaryBgGradient}"  >
+      <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" Margin="0 15 0 0" />
+      <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="10 30" >
+
+        <StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="20">
+            <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="auto, auto, auto, auto, Auto" ColumnDefinitions="200, 200">
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="FirstName" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding FirstNameOfStudent}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="LastName" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding LastNameOfStudent}"  />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="PhoneNumber" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding PhoneNumberOfStudent}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Email" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Text="{Binding EmailOfStudent}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" Content="Add course(s)" />
+              <ComboBox Grid.Column="1" Grid.Row="4"
+                        ItemsSource="{Binding Courses}"
+                        SelectedItem="{Binding SelectedCourse}">
+
+                <ComboBox.ItemTemplate>
+                  <DataTemplate x:DataType="models:Course">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                      <TextBlock Text="{Binding Title}" />
+                      <TextBlock Text="{Binding CourseType}" />
+                    </StackPanel>
+                  </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+              </ComboBox>
+
+              <Label Classes="form" Content="Addresses" />
+
+              <ItemsControl ItemsSource="{Binding StudentAddresses}">
+                <ItemsControl.ItemTemplate>
+                  <DataTemplate x:DataType="classes:Address">
+                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 5">
+
+                      <TextBox Width="180"
+                               PlaceholderText ="Street address"
+                               Text="{Binding StreetAddress}" />
+
+                      <TextBox Width="80"
+                               PlaceholderText ="Postal code"
+                               Text="{Binding PostalCode}" />
+
+                      <TextBox Width="120"
+                               PlaceholderText ="City"
+                               Text="{Binding City}" />
+
+                      <Button Content="Remove"
+                              Command="{Binding $parent[UserControl].DataContext.RemoveAddressCommand}"
+                              CommandParameter="{Binding}" />
+
+                    </StackPanel>
+                  </DataTemplate>
+                </ItemsControl.ItemTemplate>
+              </ItemsControl>
+
+              <Button Content="Add address"
+                      Command="{Binding AddAddressCommand}" />
+
+            </Grid>
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+</UserControl>

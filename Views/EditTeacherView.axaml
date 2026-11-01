@@ -1,0 +1,126 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             xmlns:enums="using:WestCoastCollege.Enums"
+             xmlns:models="using:WestCoastCollege.Models"
+             xmlns:classes="using:WestCoastCollege.Classes"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.EditTeacherView"
+             x:DataType="vm:EditTeacherViewModel">
+  <Design.DataContext>
+    <vm:EditTeacherViewModel>
+    </vm:EditTeacherViewModel>
+  </Design.DataContext>
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <StackPanel Background="{DynamicResource PrimaryBgGradient}"  >
+      <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" Margin="0 15 0 0" />
+
+      <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="10 30" >
+
+        <StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="20">
+
+            <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="auto, auto, auto, auto, auto, auto, auto, auto" ColumnDefinitions="200, 300">
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="FirstName" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding FirstNameOfTeacher}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="LastName" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding LastNameOfTeacher}"  />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="PhoneNumber" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding PhoneNumberOfTeacher}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Email" />
+              <TextBox Classes="form" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Text="{Binding EmailOfTeacher}" />
+
+              <Label Classes="form" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" Content="Subject fields" />
+              <StackPanel Grid.Column="1" Grid.Row="4" Spacing="5">
+
+                <ItemsControl ItemsSource="{Binding TeacherSubjectFields}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="classes:FieldOfKnowledge">
+                      <StackPanel Orientation="Horizontal" Spacing="10">
+                        <TextBox Width="200"
+                                 Text="{Binding NameOfSubject}" />
+
+                        <Button Content="Remove"
+                                Command="{Binding $parent[UserControl].DataContext.RemoveSubjectFieldCommand}"
+                                CommandParameter="{Binding}" />
+                      </StackPanel>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Button Content="Add subject"
+                        Command="{Binding AddSubjectFieldCommand}" />
+
+              </StackPanel>
+
+              <Label Classes="form"
+                     Grid.Column="0"
+                     Grid.Row="5"
+                     HorizontalAlignment="Right"
+                     Content="Addresses" />
+
+              <StackPanel Grid.Column="1" Grid.Row="5" Spacing="5">
+
+                <ItemsControl ItemsSource="{Binding TeacherAddresses}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="classes:Address">
+                      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 5">
+
+                        <TextBox Width="150"
+                                 PlaceholderText="Street address"
+                                 Text="{Binding StreetAddress}" />
+
+                        <TextBox Width="80"
+                                 PlaceholderText="Postal code"
+                                 Text="{Binding PostalCode}" />
+
+                        <TextBox Width="100"
+                                 PlaceholderText="City"
+                                 Text="{Binding City}" />
+
+                        <Button Content="Remove"
+                                Command="{Binding $parent[UserControl].DataContext.RemoveAddressCommand}"
+                                CommandParameter="{Binding}" />
+
+                      </StackPanel>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Button Content="Add address"
+                        Command="{Binding AddAddressCommand}" />
+
+              </StackPanel>
+
+            </Grid>
+          </StackPanel>
+          <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" Margin="0 30 0 0">
+            <Button Classes="form" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCommand}"  CommandParameter="{x:Static enums:PageViewsEnum.Courses}" >
+              <StackPanel Orientation="Horizontal">
+                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe08a;" VerticalAlignment="Center" />
+                <Label Content="Exit" VerticalAlignment="Center" />
+              </StackPanel>
+            </Button>
+
+            <Button Classes="form"  Command="{Binding SaveCommand}">
+              <StackPanel Orientation="Horizontal">
+                <Label FontFamily="{DynamicResource IconFont}" Content="&#xe248;" VerticalAlignment="Center" />
+                <Label Content="Save" VerticalAlignment="Center" />
+              </StackPanel>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+
+
+      </Border>
+    </StackPanel>
+  </ScrollViewer>
+
+</UserControl>
+

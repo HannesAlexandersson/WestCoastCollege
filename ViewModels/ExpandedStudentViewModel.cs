@@ -6,7 +6,7 @@ using WestCoastCollege.Models;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class ExpandedStudentViewModel : ViewModelBase
+public partial class ExpandedStudentViewModel : ViewModelBase, IInitializableViewModel
 {
     private readonly IService<Student, StudentRestDb>? _studentService;
     private string _studentId = string.Empty;
@@ -24,17 +24,17 @@ public partial class ExpandedStudentViewModel : ViewModelBase
         _studentService = studentService;
     }
 
-    public async void Init(string id)
+    public async Task Init(string id)
     {
         _studentId = id;
-        await LoadStudent(id);
+        await LoadStudent();
     }
 
-    private async Task LoadStudent(string id)
+    private async Task LoadStudent()
     {
         try
         {
-            Student = await _studentService!.Find(id);
+            Student = await _studentService!.Find(_studentId);
         }
         catch (Exception ex)
         {
