@@ -41,13 +41,14 @@ public static class ServiceCollectionExtensions
 
 
         collection.AddTransient<IAdminFactory, AdminFactory>();
-        // collection.AddTransient<IService<Admin>, AdminServices>();
-        //  collection.AddTransient<EditAdminViewModel>();
-        //  collection.AddTransient<ExpandedAdminViewModel>();
+        collection.AddTransient<IService<Admin, AdminRestDb>, AdminServices>();
+        collection.AddTransient<EditAdminViewModel>();
+        collection.AddTransient<ExpandedAdminViewModel>();
+
         collection.AddTransient<IHandlerFactory, HandlerFactory>();
-        // collection.AddTransient<IService<Handler>, HandlerServices>();
-        //  collection.AddTransient<EditHandlerViewModel>();
-        //   collection.AddTransient<ExpandedHandlerViewModel>();
+        collection.AddTransient<IService<Handler, HandlerRestDb>, HandlerServices>();
+        collection.AddTransient<EditHandlerViewModel>();
+        collection.AddTransient<ExpandedHandlerViewModel>();
 
         collection.AddTransient(typeof(IHttpService<>), typeof(HttpService<>));
         collection.AddSingleton<Func<PageViewsEnum, ViewModelBase>>(c => name => name switch
