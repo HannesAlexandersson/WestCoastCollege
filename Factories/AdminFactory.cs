@@ -20,7 +20,7 @@ public class AdminFactory : IAdminFactory
             PhoneNumber = phoneNumber,
             Addresses = addresses,
             Email = email,
-            TeacherId = Guid.NewGuid().ToString(),
+            PersonellId = Guid.NewGuid().ToString(),
             SubjectFields = subjectFields,
             AccessLevel = accessLevel,
             IsSuperAdmin = isSuperAdmin

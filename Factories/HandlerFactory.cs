@@ -20,7 +20,7 @@ public class HandlerFactory : IHandlerFactory
             PhoneNumber = phoneNumber,
             Addresses = addresses,
             Email = email,
-            TeacherId = Guid.NewGuid().ToString(),
+            PersonellId = Guid.NewGuid().ToString(),
             HandlingCourses = handlingCourses,
             SubjectFields = subjectFields,
             AccessLevel = accessLevel

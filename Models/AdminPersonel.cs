@@ -2,8 +2,9 @@
 
 namespace WestCoastCollege.Models;
 
-public record class AdminPersonel : Teacher // according to the written assignment the admin personell should have EVERYTHING a teacher has, how unlogical it may seem to me...
+public record class AdminPersonel : Teacher
 {
     public DateTime DateOfEmployment { get; set; }
-    public string OfficeLocation { get; set; } = "";
+    public string OfficeLocation { get; set; } = string.Empty;
+    public string PersonellId { get; set; } = string.Empty;
 }

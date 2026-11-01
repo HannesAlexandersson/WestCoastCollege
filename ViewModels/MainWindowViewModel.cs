@@ -148,4 +148,42 @@ public partial class MainWindowViewModel : ViewModelBase
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditTeacher);
         await ((EditTeacherViewModel)CurrentView).Init(teacherId);
     }
+    [RelayCommand]
+    private async Task GoToEditHandler(string handlerId)
+    {
+        _currentPage = PageViewsEnum.EditHandler;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditHandler);
+        await ((EditHandlerViewModel)CurrentView).Init(handlerId);
+    }
+    [RelayCommand]
+    private async Task GoToHandler(string handlerId)
+    {
+        _currentPage = PageViewsEnum.GoToHandler;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToHandler);
+        await ((ExpandedHandlerViewModel)CurrentView).Init(handlerId);
+    }
+
+    [RelayCommand]
+    private async Task GoToEditAdmin(string adminId)
+    {
+        _currentPage = PageViewsEnum.EditAdmin;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditAdmin);
+        await ((EditAdminViewModel)CurrentView).Init(adminId);
+    }
+    [RelayCommand]
+    private async Task GoToAdmin(string adminId)
+    {
+        _currentPage = PageViewsEnum.GoToAdmin;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.GoToAdmin);
+        await ((ExpandedAdminViewModel)CurrentView).Init(adminId);
+    }
+
 }
