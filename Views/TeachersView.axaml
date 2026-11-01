@@ -1,0 +1,82 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="WestCoastCollege.Views.TeachersView"
+             x:DataType="vm:TeachersViewModel">
+  <Design.DataContext>
+    <vm:TeachersViewModel></vm:TeachersViewModel>
+  </Design.DataContext>
+
+  <Grid RowDefinitions="Auto, Auto, *">
+    <Grid Grid.Row="0" ColumnDefinitions="*, Auto, *">
+
+      <Button Grid.Column="0"
+              HorizontalAlignment="Left"
+              Margin="10 10 0 0">
+        <StackPanel Orientation="Horizontal">
+          <Label FontFamily="{DynamicResource IconFont}"
+                 Content="&#xE600;"
+                 VerticalAlignment="Center"
+                 FontSize="25" />
+          <Label Content="Add a new Teacher" />
+        </StackPanel>
+      </Button>
+
+      <TextBlock Grid.Column="1"
+                 Classes="pageTitle"
+                 FontWeight="Bold"
+                 TextDecorations="Underline"
+                 Text="{Binding PageTitle}"
+                 HorizontalAlignment="Center" />
+    </Grid>
+
+    <Border Grid.Row="1"
+            BorderBrush="White"
+            BorderThickness="0 0 0 2"
+            Padding="0 0 0 10" />
+
+    <ScrollViewer Grid.Row="2"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto"
+                  Margin="10 0">
+
+      <ItemsControl ItemsSource="{Binding Teachers}">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <Grid ColumnDefinitions="Auto, 150, 150, 300, *, 35, 35" RowSpacing="5">
+              <Button Grid.Column="0"
+                      Content="Expand"
+                      Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToTeacherCommand}"
+                      CommandParameter="{Binding TeacherId}"
+                      />
+
+              <Label Grid.Column="1" Content="{Binding FirstName}" />
+              <Label Grid.Column="2" Content="{Binding LastName}" />
+              <Label Grid.Column="3" Content="{Binding Email}" />
+
+              <Button Grid.Column="5"
+                      Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditTeacherCommand}"
+                      CommandParameter="{Binding TeacherId}"
+                      FontFamily="{DynamicResource IconFont}"
+                      Content="&#xE3AE;"
+                      Classes="safe"
+                      HorizontalAlignment="Left" />
+
+              <Button Grid.Column="6"
+                      Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
+                      CommandParameter="{Binding TeacherId}"
+                      FontFamily="{DynamicResource IconFont}"
+                      Content="&#xE4F6;"
+                      Classes="danger"
+                      HorizontalAlignment="Left" />
+            </Grid>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+  </Grid>
+</UserControl>

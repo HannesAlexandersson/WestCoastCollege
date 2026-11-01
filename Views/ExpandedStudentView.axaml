@@ -29,8 +29,8 @@
         </StackPanel>
       </StackPanel>
 
-      <StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditStudentCommand}"
+      <StackPanel Spacing="5" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
+        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToStudentCommand}"
                 CommandParameter="{Binding Student.StudentId}"
                 FontFamily="{DynamicResource IconFont}"
                 Content="&#xE3AE;"

@@ -11,7 +11,7 @@ namespace WestCoastCollege.ViewModels;
 
 public partial class StudentsViewModel : ViewModelBase
 {
-    private readonly IService<Student, StudentRestDb> _studentService;
+    private readonly IService<Student, StudentRestDb>? _studentService;
     [ObservableProperty]
     public partial Student? SelectedStudent { get; set; }
     [ObservableProperty]
@@ -35,7 +35,7 @@ public partial class StudentsViewModel : ViewModelBase
     {
         try
         {
-            StudentRestDb student = await _studentService.Find(id);
+            StudentRestDb student = await _studentService!.Find(id);
             if (student is not null)
             {
                 await _studentService.Delete(student._id);
@@ -59,7 +59,7 @@ public partial class StudentsViewModel : ViewModelBase
     {
         try
         {
-            Students = new ObservableCollection<Student>(await _studentService.List());
+            Students = new ObservableCollection<Student>(await _studentService!.List());
         }
         catch (Exception ex)
         {

@@ -71,30 +71,21 @@ public class HttpService<T> : IDisposable, IHttpService<T> where T : class
 
     public async Task<T> Get(string resource, string predicate)
     {
-        try
-        {
-            var url = $"{resource}?q={predicate}";
+        var url = $"{resource}?q={predicate}";
 
-            var response = await _httpClient.GetAsync(_baseUrl + url);
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadAsStringAsync();
-                if (string.IsNullOrWhiteSpace(result))
-                {
-                    throw new Exception("Nothing to GET with this itemnumber");
-                }
+        var response = await _httpClient.GetAsync(_baseUrl + url);
 
-                var data = JsonSerializer.Deserialize<List<T>>(result, _options)!;
-                return data[0];
-            }
+        if (!response.IsSuccessStatusCode)
+            throw new Exception("Something happened: " + response.StatusCode);
 
-            throw new Exception("Something happenend: " + response.StatusCode);
-        }
-        catch (Exception ex)
-        {
-            //throw the ex up in the stack
-            throw new Exception(ex.Message);
-        }
+        var result = await response.Content.ReadAsStringAsync();
+
+        var data = JsonSerializer.Deserialize<List<T>>(result, _options) ?? [];
+
+        if (data.Count == 0)
+            throw new Exception("No matching item was found.");
+
+        return data[0];
     }
 
     public async Task Post(string resourse, T data)

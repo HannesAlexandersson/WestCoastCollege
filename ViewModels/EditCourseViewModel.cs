@@ -13,12 +13,12 @@ using System.Linq;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class EditCourseViewModel : ViewModelBase
+public partial class EditCourseViewModel : ViewModelBase, IInitializableViewModel
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
-    private readonly IService<Teacher, TeacherRestDb> _teacherService;
+    private readonly IService<Teacher, TeacherRestDb>? _teacherService;
     private string _courseId = string.Empty;
-    private readonly CourseFactory _courseFactory;
+    private readonly ICourseFactory? _courseFactory;
     [ObservableProperty]
     private ObservableCollection<Teacher> _teachers = [];
 
@@ -40,52 +40,62 @@ public partial class EditCourseViewModel : ViewModelBase
     [ObservableProperty]
     public partial CourseTypeEnum TypeOfCourse { get; set; }
 
-
-    public EditCourseViewModel()
-    {
-        PageTitle = "Edit a course info";
-    }
-    public EditCourseViewModel(IService<Course, CourseRestDb> service, CourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService)
+    public EditCourseViewModel(IService<Course, CourseRestDb> service, ICourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService)
     {
         _courseService = service;
         _teacherService = teacherService;
         PageTitle = "Edit a course info";
         _courseFactory = courseFactory;
     }
-    public async void Init(string id)
+    public async Task Init(string id)
     {
         _courseId = id;
         await GetCourse();
         await LoadTeachers();
 
         SelectedTeacher = Teachers.FirstOrDefault(
-     t => t.TeacherId == TeacherOfcourse.TeacherId
+     t => t.TeacherId == TeacherOfcourse!.TeacherId
  );
     }
 
     private async Task LoadTeachers()
     {
         Teachers = new ObservableCollection<Teacher>(
-            await _teacherService.List()
+            await _teacherService!.List()
         );
     }
     private async Task GetCourse()
     {
-        var course = await _courseService!.Find(_courseId);
-        // set the other propertys here !!!
-        CourseId = course.CourseId.ToString();
-        TitleOfCourse = course.Title;
-        LengthOfCourse = course.CourseLength;
-        StartDateOfCourse = course.StartDate;
-        EndDateOfCourse = course.EndDate;
-        TeacherOfcourse = course.CourseTeacher;
-        TypeOfCourse = course.CourseType;
+        try
+        {
+            var course = await _courseService!.Find(_courseId);
+
+            if (course == null)
+            {
+                Console.WriteLine($"No student found with ID: {_courseId}");
+                return;
+            }
+
+            CourseId = course.CourseId.ToString();
+            TitleOfCourse = course.Title;
+            LengthOfCourse = course.CourseLength;
+            StartDateOfCourse = course.StartDate;
+            EndDateOfCourse = course.EndDate;
+            TeacherOfcourse = course.CourseTeacher;
+            TypeOfCourse = course.CourseType;
+        }
+        catch (Exception ex)
+        {
+
+            throw new Exception($"No course found with ID: {_courseId}. {ex.Message}");
+        }
+
     }
 
     [RelayCommand]
     private async Task Save()
     {
-        Course course = _courseFactory.Create(
+        Course course = _courseFactory!.Create(
             TitleOfCourse,
             LengthOfCourse,
             StartDateOfCourse,

@@ -19,26 +19,32 @@ public static class ServiceCollectionExtensions
         collection.AddSingleton<MainWindowViewModel>();
         collection.AddSingleton<PageViewFactory>();
 
-        collection.AddTransient<ICourseFactory, CourseFactory>(); // when someone want to use the interface, give them the factory
-        collection.AddTransient<IAdminFactory, AdminFactory>();
-        collection.AddTransient<ITeacherFactory, TeacherFactory>();
-        collection.AddTransient<IHandlerFactory, HandlerFactory>();
-        collection.AddTransient<IStudentFactory, StudentFactory>();
-
         collection.AddTransient<HomeViewModel>();
-        collection.AddTransient<IService<Student, StudentRestDb>, StudentServices>();// IF anyone ever wants the Iservice then we give then the servoice
+
+        collection.AddTransient<IStudentFactory, StudentFactory>();
+        collection.AddTransient<IService<Student, StudentRestDb>, StudentServices>();
         collection.AddTransient<StudentsViewModel>();
         collection.AddTransient<EditStudentViewModel>();
         collection.AddTransient<ExpandedStudentViewModel>();
+
+        collection.AddTransient<ICourseFactory, CourseFactory>();
         collection.AddTransient<IService<Course, CourseRestDb>, CourseServices>();
+        collection.AddTransient<CoursesViewModel>();
         collection.AddTransient<ExpandedCourseViewModel>();
         collection.AddTransient<EditCourseViewModel>();
-        // collection.AddTransient<IService<Teacher>, TeacherServices>();
-        //   collection.AddTransient<EditTeacherViewModel>();
-        //  collection.AddTransient<ExpandedTeacherViewModel>();
+
+        collection.AddTransient<ITeacherFactory, TeacherFactory>();
+        collection.AddTransient<IService<Teacher, TeacherRestDb>, TeacherServices>();
+        collection.AddTransient<TeachersViewModel>();
+        collection.AddTransient<EditTeacherViewModel>();
+        collection.AddTransient<ExpandedTeacherViewModel>();
+
+
+        collection.AddTransient<IAdminFactory, AdminFactory>();
         // collection.AddTransient<IService<Admin>, AdminServices>();
         //  collection.AddTransient<EditAdminViewModel>();
         //  collection.AddTransient<ExpandedAdminViewModel>();
+        collection.AddTransient<IHandlerFactory, HandlerFactory>();
         // collection.AddTransient<IService<Handler>, HandlerServices>();
         //  collection.AddTransient<EditHandlerViewModel>();
         //   collection.AddTransient<ExpandedHandlerViewModel>();
@@ -53,6 +59,10 @@ public static class ServiceCollectionExtensions
                     PageViewsEnum.Courses => c.GetRequiredService<CoursesViewModel>(),
                     PageViewsEnum.EditCourse => c.GetRequiredService<EditCourseViewModel>(),
                     PageViewsEnum.GoToCourse => c.GetRequiredService<ExpandedCourseViewModel>(),
+                    PageViewsEnum.Teachers => c.GetRequiredService<TeachersViewModel>(),
+                    PageViewsEnum.GoToTeacher => c.GetRequiredService<ExpandedTeacherViewModel>(),
+                    PageViewsEnum.EditTeacher => c.GetRequiredService<EditTeacherViewModel>(),
+
                     _ => throw new ArgumentException("It didnt work")
                 });
     }

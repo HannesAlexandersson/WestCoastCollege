@@ -22,4 +22,9 @@
     <Setter Property="TextAlignment" Value="Center" />
     <Setter Property="LineSpacing" Value="10" />
   </Style>
+
+  <Style Selector="TextBlock.dropdown" >
+    <Setter Property="TextAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+  </Style>
 </Styles>
