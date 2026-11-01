@@ -1,9 +1,16 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Design.PreviewWith>
-    <Border Padding="20">
+    <Border Padding="20" Height="500">
       <!-- Add Controls for Previewer Here -->
-      <TextBox />
+      <!--   <TextBox /> -->
+
+      <ComboBox IsDropDownOpen="True"
+                Width="300">
+        <ComboBoxItem Classes="TextBlock.dropdown">Hej</ComboBoxItem>
+        <ComboBoxItem>Another course</ComboBoxItem>
+        <ComboBoxItem>Third course</ComboBoxItem>
+      </ComboBox>
     </Border>
   </Design.PreviewWith>
 
@@ -15,5 +22,30 @@
     <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
     <Setter Property="BorderThickness" Value="1" />
     <Setter Property="PlaceholderText" Value="Write here" />
+  </Style>
+
+  <Style Selector="ComboBox">
+    <Setter Property="MaxWidth" Value="300" />
+    <Setter Property="MinWidth" Value="300" />
+    <Setter Property="Background" Value="#C5EDC6E5" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="ComboBoxItem">
+    <Setter Property="Background" Value="#C54E1994" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+
+  </Style>
+
+  <Style Selector="ComboBoxItem:pointerover">
+    <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+  </Style>
+
+  <Style Selector="ComboBoxItem:selected">
+    <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
   </Style>
 </Styles>

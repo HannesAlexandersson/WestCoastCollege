@@ -19,7 +19,7 @@
 
         <StackPanel>
           <StackPanel Orientation="Horizontal" Spacing="20">
-            <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="auto, auto, auto, auto, Auto" ColumnDefinitions="200, 200">
+            <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="auto, auto, auto, auto, Auto, auto, auto" ColumnDefinitions="200, 300">
 
               <Label Classes="form" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="FirstName" />
               <TextBox Classes="form" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding FirstNameOfStudent}" />
@@ -41,20 +41,21 @@
                 <ComboBox.ItemTemplate>
                   <DataTemplate x:DataType="models:Course">
                     <StackPanel Orientation="Horizontal" Spacing="5">
-                      <TextBlock Text="{Binding Title}" />
-                      <TextBlock Text="{Binding CourseType}" />
+                      <TextBlock Classes="dropdown" Text="{Binding Title}" />
+                      <TextBlock Classes="dropdown" Text=" : " />
+                      <TextBlock Classes="dropdown" Text="{Binding CourseType}" />
                     </StackPanel>
                   </DataTemplate>
                 </ComboBox.ItemTemplate>
 
               </ComboBox>
 
-              <Label Classes="form" Content="Addresses" />
+              <Label Classes="form" Content="Addresses" Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" />
 
-              <ItemsControl ItemsSource="{Binding StudentAddresses}">
+              <ItemsControl ItemsSource="{Binding StudentAddresses}" Grid.Column="1" Grid.Row="5">
                 <ItemsControl.ItemTemplate>
                   <DataTemplate x:DataType="classes:Address">
-                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 5">
+                    <StackPanel Orientation="Vertical" Spacing="10" Margin="0 5">
 
                       <TextBox Width="180"
                                PlaceholderText ="Street address"
@@ -77,8 +78,8 @@
                 </ItemsControl.ItemTemplate>
               </ItemsControl>
 
-              <Button Content="Add address"
-                      Command="{Binding AddAddressCommand}" />
+              <Button Content="Add address"  Grid.Column="1" Grid.Row="6"  Command="{Binding AddAddressCommand}" />
+
 
             </Grid>
           </StackPanel>

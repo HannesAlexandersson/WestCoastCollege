@@ -44,7 +44,9 @@
                     <DataTemplate x:DataType="classes:FieldOfKnowledge">
                       <StackPanel Orientation="Horizontal" Spacing="10">
                         <TextBox Width="200"
-                                 Text="{Binding NameOfSubject}" />
+                                 Text="{Binding NameOfSubject}"
+                                 Classes="form"
+                                 />
 
                         <Button Content="Remove"
                                 Command="{Binding $parent[UserControl].DataContext.RemoveSubjectFieldCommand}"
@@ -70,7 +72,7 @@
                 <ItemsControl ItemsSource="{Binding TeacherAddresses}">
                   <ItemsControl.ItemTemplate>
                     <DataTemplate x:DataType="classes:Address">
-                      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 5">
+                      <StackPanel Orientation="Vertical" Spacing="10" Margin="0 5">
 
                         <TextBox Width="150"
                                  PlaceholderText="Street address"
