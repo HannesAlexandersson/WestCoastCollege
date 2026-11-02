@@ -42,12 +42,12 @@ public static class ServiceCollectionExtensions
 
         collection.AddTransient<IAdminFactory, AdminFactory>();
         collection.AddTransient<IService<Admin, AdminRestDb>, AdminServices>();
-        collection.AddTransient<EditAdminViewModel>();
+        collection.AddTransient<AdminsViewModel>();
         collection.AddTransient<ExpandedAdminViewModel>();
 
         collection.AddTransient<IHandlerFactory, HandlerFactory>();
         collection.AddTransient<IService<Handler, HandlerRestDb>, HandlerServices>();
-        collection.AddTransient<EditHandlerViewModel>();
+        collection.AddTransient<HandlersViewModel>();
         collection.AddTransient<ExpandedHandlerViewModel>();
 
         collection.AddTransient(typeof(IHttpService<>), typeof(HttpService<>));
@@ -63,7 +63,10 @@ public static class ServiceCollectionExtensions
                     PageViewsEnum.Teachers => c.GetRequiredService<TeachersViewModel>(),
                     PageViewsEnum.GoToTeacher => c.GetRequiredService<ExpandedTeacherViewModel>(),
                     PageViewsEnum.EditTeacher => c.GetRequiredService<EditTeacherViewModel>(),
-
+                    PageViewsEnum.Admins => c.GetRequiredService<AdminsViewModel>(),
+                    PageViewsEnum.GoToAdmin => c.GetRequiredService<ExpandedAdminViewModel>(),
+                    PageViewsEnum.Handlers => c.GetRequiredService<HandlersViewModel>(),
+                    PageViewsEnum.GoToHandler => c.GetRequiredService<ExpandedHandlerViewModel>(),
                     _ => throw new ArgumentException("It didnt work")
                 });
     }

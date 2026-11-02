@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace WestCoastCollege.Views;
 
-public partial class EditAdminView : UserControl
+public partial class ExpandedHandlerView : UserControl
 {
-    public EditAdminView()
+    public ExpandedHandlerView()
     {
         InitializeComponent();
     }

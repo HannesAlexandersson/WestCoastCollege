@@ -12,43 +12,49 @@ namespace WestCoastCollege.ViewModels;
 public partial class AdminsViewModel : ViewModelBase
 {
     private readonly IService<Admin, AdminRestDb>? _adminServices;
-    [ObservableProperty]
-    public partial Admin? SelectedAdmin { get; set; }
+    private readonly MainWindowViewModel? _mainWindowVm;
+
     [ObservableProperty]
     public partial ObservableCollection<Admin> Admins { get; set; } = [];
+    [ObservableProperty]
+    public partial bool ShowDialog { get; set; }
 
     public AdminsViewModel()
     {
 
     }
-    public AdminsViewModel(IService<Admin, AdminRestDb> service)
+    public AdminsViewModel(IService<Admin, AdminRestDb> service, MainWindowViewModel mainWindowVm)
     {
         PageTitle = "Admins";
         _adminServices = service;
+        _mainWindowVm = mainWindowVm;
         Init();
     }
     private async void Init()
     {
         await LoadTeachers();
     }
-
+    [RelayCommand]
+    public void ShowPopUp()
+    {
+        _mainWindowVm!.IsBusy = true;
+        ShowDialog = true;
+    }
     [RelayCommand]
     public async Task Delete(string id)
     {
-        try
-        {
-            AdminRestDb admin = await _adminServices!.Find(id);
-            if (admin is not null)
-            {
-                await _adminServices!.Delete(admin._id);
-                await LoadTeachers();
-            }
-        }
-        catch (Exception ex)
-        {
 
-            Console.Write(ex.Message);
-        }
+        _mainWindowVm!.IsBusy = true;
+        ShowDialog = true;
+
+    }
+
+    [RelayCommand]
+    private async Task Confirm()
+    {
+        ShowDialog = false;
+
+        _mainWindowVm!.IsBusy = false;
     }
 
     private async Task LoadTeachers()

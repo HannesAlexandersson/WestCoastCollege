@@ -23,7 +23,8 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty]
     public partial string BackButtonText { get; set; } = "Go Home"; // used to keep track of what view the user came from so the "back" btn can be dynamic
-
+    [ObservableProperty]
+    public partial bool IsBusy { get; set; }
     public MainWindowViewModel() { }
 
     public MainWindowViewModel(PageViewFactory factory)
@@ -44,11 +45,9 @@ public partial class MainWindowViewModel : ViewModelBase
             PageViewsEnum.GoToTeacher or
             PageViewsEnum.EditTeacher => PageViewsEnum.Teachers,
 
-            PageViewsEnum.GoToHandler or
-            PageViewsEnum.EditHandler => PageViewsEnum.Handlers,
+            PageViewsEnum.GoToHandler => PageViewsEnum.Handlers,
 
-            PageViewsEnum.GoToAdmin or
-            PageViewsEnum.EditAdmin => PageViewsEnum.Admins,
+            PageViewsEnum.GoToAdmin => PageViewsEnum.Admins,
 
             _ => PageViewsEnum.Home
         };
@@ -80,16 +79,6 @@ public partial class MainWindowViewModel : ViewModelBase
         UpdateBackButton();
         CurrentView = _factory!.LoadPageViewModel(destination);
     }
-
-    /*  [RelayCommand]
-     private void GoToSingle(NavigationParameter parameter)
-     {
-         _currentPage = parameter.Page;
-         UpdateBackButton();
-
-         CurrentView = _factory!.LoadPageViewModel(parameter.Page);
-         ((IInitializableViewModel)CurrentView).Init(parameter.Id);
-     } */
 
     [RelayCommand]
     private async Task GoToEditStudent(string studentId) // since it doesnt let me overload the GoTo method I will need specefic methods that basicly does the same thing
@@ -148,15 +137,7 @@ public partial class MainWindowViewModel : ViewModelBase
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditTeacher);
         await ((EditTeacherViewModel)CurrentView).Init(teacherId);
     }
-    [RelayCommand]
-    private async Task GoToEditHandler(string handlerId)
-    {
-        _currentPage = PageViewsEnum.EditHandler;
-        UpdateBackButton();
 
-        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditHandler);
-        await ((EditHandlerViewModel)CurrentView).Init(handlerId);
-    }
     [RelayCommand]
     private async Task GoToHandler(string handlerId)
     {
@@ -167,15 +148,7 @@ public partial class MainWindowViewModel : ViewModelBase
         await ((ExpandedHandlerViewModel)CurrentView).Init(handlerId);
     }
 
-    [RelayCommand]
-    private async Task GoToEditAdmin(string adminId)
-    {
-        _currentPage = PageViewsEnum.EditAdmin;
-        UpdateBackButton();
 
-        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditAdmin);
-        await ((EditAdminViewModel)CurrentView).Init(adminId);
-    }
     [RelayCommand]
     private async Task GoToAdmin(string adminId)
     {

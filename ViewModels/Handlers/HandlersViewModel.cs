@@ -9,23 +9,25 @@ using WestCoastCollege.RestDbModels;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class HandlerViewModel : ViewModelBase
+public partial class HandlersViewModel : ViewModelBase
 {
     private readonly IService<Handler, HandlerRestDb>? _handlerService;
-    [ObservableProperty]
-    public partial Handler? SelectedHandler { get; set; }
+    private readonly MainWindowViewModel? _mainWindowVm;
     [ObservableProperty]
     public partial ObservableCollection<Handler> Handlers { get; set; } = [];
+    [ObservableProperty]
+    public partial bool ShowDialog { get; set; }
 
-    public HandlerViewModel()
+    public HandlersViewModel()
     {
-        PageTitle = "Teachers";
+        PageTitle = "Handlers";
     }
 
-    public HandlerViewModel(IService<Handler, HandlerRestDb> service)
+    public HandlersViewModel(IService<Handler, HandlerRestDb> service, MainWindowViewModel mainWindowVm)
     {
         PageTitle = "Handlers";
         _handlerService = service;
+        _mainWindowVm = mainWindowVm;
         Init();
     }
 
@@ -33,18 +35,19 @@ public partial class HandlerViewModel : ViewModelBase
     {
         await LoadHandlers();
     }
-
+    [RelayCommand]
+    public void ShowPopUp()
+    {
+        _mainWindowVm!.IsBusy = true;
+        ShowDialog = true;
+    }
     [RelayCommand]
     public async Task Delete(string id)
     {
         try
         {
-            HandlerRestDb handler = await _handlerService!.Find(id);
-            if (handler is not null)
-            {
-                await _handlerService!.Delete(handler._id);
-                await LoadHandlers();
-            }
+            _mainWindowVm!.IsBusy = true;
+            ShowDialog = true;
         }
         catch (Exception ex)
         {
@@ -53,15 +56,27 @@ public partial class HandlerViewModel : ViewModelBase
         }
     }
 
+    [RelayCommand]
+    private async Task Confirm()
+    {
+        ShowDialog = false;
+
+        _mainWindowVm!.IsBusy = false;
+    }
+
     private async Task LoadHandlers()
     {
         try
         {
-            Handlers = new ObservableCollection<Handler>(await _handlerService!.List());
+            var handlers = await _handlerService!.List();
+
+            Handlers = new ObservableCollection<Handler>(handlers);
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
+            Console.WriteLine(ex);
         }
     }
+
+
 }

@@ -3,6 +3,7 @@
         xmlns:vm="using:WestCoastCollege.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:li="using:LoadingIndicators.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="WestCoastCollege.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
@@ -14,35 +15,40 @@
 
         </vm:MainWindowViewModel>
     </Design.DataContext>
-    <Grid RowDefinitions="Auto, Auto, *">
+    <Panel>
+        <Grid RowDefinitions="Auto, Auto, *">
 
-        <Grid Grid.Row="0" ColumnDefinitions="*, *, *">
-            <StackPanel VerticalAlignment="Top"
-                        HorizontalAlignment="Left"
-                        Margin="10">
-                <Button Command="{Binding GoBackCommand}">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
-                        <Label FontFamily="{DynamicResource HeaderFont}"
-                               Content="{Binding BackButtonText}" />
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+            <Grid Grid.Row="0" ColumnDefinitions="*, *, *">
+                <StackPanel VerticalAlignment="Top"
+                            HorizontalAlignment="Left"
+                            Margin="10">
+                    <Button Command="{Binding GoBackCommand}">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
+                            <Label FontFamily="{DynamicResource HeaderFont}"
+                                   Content="{Binding BackButtonText}" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
 
-            <StackPanel Grid.Column="1"
-                        Orientation="Vertical"
-                        Margin="0 20 0 0">
-                <Image Width="300" Source="/Assets/Images/best.png" />
-            </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Orientation="Vertical"
+                            Margin="0 20 0 0">
+                    <Image Width="300" Source="/Assets/Images/best.png" />
+                </StackPanel>
+            </Grid>
+
+            <Border Grid.Row="1"
+                    Background="{DynamicResource PrimaryBgGradient}"
+                    Padding="10" />
+
+            <ContentControl Grid.Row="2"
+                            Padding="0 20 0 0"
+                            Content="{Binding CurrentView}" />
+
         </Grid>
-
-        <Border Grid.Row="1"
-                Background="{DynamicResource PrimaryBgGradient}"
-                Padding="10" />
-
-        <ContentControl Grid.Row="2"
-                        Padding="0 20 0 0"
-                        Content="{Binding CurrentView}" />
-
-    </Grid>
+        <Panel  Background="Black" Opacity="0.7" IsVisible="{Binding IsBusy}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <li:LoadingIndicator IsActive="{Binding IsBusy}" Mode="Wave" SpeedRatio="1.3" />
+        </Panel>
+    </Panel>
 </Window>

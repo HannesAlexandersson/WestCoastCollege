@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:WestCoastCollege.ViewModels"
              xmlns:enums="using:WestCoastCollege.Enums"
-             xmlns:models="using:WestCoastCollege.Models"
              xmlns:classes="using:WestCoastCollege.Classes"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="WestCoastCollege.Views.EditTeacherView"

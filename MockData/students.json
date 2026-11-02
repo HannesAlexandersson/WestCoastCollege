@@ -1,0 +1,693 @@
+[
+  {
+    "studentId": "f7c3a821-6b94-4d2e-9a51-8c0f2e7b6134",
+    "enrolledCourses": [
+      {
+        "courseId": "a4c8e2f1-7b93-4d65-8a21-6f0e9c3b5d72",
+        "title": "Introduction to C#",
+        "courseLength": 8,
+        "startDate": "2026-01-12T00:00:00",
+        "endDate": "2026-03-09T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            }
+          ],
+          "teacherId": "6f8a2c41-9d73-4b56-a102-7e5c3f8d6b90",
+          "firstName": "Erik",
+          "lastName": "Andersson",
+          "phoneNumber": "0701234567",
+          "addresses": [
+            {
+              "streetAddress": "Storgatan 12",
+              "postalCode": "41101",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "erik.andersson@example.com"
+        },
+        "courseType": 1
+      },
+      {
+        "courseId": "b7d3f9a2-1c64-4e8b-9f52-3a6e0d8c1b47",
+        "title": "Object-Oriented Programming",
+        "courseLength": 10,
+        "startDate": "2026-01-19T00:00:00",
+        "endDate": "2026-03-30T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            }
+          ],
+          "teacherId": "6f8a2c41-9d73-4b56-a102-7e5c3f8d6b90",
+          "firstName": "Erik",
+          "lastName": "Andersson",
+          "phoneNumber": "0701234567",
+          "addresses": [
+            {
+              "streetAddress": "Storgatan 12",
+              "postalCode": "41101",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "erik.andersson@example.com"
+        },
+        "courseType": 0
+      }
+    ],
+    "firstName": "Emma",
+    "lastName": "Andersson",
+    "phoneNumber": "0701-234567",
+    "addresses": [
+      {
+        "streetAddress": "Storgatan 12",
+        "postalCode": "11451",
+        "city": "Stockholm"
+      }
+    ],
+    "email": "emma.andersson@example.com"
+  },
+  {
+    "studentId": "a2d9e640-3f71-4b85-8c26-5e1a7d9034bf",
+    "enrolledCourses": [
+      {
+        "courseId": "c2e6a1b8-5d47-4f93-8c20-7b9e3d6a1f54",
+        "title": "Database Fundamentals",
+        "courseLength": 6,
+        "startDate": "2026-02-02T00:00:00",
+        "endDate": "2026-03-16T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": "Database Managment"
+            }
+          ],
+          "teacherId": "2b7e4d19-8c65-43a1-b902-5f6d7e3a8c41",
+          "firstName": "Maria",
+          "lastName": "Johansson",
+          "phoneNumber": "0702345678",
+          "addresses": [
+            {
+              "streetAddress": "Parkgatan 8",
+              "postalCode": "41250",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "maria.johansson@example.com"
+        },
+        "courseType": 0
+      },
+      {
+        "courseId": "17c9e4b6-2a53-48d1-b705-9f3e6c8a2d41",
+        "title": "SQL and Relational Databases",
+        "courseLength": 6,
+        "startDate": "2026-04-06T00:00:00",
+        "endDate": "2026-05-18T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": "Database Managment"
+            }
+          ],
+          "teacherId": "2b7e4d19-8c65-43a1-b902-5f6d7e3a8c41",
+          "firstName": "Maria",
+          "lastName": "Johansson",
+          "phoneNumber": "0702345678",
+          "addresses": [
+            {
+              "streetAddress": "Parkgatan 8",
+              "postalCode": "41250",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "maria.johansson@example.com"
+        },
+        "courseType": 1
+      }
+    ],
+    "firstName": "Oscar",
+    "lastName": "Johansson",
+    "phoneNumber": "0722-345678",
+    "addresses": [
+      {
+        "streetAddress": "Lindholmsallén 8",
+        "postalCode": "41755",
+        "city": "Göteborg"
+      }
+    ],
+    "email": "oscar.johansson@example.com"
+  },
+  {
+    "studentId": "c8b1f503-7e26-49d0-a435-1f6c8b2e907d",
+    "enrolledCourses": [
+      {
+        "courseId": "d9f4b2c7-3a81-46e5-a927-1c6d8b0e4f63",
+        "title": "Web Development with HTML and CSS",
+        "courseLength": 6,
+        "startDate": "2026-02-09T00:00:00",
+        "endDate": "2026-03-23T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "Web Development"
+            },
+            {
+              "nameOfSubject": "HTML"
+            },
+            {
+              "nameOfSubject": "CSS"
+            },
+            {
+              "nameOfSubject": "Javascript"
+            }
+          ],
+          "teacherId": "9c3a6f52-1e84-47d2-a615-8b4f0c7e9d23",
+          "firstName": "Johan",
+          "lastName": "Karlsson",
+          "phoneNumber": "0703456789",
+          "addresses": [
+            {
+              "streetAddress": "Kungsgatan 25",
+              "postalCode": "41115",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "johan.karlsson@example.com"
+        },
+        "courseType": 1
+      }
+    ],
+    "firstName": "William",
+    "lastName": "Karlsson",
+    "phoneNumber": "0733-456789",
+    "addresses": [
+      {
+        "streetAddress": "Västra Vallgatan 21",
+        "postalCode": "43241",
+        "city": "Varberg"
+      }
+    ],
+    "email": "william.karlsson@example.com"
+  },
+  {
+    "studentId": "d4e7a219-5c83-42f6-b901-7a3e6d8c2045",
+    "enrolledCourses": [
+      {
+        "courseId": "e1a7c5d9-8b32-4f64-b013-6d2e9a7c4b85",
+        "title": "JavaScript Fundamentals",
+        "courseLength": 8,
+        "startDate": "2026-03-02T00:00:00",
+        "endDate": "2026-04-27T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "Web Development"
+            },
+            {
+              "nameOfSubject": "HTML"
+            },
+            {
+              "nameOfSubject": "CSS"
+            },
+            {
+              "nameOfSubject": "Javascript"
+            }
+          ],
+          "teacherId": "9c3a6f52-1e84-47d2-a615-8b4f0c7e9d23",
+          "firstName": "Johan",
+          "lastName": "Karlsson",
+          "phoneNumber": "0703456789",
+          "addresses": [
+            {
+              "streetAddress": "Kungsgatan 25",
+              "postalCode": "41115",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "johan.karlsson@example.com"
+        },
+        "courseType": 0
+      },
+      {
+        "courseId": "39e1b6d4-7a82-45c9-a316-8d2f0b5e7c64",
+        "title": "API Development with .NET",
+        "courseLength": 8,
+        "startDate": "2026-05-04T00:00:00",
+        "endDate": "2026-06-29T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": ".NET"
+            },
+            {
+              "nameOfSubject": "API managment"
+            }
+          ],
+          "teacherId": "4d1f8b67-3a92-45e6-b804-2c7d9f1a5e38",
+          "firstName": "Anna",
+          "lastName": "Nilsson",
+          "phoneNumber": "0704567890",
+          "addresses": [
+            {
+              "streetAddress": "Lindholmsallén 5",
+              "postalCode": "41755",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "anna.nilsson@example.com"
+        },
+        "courseType": 0
+      }
+    ],
+    "firstName": "Alice",
+    "lastName": "Nilsson",
+    "phoneNumber": "0704-567890",
+    "addresses": [
+      {
+        "streetAddress": "Drottninggatan 34",
+        "postalCode": "25221",
+        "city": "Helsingborg"
+      }
+    ],
+    "email": "alice.nilsson@example.com"
+  },
+  {
+    "studentId": "e1a6c932-8d45-47b0-a263-9f5c1d7e804b",
+    "enrolledCourses": [
+      {
+        "courseId": "f6b2d8a4-9c15-43e7-8a61-2d5b0e9c7f34",
+        "title": "ASP.NET Core",
+        "courseLength": 10,
+        "startDate": "2026-03-16T00:00:00",
+        "endDate": "2026-05-25T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": ".NET"
+            },
+            {
+              "nameOfSubject": "API managment"
+            }
+          ],
+          "teacherId": "4d1f8b67-3a92-45e6-b804-2c7d9f1a5e38",
+          "firstName": "Anna",
+          "lastName": "Nilsson",
+          "phoneNumber": "0704567890",
+          "addresses": [
+            {
+              "streetAddress": "Lindholmsallén 5",
+              "postalCode": "41755",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "anna.nilsson@example.com"
+        },
+        "courseType": 0
+      }
+    ],
+    "firstName": "Lucas",
+    "lastName": "Eriksson",
+    "phoneNumber": "0725-678901",
+    "addresses": [
+      {
+        "streetAddress": "Kungsgatan 17",
+        "postalCode": "90326",
+        "city": "Umeå"
+      }
+    ],
+    "email": "lucas.eriksson@example.com"
+  },
+  {
+    "studentId": "b5f0d814-2c79-43e6-9a12-6d8c4f3071ae",
+    "enrolledCourses": [
+      {
+        "courseId": "28d5a7c1-6e94-4b32-9f08-3c1e7d6a5b42",
+        "title": "Software Testing",
+        "courseLength": 5,
+        "startDate": "2026-04-13T00:00:00",
+        "endDate": "2026-05-18T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "Testdriven softwaredevelopment"
+            },
+            {
+              "nameOfSubject": "Git"
+            }
+          ],
+          "teacherId": "7a5e2c93-6b14-48f1-9d30-4e8c1a6b7f52",
+          "firstName": "Marcus",
+          "lastName": "Svensson",
+          "phoneNumber": "0705678901",
+          "addresses": [
+            {
+              "streetAddress": "Avenyn 42",
+              "postalCode": "41136",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "marcus.svensson@example.com"
+        },
+        "courseType": 0
+      },
+      {
+        "courseId": "4a6f2c8d-1b75-49e3-8d20-5c7a9f1e6b83",
+        "title": "Git and Version Control",
+        "courseLength": 3,
+        "startDate": "2026-05-11T00:00:00",
+        "endDate": "2026-06-01T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "Testdriven softwaredevelopment"
+            },
+            {
+              "nameOfSubject": "Git"
+            }
+          ],
+          "teacherId": "7a5e2c93-6b14-48f1-9d30-4e8c1a6b7f52",
+          "firstName": "Marcus",
+          "lastName": "Svensson",
+          "phoneNumber": "0705678901",
+          "addresses": [
+            {
+              "streetAddress": "Avenyn 42",
+              "postalCode": "41136",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "marcus.svensson@example.com"
+        },
+        "courseType": 1
+      }
+    ],
+    "firstName": "Maja",
+    "lastName": "Larsson",
+    "phoneNumber": "0736-789012",
+    "addresses": [
+      {
+        "streetAddress": "Storgatan 6",
+        "postalCode": "90325",
+        "city": "Umeå"
+      }
+    ],
+    "email": "maja.larsson@example.com"
+  },
+  {
+    "studentId": "92c4e7b1-6a30-4d85-bf19-3e8a5c7206d4",
+    "enrolledCourses": [
+      {
+        "courseId": "a4c8e2f1-7b93-4d65-8a21-6f0e9c3b5d72",
+        "title": "Introduction to C#",
+        "courseLength": 8,
+        "startDate": "2026-01-12T00:00:00",
+        "endDate": "2026-03-09T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            }
+          ],
+          "teacherId": "6f8a2c41-9d73-4b56-a102-7e5c3f8d6b90",
+          "firstName": "Erik",
+          "lastName": "Andersson",
+          "phoneNumber": "0701234567",
+          "addresses": [
+            {
+              "streetAddress": "Storgatan 12",
+              "postalCode": "41101",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "erik.andersson@example.com"
+        },
+        "courseType": 1
+      },
+      {
+        "courseId": "f6b2d8a4-9c15-43e7-8a61-2d5b0e9c7f34",
+        "title": "ASP.NET Core",
+        "courseLength": 10,
+        "startDate": "2026-03-16T00:00:00",
+        "endDate": "2026-05-25T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": ".NET"
+            },
+            {
+              "nameOfSubject": "API managment"
+            }
+          ],
+          "teacherId": "4d1f8b67-3a92-45e6-b804-2c7d9f1a5e38",
+          "firstName": "Anna",
+          "lastName": "Nilsson",
+          "phoneNumber": "0704567890",
+          "addresses": [
+            {
+              "streetAddress": "Lindholmsallén 5",
+              "postalCode": "41755",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "anna.nilsson@example.com"
+        },
+        "courseType": 0
+      }
+    ],
+    "firstName": "Elias",
+    "lastName": "Olsson",
+    "phoneNumber": "0707-890123",
+    "addresses": [
+      {
+        "streetAddress": "Södra Förstadsgatan 44",
+        "postalCode": "21143",
+        "city": "Malmö"
+      }
+    ],
+    "email": "elias.olsson@example.com"
+  },
+  {
+    "studentId": "6d3a8f20-1b57-46c9-a824-5e0d7b913f62",
+    "enrolledCourses": [
+      {
+        "courseId": "b7d3f9a2-1c64-4e8b-9f52-3a6e0d8c1b47",
+        "title": "Object-Oriented Programming",
+        "courseLength": 10,
+        "startDate": "2026-01-19T00:00:00",
+        "endDate": "2026-03-30T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            }
+          ],
+          "teacherId": "6f8a2c41-9d73-4b56-a102-7e5c3f8d6b90",
+          "firstName": "Erik",
+          "lastName": "Andersson",
+          "phoneNumber": "0701234567",
+          "addresses": [
+            {
+              "streetAddress": "Storgatan 12",
+              "postalCode": "41101",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "erik.andersson@example.com"
+        },
+        "courseType": 0
+      }
+    ],
+    "firstName": "Julia",
+    "lastName": "Persson",
+    "phoneNumber": "0728-901234",
+    "addresses": [
+      {
+        "streetAddress": "Södra Vägen 9",
+        "postalCode": "41254",
+        "city": "Göteborg"
+      }
+    ],
+    "email": "julia.persson@example.com"
+  },
+  {
+    "studentId": "3f9b2d61-74e8-40a5-9c13-8b6d1e5072af",
+    "enrolledCourses": [
+      {
+        "courseId": "c2e6a1b8-5d47-4f93-8c20-7b9e3d6a1f54",
+        "title": "Database Fundamentals",
+        "courseLength": 6,
+        "startDate": "2026-02-02T00:00:00",
+        "endDate": "2026-03-16T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": "Database Managment"
+            }
+          ],
+          "teacherId": "2b7e4d19-8c65-43a1-b902-5f6d7e3a8c41",
+          "firstName": "Maria",
+          "lastName": "Johansson",
+          "phoneNumber": "0702345678",
+          "addresses": [
+            {
+              "streetAddress": "Parkgatan 8",
+              "postalCode": "41250",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "maria.johansson@example.com"
+        },
+        "courseType": 0
+      },
+      {
+        "courseId": "e1a7c5d9-8b32-4f64-b013-6d2e9a7c4b85",
+        "title": "JavaScript Fundamentals",
+        "courseLength": 8,
+        "startDate": "2026-03-02T00:00:00",
+        "endDate": "2026-04-27T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "Web Development"
+            },
+            {
+              "nameOfSubject": "HTML"
+            },
+            {
+              "nameOfSubject": "CSS"
+            },
+            {
+              "nameOfSubject": "Javascript"
+            }
+          ],
+          "teacherId": "9c3a6f52-1e84-47d2-a615-8b4f0c7e9d23",
+          "firstName": "Johan",
+          "lastName": "Karlsson",
+          "phoneNumber": "0703456789",
+          "addresses": [
+            {
+              "streetAddress": "Kungsgatan 25",
+              "postalCode": "41115",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "johan.karlsson@example.com"
+        },
+        "courseType": 0
+      }
+    ],
+    "firstName": "Alexander",
+    "lastName": "Svensson",
+    "phoneNumber": "0739-012345",
+    "addresses": [
+      {
+        "streetAddress": "Kyrkogatan 15",
+        "postalCode": "22222",
+        "city": "Lund"
+      }
+    ],
+    "email": "alexander.svensson@example.com"
+  },
+  {
+    "studentId": "8a5e1c73-0d92-4b6f-a318-7e2d9c504bf1",
+    "enrolledCourses": [
+      {
+        "courseId": "d9f4b2c7-3a81-46e5-a927-1c6d8b0e4f63",
+        "title": "Web Development with HTML and CSS",
+        "courseLength": 6,
+        "startDate": "2026-02-09T00:00:00",
+        "endDate": "2026-03-23T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "Web Development"
+            },
+            {
+              "nameOfSubject": "HTML"
+            },
+            {
+              "nameOfSubject": "CSS"
+            },
+            {
+              "nameOfSubject": "Javascript"
+            }
+          ],
+          "teacherId": "9c3a6f52-1e84-47d2-a615-8b4f0c7e9d23",
+          "firstName": "Johan",
+          "lastName": "Karlsson",
+          "phoneNumber": "0703456789",
+          "addresses": [
+            {
+              "streetAddress": "Kungsgatan 25",
+              "postalCode": "41115",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "johan.karlsson@example.com"
+        },
+        "courseType": 1
+      },
+      {
+        "courseId": "17c9e4b6-2a53-48d1-b705-9f3e6c8a2d41",
+        "title": "SQL and Relational Databases",
+        "courseLength": 6,
+        "startDate": "2026-04-06T00:00:00",
+        "endDate": "2026-05-18T00:00:00",
+        "courseTeacher": {
+          "subjectFields": [
+            {
+              "nameOfSubject": "C#"
+            },
+            {
+              "nameOfSubject": "Database Managment"
+            }
+          ],
+          "teacherId": "2b7e4d19-8c65-43a1-b902-5f6d7e3a8c41",
+          "firstName": "Maria",
+          "lastName": "Johansson",
+          "phoneNumber": "0702345678",
+          "addresses": [
+            {
+              "streetAddress": "Parkgatan 8",
+              "postalCode": "41250",
+              "city": "Gothenburg"
+            }
+          ],
+          "email": "maria.johansson@example.com"
+        },
+        "courseType": 1
+      }
+    ],
+    "firstName": "Ella",
+    "lastName": "Gustafsson",
+    "phoneNumber": "0702-123456",
+    "addresses": [
+      {
+        "streetAddress": "Östra Storgatan 23",
+        "postalCode": "55321",
+        "city": "Jönköping"
+      }
+    ],
+    "email": "ella.gustafsson@example.com"
+  }
+]

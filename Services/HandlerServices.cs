@@ -12,32 +12,32 @@ public class HandlerServices : IService<Handler, HandlerRestDb>
     public async Task Add(Handler item)
     {
         var httpService = new HttpService<Handler>();
-        await httpService.Post("handler", item);
+        await httpService.Post("handlers", item);
     }
 
     public async Task Delete(string id)
     {
         var httpService = new HttpService<Handler>();
-        await httpService.Delete("handler", id);
+        await httpService.Delete("handlers", id);
     }
 
     public async Task<HandlerRestDb> Find(string id)
     {
         var httpService = new HttpService<HandlerRestDb>();
-        var searchCriteria = "{\"handlerId\":" + "\"" + id + "\"}";
-        return await httpService.Get("handler", searchCriteria);
+        var searchCriteria = "{\"personellId\":" + "\"" + id + "\"}";
+        return await httpService.Get("handlers", searchCriteria);
     }
 
     public async Task<List<Handler>> List()
     {
         var httpService = new HttpService<Handler>();
-        var handlers = await httpService.Get("handler");
+        var handlers = await httpService.Get("handlers");
         return handlers;
     }
 
     public async Task Update(Handler item, string _objectId)
     {
         var httpService = new HttpService<Handler>();
-        await httpService.Put("handler", item, _objectId);
+        await httpService.Put("handlers", item, _objectId);
     }
 }

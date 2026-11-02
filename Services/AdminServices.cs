@@ -24,7 +24,7 @@ public class AdminServices : IService<Admin, AdminRestDb>
     public async Task<AdminRestDb> Find(string id)
     {
         var httpService = new HttpService<AdminRestDb>();
-        var searchCriteria = "{\"adminId\":" + "\"" + id + "\"}";
+        var searchCriteria = "{\"personellId\":" + "\"" + id + "\"}";
         return await httpService.Get("admins", searchCriteria);
     }
 

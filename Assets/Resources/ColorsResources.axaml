@@ -6,4 +6,5 @@
   <Color x:Key="PrimaryBgColor" >#2B0841</Color>
   <Color x:Key="PrimaryDanger">#FFFB0303</Color>
   <Color x:Key="PrimarySafe">#03C303</Color>
+  <Color x:Key="WarningColor">#F45906</Color>
 </ResourceDictionary>
