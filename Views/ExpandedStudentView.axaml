@@ -3,7 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:WestCoastCollege.ViewModels"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="650"
              x:Class="WestCoastCollege.Views.ExpandedStudentView"
              x:DataType="vm:ExpandedStudentViewModel">
 
@@ -30,7 +30,7 @@
       </StackPanel>
 
       <StackPanel Spacing="5" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0">
-        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToStudentCommand}"
+        <Button Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToEditStudentCommand}"
                 CommandParameter="{Binding Student.StudentId}"
                 FontFamily="{DynamicResource IconFont}"
                 Content="&#xE3AE;"

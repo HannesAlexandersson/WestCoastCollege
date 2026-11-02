@@ -13,7 +13,6 @@ namespace WestCoastCollege.ViewModels;
 
 public partial class AddNewTeacherViewModel : ViewModelBase
 {
-    private readonly IService<Course, CourseRestDb>? _courseService; // we need to let the user choose a course from the actual list of courses
     private readonly IService<Teacher, TeacherRestDb>? _teacherService;
     private readonly ITeacherFactory? _teacherFactory;
     private readonly MainWindowViewModel? _mainWindowVm;
@@ -50,26 +49,15 @@ public partial class AddNewTeacherViewModel : ViewModelBase
     {
         PageTitle = "Add new teacher";
     }
-    public AddNewTeacherViewModel(IService<Course, CourseRestDb> service, ITeacherFactory teacherFactory, MainWindowViewModel mainWindowVm, IService<Teacher, TeacherRestDb> teacherService)
+    public AddNewTeacherViewModel(ITeacherFactory teacherFactory, MainWindowViewModel mainWindowVm, IService<Teacher, TeacherRestDb> teacherService)
     {
         PageTitle = "Add new teacher";
-        _courseService = service;
+
         _teacherFactory = teacherFactory;
         _mainWindowVm = mainWindowVm;
         _teacherService = teacherService;
     }
 
-    public async Task Init()
-    {
-        await LoadCourses();
-    }
-
-    private async Task LoadCourses()
-    {
-        Courses = new ObservableCollection<Course>(
-            await _courseService!.List()
-        );
-    }
 
     [RelayCommand]
     private void AddAddress()
@@ -118,6 +106,7 @@ public partial class AddNewTeacherViewModel : ViewModelBase
             PhoneNumberOfTeacher,
             TeacherAddresses.ToList(),
             EmailOfTeacher,
+            Guid.NewGuid().ToString(),
             TeacherSubjectFields.ToArray()
           );
 

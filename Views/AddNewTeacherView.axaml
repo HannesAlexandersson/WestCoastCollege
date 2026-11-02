@@ -5,7 +5,7 @@
              xmlns:vm="using:WestCoastCollege.ViewModels"
              xmlns:enums="using:WestCoastCollege.Enums"
              xmlns:classes="using:WestCoastCollege.Classes"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="650"
              x:Class="WestCoastCollege.Views.AddNewTeacherView"
              x:DataType="vm:AddNewTeacherViewModel" >
   <Design.DataContext>

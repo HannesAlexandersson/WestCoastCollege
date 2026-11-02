@@ -80,6 +80,7 @@ public partial class AddNewCourseViewModel : ViewModelBase
             _mainWindowVm!.IsBusy = true;
             //validate userinput???
             Course course = _courseFactory!.Create(
+                Guid.NewGuid().ToString(),
               TitleOfCourse,
               LengthOfCourse,
               StartDateOfCourse.Value,

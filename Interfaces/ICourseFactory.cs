@@ -7,6 +7,7 @@ namespace WestCoastCollege.Interfaces;
 public interface ICourseFactory
 {
     Course Create(
+        string courseId,
         string title,
         int courseLength,
         DateTime startDate,
