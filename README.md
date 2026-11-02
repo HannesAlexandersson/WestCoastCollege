@@ -19,3 +19,17 @@ Torun the app you need to fork or clone the repo, then run the repo from CLI lik
 ```bash
 dotnet run
 ```
+
+
+But in order to get the app to work you'll need to take the mockdata from the folder Mockdata and import the json files into restDb. Then you'll need to create an AppSettings.json file in the root of the project,
+and in that file insert from your own RestDb the ApiKey and BaseUrl: 
+```json
+{
+    "Settings": {
+        "ApiKey": "YOUR-OWN-RESTDB-API-KEY",
+        "BaseUrl": "YOUR-OWN-RESTDB-URL"
+    }
+}
+```
+
+If this isnt done properly the app wont load any data and it will probably crash. 
