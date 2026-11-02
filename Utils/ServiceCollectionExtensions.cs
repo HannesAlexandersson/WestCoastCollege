@@ -40,7 +40,7 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<TeachersViewModel>();
         collection.AddTransient<EditTeacherViewModel>();
         collection.AddTransient<ExpandedTeacherViewModel>();
-
+        collection.AddTransient<AddNewTeacherViewModel>();
 
         collection.AddTransient<IAdminFactory, AdminFactory>();
         collection.AddTransient<IService<Admin, AdminRestDb>, AdminServices>();
@@ -66,6 +66,7 @@ public static class ServiceCollectionExtensions
                     PageViewsEnum.Teachers => c.GetRequiredService<TeachersViewModel>(),
                     PageViewsEnum.GoToTeacher => c.GetRequiredService<ExpandedTeacherViewModel>(),
                     PageViewsEnum.EditTeacher => c.GetRequiredService<EditTeacherViewModel>(),
+                    PageViewsEnum.AddNewTeacher => c.GetRequiredService<AddNewTeacherViewModel>(),
                     PageViewsEnum.Admins => c.GetRequiredService<AdminsViewModel>(),
                     PageViewsEnum.GoToAdmin => c.GetRequiredService<ExpandedAdminViewModel>(),
                     PageViewsEnum.Handlers => c.GetRequiredService<HandlersViewModel>(),
