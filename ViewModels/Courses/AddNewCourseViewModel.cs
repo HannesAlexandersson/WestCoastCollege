@@ -71,21 +71,10 @@ public partial class AddNewCourseViewModel : ViewModelBase
         {
 
             //validate input??
-            if (SelectedTeacher is null)
+            if (SelectedTeacher is null ||
+              StartDateOfCourse is null ||
+              EndDateOfCourse is null)
             {
-                Console.WriteLine("Please select a teacher.");
-                return;
-            }
-
-            if (StartDateOfCourse is null)
-            {
-                Console.WriteLine("Please select a start date.");
-                return;
-            }
-
-            if (EndDateOfCourse is null)
-            {
-                Console.WriteLine("Please select an end date.");
                 return;
             }
             _mainWindowVm!.IsBusy = true;
