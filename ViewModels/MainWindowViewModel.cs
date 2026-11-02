@@ -34,15 +34,18 @@ public partial class MainWindowViewModel : ViewModelBase
     }
     private void UpdateBackButton()
     {
+        // if current page is for ex gotostudent, editstudent then backpage gets set to students, 
         BackPage = _currentPage switch
         {
             PageViewsEnum.GoToStudent or
             PageViewsEnum.EditStudent => PageViewsEnum.Students,
 
             PageViewsEnum.GoToCourse or
+            PageViewsEnum.AddNewCourse or
             PageViewsEnum.EditCourse => PageViewsEnum.Courses,
 
             PageViewsEnum.GoToTeacher or
+            PageViewsEnum.AddNewTeacher or
             PageViewsEnum.EditTeacher => PageViewsEnum.Teachers,
 
             PageViewsEnum.GoToHandler => PageViewsEnum.Handlers,
@@ -51,7 +54,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
             _ => PageViewsEnum.Home
         };
-
+        // depending on what the backbutoon gets set to above the text of the batckbutton changes accordingly
         BackButtonText = BackPage switch
         {
             PageViewsEnum.Students => "Go back to Students",
@@ -145,6 +148,15 @@ public partial class MainWindowViewModel : ViewModelBase
 
         CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.EditTeacher);
         await ((EditTeacherViewModel)CurrentView).Init(teacherId);
+    }
+    [RelayCommand]
+    private async Task GoToAddNewTeacher() // cant use the generci goto since the init needs to be awaited!
+    {
+        _currentPage = PageViewsEnum.AddNewTeacher;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.AddNewTeacher);
+        await ((AddNewTeacherViewModel)CurrentView).Init();
     }
 
     [RelayCommand]

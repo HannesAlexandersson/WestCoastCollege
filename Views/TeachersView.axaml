@@ -14,6 +14,7 @@
     <Grid Grid.Row="0" ColumnDefinitions="*, Auto, *">
 
       <Button Grid.Column="0"
+              Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToAddNewTeacherCommand}"
               HorizontalAlignment="Left"
               Margin="10 10 0 0">
         <StackPanel Orientation="Horizontal">
