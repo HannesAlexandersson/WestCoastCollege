@@ -17,8 +17,12 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
     private readonly IService<Teacher, TeacherRestDb>? _teacherService;
+    private readonly MainWindowViewModel? _mainWindowVm;
     private string _courseId = string.Empty;
+    private string _objectId = string.Empty;
     private readonly ICourseFactory? _courseFactory;
+    [ObservableProperty]
+    public partial bool ShowDialog { get; set; }
     [ObservableProperty]
     private ObservableCollection<Teacher> _teachers = [];
 
@@ -40,12 +44,13 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
     [ObservableProperty]
     public partial CourseTypeEnum TypeOfCourse { get; set; }
 
-    public EditCourseViewModel(IService<Course, CourseRestDb> service, ICourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService)
+    public EditCourseViewModel(IService<Course, CourseRestDb> service, ICourseFactory courseFactory, IService<Teacher, TeacherRestDb> teacherService, MainWindowViewModel mainWindowVm)
     {
         _courseService = service;
         _teacherService = teacherService;
         PageTitle = "Edit a course info";
         _courseFactory = courseFactory;
+        _mainWindowVm = mainWindowVm;
     }
     public async Task Init(string id)
     {
@@ -72,11 +77,11 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
 
             if (course == null)
             {
-                Console.WriteLine($"No student found with ID: {_courseId}");
+                Console.WriteLine($"No course found with ID: {_courseId}");
                 return;
             }
-
-            CourseId = course.CourseId.ToString();
+            _objectId = course._id;
+            CourseId = course.CourseId;
             TitleOfCourse = course.Title;
             LengthOfCourse = course.CourseLength;
             StartDateOfCourse = course.StartDate;
@@ -95,15 +100,62 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
     [RelayCommand]
     private async Task Save()
     {
-        Course course = _courseFactory!.Create(
-            TitleOfCourse,
-            LengthOfCourse,
-            StartDateOfCourse,
-            EndDateOfCourse,
-            TeacherOfcourse,
-            TypeOfCourse
-        );
+        try
+        {
+            _mainWindowVm!.IsBusy = true;
+            Course course = _courseFactory!.Create(
+           CourseId,
+           TitleOfCourse,
+           LengthOfCourse,
+           StartDateOfCourse,
+           EndDateOfCourse,
+           TeacherOfcourse,
+           TypeOfCourse
+       );
 
-        await _courseService!.Update(course, _courseId);
+            await _courseService!.Update(course, _objectId); // use RestDb's own id column to update
+
+            ShowDialog = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            _mainWindowVm!.IsBusy = false;
+            ClearData();
+        }
+
+    }
+
+    [RelayCommand]
+    private void ClearData()
+    {
+        TitleOfCourse = string.Empty;
+        LengthOfCourse = 0;
+        StartDateOfCourse = default;
+        EndDateOfCourse = default;
+        TeacherOfcourse = new();
+        TypeOfCourse = 0;
+    }
+
+    [RelayCommand]
+    public void ShowPopUp()
+    {
+        _mainWindowVm!.IsBusy = true;
+        ShowDialog = true;
+    }
+    [RelayCommand]
+    private async Task Confirm()
+    {
+        await Save();
+    }
+    [RelayCommand]
+    private void Abort()
+    {
+        ShowDialog = false;
+
+        _mainWindowVm!.IsBusy = false;
     }
 }

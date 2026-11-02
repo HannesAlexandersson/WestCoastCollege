@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="using:WestCoastCollege.ViewModels"
              xmlns:model="using:WestCoastCollege.Classes"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="650"
              x:Class="WestCoastCollege.Views.ExpandedCourseView"
              x:DataType="vm:ExpandedCourseViewModel">
   <Design.DataContext>

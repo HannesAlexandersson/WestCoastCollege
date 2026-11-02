@@ -13,6 +13,7 @@ public interface IStudentFactory
         string phoneNumber,
         List<Address> addresses,
         string? email,
+        string studentId,
         List<Course> enrolledCourses
     );
 }

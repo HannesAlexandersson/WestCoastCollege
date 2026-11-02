@@ -1,0 +1,157 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:WestCoastCollege.ViewModels"
+             xmlns:classes="using:WestCoastCollege.Classes"
+             xmlns:models="using:WestCoastCollege.Models"
+             xmlns:enums="using:WestCoastCollege.Enums"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="650"
+             x:Class="WestCoastCollege.Views.AddNewStudentView"
+             x:DataType="vm:AddNewStudentViewModel"
+             Background="{DynamicResource PrimaryBgGradient}"
+             >
+  <Design.DataContext>
+    <vm:AddNewStudentViewModel>
+    </vm:AddNewStudentViewModel>
+  </Design.DataContext>
+  <Grid RowDefinitions="Auto, *">
+    <TextBlock Classes="pageTitle" Text="{Binding PageTitle}" Margin="0 15 0 0" />
+
+    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+      <StackPanel >
+
+
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="10 30" >
+
+          <StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="20">
+              <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto" ColumnDefinitions="200, 300">
+
+                <Label Classes="form" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Content="FirstName" />
+                <TextBox Classes="form" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Text="{Binding FirstNameOfStudent}" />
+
+                <Label Classes="form" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" Content="LastName" />
+                <TextBox Classes="form" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Text="{Binding LastNameOfStudent}"  />
+
+                <Label Classes="form" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" Content="PhoneNumber" />
+                <TextBox Classes="form" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Text="{Binding PhoneNumberOfStudent}" />
+
+                <Label Classes="form" Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" Content="Email" />
+                <TextBox Classes="form" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" Text="{Binding EmailOfStudent}" />
+
+                <Label Classes="form" Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" Content="Add course(s)" />
+                <StackPanel Grid.Column="1" Grid.Row="4"
+                            Orientation="Horizontal" Spacing="10">
+
+                  <ComboBox Width="220"
+                            ItemsSource="{Binding Courses}"
+                            SelectedItem="{Binding SelectedCourse}">
+
+                    <ComboBox.ItemTemplate>
+                      <DataTemplate x:DataType="models:Course">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                          <TextBlock Classes="dropdown" Text="{Binding Title}" />
+                          <TextBlock Classes="dropdown" Text=" : " />
+                          <TextBlock Classes="dropdown" Text="{Binding CourseType}" />
+                        </StackPanel>
+                      </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                  </ComboBox>
+
+                  <Button Content="Add"
+                          Command="{Binding AddCourseCommand}" />
+                </StackPanel>
+                <ItemsControl Grid.Column="1" Grid.Row="5"
+                              ItemsSource="{Binding StudentEnrolledCourses}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:Course">
+                      <StackPanel Orientation="Horizontal" Spacing="10" Margin="0 5">
+                        <TextBlock Text="{Binding Title}" VerticalAlignment="Center" />
+                        <Button
+                          Classes="danger"
+                          Content="&#xE4F6;"
+                          FontFamily="{DynamicResource IconFont}"
+                          Command="{Binding $parent[UserControl].DataContext.RemoveCourseCommand}"
+                          CommandParameter="{Binding}"
+                          VerticalAlignment="Center"
+                          />
+                      </StackPanel>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+
+
+                <Label Classes="form" Content="Addresses" Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" />
+
+                <ItemsControl ItemsSource="{Binding StudentAddresses}" Grid.Column="1" Grid.Row="6">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="classes:Address">
+                      <StackPanel Orientation="Vertical" Spacing="10" Margin="0 5">
+
+                        <TextBox Width="180"
+                                 PlaceholderText ="Street address"
+                                 Text="{Binding StreetAddress}" />
+
+                        <TextBox Width="80"
+                                 PlaceholderText ="Postal code"
+                                 Text="{Binding PostalCode}" />
+
+                        <TextBox Width="120"
+                                 PlaceholderText ="City"
+                                 Text="{Binding City}" />
+
+                        <Button Content="Remove"
+                                Command="{Binding $parent[UserControl].DataContext.RemoveAddressCommand}"
+                                CommandParameter="{Binding}" />
+
+                      </StackPanel>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Button Content="Add address"  Grid.Column="1" Grid.Row="7"  Command="{Binding AddAddressCommand}" />
+
+
+              </Grid>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Spacing="20" HorizontalAlignment="Center" Margin="0 30 0 0">
+              <Button Classes="form" Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoToCommand}"  CommandParameter="{x:Static enums:PageViewsEnum.Students}" >
+                <StackPanel Orientation="Horizontal">
+                  <Label FontFamily="{DynamicResource IconFont}" Content="&#xe08a;" VerticalAlignment="Center" />
+                  <Label Content="Exit" VerticalAlignment="Center" />
+                </StackPanel>
+              </Button>
+
+              <Button Classes="form"  Command="{Binding ShowPopUpCommand}">
+                <StackPanel Orientation="Horizontal">
+                  <Label FontFamily="{DynamicResource IconFont}" Content="&#xe248;" VerticalAlignment="Center" />
+                  <Label Content="Save" VerticalAlignment="Center" />
+                </StackPanel>
+              </Button>
+            </StackPanel>
+          </StackPanel>
+
+
+        </Border>
+      </StackPanel>
+    </ScrollViewer>
+
+
+    <Popup IsOpen="{Binding ShowDialog}" Placement="Center">
+      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="White" BorderThickness="2" CornerRadius="30">
+        <StackPanel>
+          <StackPanel Spacing="20">
+            <TextBlock Padding="20" Text="Are you sure you want to add this student?" Foreground="{DynamicResource danger}" FontSize="30" />
+          </StackPanel>
+          <StackPanel Spacing="20" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Classes="Warning" Content="Abort" Command="{Binding AbortCommand}" />
+            <Button Classes="Warning" Content="OK" Command="{Binding ConfirmCommand}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Popup>
+  </Grid>
+</UserControl>

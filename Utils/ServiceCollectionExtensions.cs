@@ -26,6 +26,7 @@ public static class ServiceCollectionExtensions
         collection.AddTransient<StudentsViewModel>();
         collection.AddTransient<EditStudentViewModel>();
         collection.AddTransient<ExpandedStudentViewModel>();
+        collection.AddTransient<AddNewStudentViewModel>();
 
         collection.AddTransient<ICourseFactory, CourseFactory>();
         collection.AddTransient<IService<Course, CourseRestDb>, CourseServices>();
@@ -59,6 +60,7 @@ public static class ServiceCollectionExtensions
                     PageViewsEnum.Students => c.GetRequiredService<StudentsViewModel>(),
                     PageViewsEnum.EditStudent => c.GetRequiredService<EditStudentViewModel>(),
                     PageViewsEnum.GoToStudent => c.GetRequiredService<ExpandedStudentViewModel>(),
+                    PageViewsEnum.AddNewStudent => c.GetRequiredService<AddNewStudentViewModel>(),
                     PageViewsEnum.Courses => c.GetRequiredService<CoursesViewModel>(),
                     PageViewsEnum.EditCourse => c.GetRequiredService<EditCourseViewModel>(),
                     PageViewsEnum.GoToCourse => c.GetRequiredService<ExpandedCourseViewModel>(),

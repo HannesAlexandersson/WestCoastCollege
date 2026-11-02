@@ -17,9 +17,12 @@ public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewMod
 {
     private readonly IService<Teacher, TeacherRestDb>? _teacherService;
     private readonly IService<Course, CourseRestDb>? _courseService;
+    private readonly MainWindowViewModel? _mainWindowVm;
     private string _teacherId = string.Empty;
+    private string _objectId = string.Empty;
     private readonly ITeacherFactory? _teacherFactory;
-
+    [ObservableProperty]
+    public partial bool ShowDialog { get; set; }
     [ObservableProperty]
     private ObservableCollection<Course> _courses = [];
     [ObservableProperty]
@@ -46,12 +49,13 @@ public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewMod
         PageTitle = "Edit a teacher info";
     }
 
-    public EditTeacherViewModel(IService<Teacher, TeacherRestDb> service, IService<Course, CourseRestDb> courseService, ITeacherFactory factory)
+    public EditTeacherViewModel(IService<Teacher, TeacherRestDb> service, IService<Course, CourseRestDb> courseService, ITeacherFactory factory, MainWindowViewModel mainWindowVm)
     {
         PageTitle = "Edit a teacher info";
         _teacherFactory = factory;
         _teacherService = service;
         _courseService = courseService;
+        _mainWindowVm = mainWindowVm;
     }
 
     public async Task Init(string id)
@@ -71,7 +75,12 @@ public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewMod
         try
         {
             var teacher = await _teacherService!.Find(_teacherId);
-
+            if (teacher == null)
+            {
+                Console.WriteLine($"No teacher found with ID: {_teacherId}");
+                return;
+            }
+            _objectId = teacher._id;
             TeacherId = teacher.TeacherId.ToString();
             FirstNameOfTeacher = teacher.FirstName;
             LastNameOfTeacher = teacher.LastName;
@@ -122,15 +131,62 @@ public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewMod
     [RelayCommand]
     private async Task Save()
     {
-        Teacher teacher = _teacherFactory!.Create(
-            FirstNameOfTeacher,
-            LastNameOfTeacher,
-            PhoneNumberOfTeacher,
-            TeacherAddresses.ToList(),
-            EmailOfTeacher,
-            TeacherSubjectFields.ToArray()
-        );
+        try
+        {
+            _mainWindowVm!.IsBusy = true;
+            Teacher teacher = _teacherFactory!.Create(
+           FirstNameOfTeacher,
+           LastNameOfTeacher,
+           PhoneNumberOfTeacher,
+           TeacherAddresses.ToList(),
+           EmailOfTeacher,
+           TeacherId,
+           TeacherSubjectFields.ToArray()
+       );
 
-        await _teacherService!.Update(teacher, _teacherId);
+            await _teacherService!.Update(teacher, _objectId);
+
+            ShowDialog = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        finally
+        {
+            _mainWindowVm!.IsBusy = false;
+            ClearData();
+        }
+
+    }
+
+    [RelayCommand]
+    private void ClearData()
+    {
+        FirstNameOfTeacher = string.Empty;
+        LastNameOfTeacher = string.Empty;
+        PhoneNumberOfTeacher = string.Empty;
+        EmailOfTeacher = string.Empty;
+        TeacherAddresses = [];
+        TeacherSubjectFields = [];
+    }
+
+    [RelayCommand]
+    public void ShowPopUp()
+    {
+        _mainWindowVm!.IsBusy = true;
+        ShowDialog = true;
+    }
+    [RelayCommand]
+    private async Task Confirm()
+    {
+        await Save();
+    }
+    [RelayCommand]
+    private void Abort()
+    {
+        ShowDialog = false;
+
+        _mainWindowVm!.IsBusy = false;
     }
 }
