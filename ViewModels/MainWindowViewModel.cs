@@ -118,6 +118,15 @@ public partial class MainWindowViewModel : ViewModelBase
         await ((EditCourseViewModel)CurrentView).Init(courseId);
     }
     [RelayCommand]
+    private async Task GoToAddNewCourse() // cant use the generci goto since the init needs to be awaited!
+    {
+        _currentPage = PageViewsEnum.AddNewCourse;
+        UpdateBackButton();
+
+        CurrentView = _factory!.LoadPageViewModel(PageViewsEnum.AddNewCourse);
+        await ((AddNewCourseViewModel)CurrentView).Init();
+    }
+    [RelayCommand]
     private async Task GoToTeacher(string teacherId)
     {
         _currentPage = PageViewsEnum.GoToTeacher;

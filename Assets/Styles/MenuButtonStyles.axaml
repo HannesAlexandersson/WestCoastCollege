@@ -54,8 +54,9 @@
   <Style Selector="Button.warning">
     <Setter Property="Foreground" Value="{DynamicResource WarningColor}" />
     <Setter Property="Background" Value="{DynamicResource BackgroundColor}" />
+    <Setter Property="FontFamily" Value="{DynamicResource HeaderFont}"/>
     <Setter Property="FontSize" Value="20"/>
-    <Setter Property="Padding" Value="15 10"/>
+    <Setter Property="Padding" Value="20 15"/>
     <Setter Property="HorizontalAlignment" Value="Stretch"/>
     <Setter Property="HorizontalContentAlignment" Value="Center" />
     <Setter Property="BorderBrush" Value="{DynamicResource WarningColor}"/>
