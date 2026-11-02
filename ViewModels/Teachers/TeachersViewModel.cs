@@ -12,8 +12,9 @@ namespace WestCoastCollege.ViewModels;
 public partial class TeachersViewModel : ViewModelBase
 {
     private readonly IService<Teacher, TeacherRestDb>? _teacherService;
-    [ObservableProperty]
-    public partial Teacher? SelectedTeacher { get; set; }
+    /* Not needed? Needs testing TODO: TEST APP WITHOUT PROPERTY
+      [ObservableProperty]
+     public partial Teacher? SelectedTeacher { get; set; } */
     [ObservableProperty]
     public partial ObservableCollection<Teacher> Teachers { get; set; } = [];
 

@@ -1,0 +1,140 @@
+[
+  {
+    "subjectFields": [
+      {
+        "nameOfSubject": "C#"
+      }
+    ],
+    "teacherId": "6f8a2c41-9d73-4b56-a102-7e5c3f8d6b90",
+    "firstName": "Erik",
+    "lastName": "Andersson",
+    "phoneNumber": "0701234567",
+    "addresses": [
+      {
+        "streetAddress": "Storgatan 12",
+        "postalCode": "41101",
+        "city": "Gothenburg"
+      }
+    ],
+    "email": "erik.andersson@example.com"
+  },
+  {
+    "subjectFields": [
+      {
+        "nameOfSubject": "C#"
+      },
+      {
+        "nameOfSubject": "Database Managment"
+      }
+    ],
+    "teacherId": "2b7e4d19-8c65-43a1-b902-5f6d7e3a8c41",
+    "firstName": "Maria",
+    "lastName": "Johansson",
+    "phoneNumber": "0702345678",
+    "addresses": [
+      {
+        "streetAddress": "Parkgatan 8",
+        "postalCode": "41250",
+        "city": "Gothenburg"
+      }
+    ],
+    "email": "maria.johansson@example.com"
+  },
+  {
+    "subjectFields": [
+      {
+        "nameOfSubject": "Web Development"
+      },
+      {
+        "nameOfSubject": "HTML"
+      },
+      {
+        "nameOfSubject": "CSS"
+      },
+      {
+        "nameOfSubject": "Javascript"
+      }
+    ],
+    "teacherId": "9c3a6f52-1e84-47d2-a615-8b4f0c7e9d23",
+    "firstName": "Johan",
+    "lastName": "Karlsson",
+    "phoneNumber": "0703456789",
+    "addresses": [
+      {
+        "streetAddress": "Kungsgatan 25",
+        "postalCode": "41115",
+        "city": "Gothenburg"
+      }
+    ],
+    "email": "johan.karlsson@example.com"
+  },
+  {
+    "subjectFields": [
+      {
+        "nameOfSubject": "C#"
+      },
+      {
+        "nameOfSubject": ".NET"
+      },
+      {
+        "nameOfSubject": "API managment"
+      }
+    ],
+    "teacherId": "4d1f8b67-3a92-45e6-b804-2c7d9f1a5e38",
+    "firstName": "Anna",
+    "lastName": "Nilsson",
+    "phoneNumber": "0704567890",
+    "addresses": [
+      {
+        "streetAddress": "Lindholmsallén 5",
+        "postalCode": "41755",
+        "city": "Gothenburg"
+      }
+    ],
+    "email": "anna.nilsson@example.com"
+  },
+  {
+    "subjectFields": [
+      {
+        "nameOfSubject": "Testdriven softwaredevelopment"
+      },
+      {
+        "nameOfSubject": "Git"
+      }
+    ],
+    "teacherId": "7a5e2c93-6b14-48f1-9d30-4e8c1a6b7f52",
+    "firstName": "Marcus",
+    "lastName": "Svensson",
+    "phoneNumber": "0705678901",
+    "addresses": [
+      {
+        "streetAddress": "Avenyn 42",
+        "postalCode": "41136",
+        "city": "Gothenburg"
+      }
+    ],
+    "email": "marcus.svensson@example.com"
+  },
+  {
+    "subjectFields": [
+      {
+        "nameOfSubject": "Maths"
+      },
+      {
+        "nameOfSubject": "Advanced Math"
+      }
+    ],
+    "teacherId": "28dd2d9b-66d2-449c-b2fb-14188a118e92",
+    "firstName": "Ewa",
+    "lastName": "Josefsson",
+    "phoneNumber": "030231333",
+    "addresses": [
+      {
+        "streetAddress": "Mammavägen 23",
+        "postalCode": "44833",
+        "city": "Floda"
+      }
+    ],
+    "email": "ewa.josefsson@gmail.com"
+  }
+]

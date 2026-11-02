@@ -1,0 +1,92 @@
+[
+  {
+    "personellId": "1237",
+    "isSuperAdmin": false,
+    "accessLevel": 1,
+    "dateOfEmployment": "0001-01-01T00:00:00",
+    "officeLocation": 2,
+    "firstName": "Anna",
+    "lastName": "Svensson",
+    "phoneNumber": "0701234601",
+    "addresses": [
+      {
+        "streetAddress": "Drottninggatan 31",
+        "postalCode": "41114",
+        "city": "Göteborg"
+      }
+    ],
+    "email": "anna.svensson@example.com"
+  },
+  {
+    "personellId": "1237",
+    "isSuperAdmin": true,
+    "accessLevel": 2,
+    "dateOfEmployment": "0001-01-01T00:00:00",
+    "officeLocation": 2,
+    "firstName": "Marcus",
+    "lastName": "Johansson",
+    "phoneNumber": "0701234602",
+    "addresses": [
+      {
+        "streetAddress": "Vasagatan 17",
+        "postalCode": "41124",
+        "city": "Göteborg"
+      }
+    ],
+    "email": "marcus.johansson@example.com"
+  },
+  {
+    "personellId": "1238",
+    "isSuperAdmin": false,
+    "accessLevel": 1,
+    "dateOfEmployment": "0001-01-01T00:00:00",
+    "officeLocation": 3,
+    "firstName": "Linda",
+    "lastName": "Nilsson",
+    "phoneNumber": "0701234603",
+    "addresses": [
+      {
+        "streetAddress": "Södra Vägen 45",
+        "postalCode": "41254",
+        "city": "Göteborg"
+      }
+    ],
+    "email": "linda.nilsson@example.com"
+  },
+  {
+    "personellId": "1239",
+    "isSuperAdmin": false,
+    "accessLevel": 1,
+    "dateOfEmployment": "0001-01-01T00:00:00",
+    "officeLocation": 1,
+    "firstName": "Peter",
+    "lastName": "Eriksson",
+    "phoneNumber": "0701234604",
+    "addresses": [
+      {
+        "streetAddress": "Östra Hamngatan 12",
+        "postalCode": "41110",
+        "city": "Göteborg"
+      }
+    ],
+    "email": "peter.eriksson@example.com"
+  },
+  {
+    "personellId": "1240",
+    "isSuperAdmin": false,
+    "accessLevel": 1,
+    "dateOfEmployment": "2026-12-01T00:00:00",
+    "officeLocation": 1,
+    "firstName": "Hannes",
+    "lastName": "Alexandersson",
+    "phoneNumber": "0790112009",
+    "addresses": [
+      {
+        "streetAddress": "mammavägen 23",
+        "postalCode": "44833",
+        "city": "gbg"
+      }
+    ],
+    "email": "sdsfds@gmail.com"
+  }
+]

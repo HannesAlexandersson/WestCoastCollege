@@ -5,14 +5,17 @@
   <SolidColorBrush x:Key="PrimaryBg" Color="{DynamicResource PrimaryBgColor}" />
   <SolidColorBrush x:Key="Danger" Color="{DynamicResource PrimaryDanger}" />
   <SolidColorBrush x:Key="Safe" Color="{DynamicResource PrimarySafe}" />
-  <!-- <SolidColorBrush x:Key="PrimaryTextColor">#eae8e8</SolidColorBrush> -->
-  <!--  <SolidColorBrush x:Key="PrimaryBg">#030331</SolidColorBrush> -->
-  <!-- <SolidColorBrush x:Key="PrimaryBg">#2B0841</SolidColorBrush> -->
+
   <SolidColorBrush x:Key="PrimaryBtnBgColor">#4F2472</SolidColorBrush>
   <SolidColorBrush x:Key="PrimaryBorderColor">#FF00FF</SolidColorBrush>
 
   <LinearGradientBrush x:Key="PrimaryBgGradient" StartPoint="0% 0%" EndPoint="100% 0%" >
     <GradientStop Offset="0" Color="#2B0841" />
     <GradientStop Offset="1" Color="#48088C" />
+  </LinearGradientBrush>
+
+  <LinearGradientBrush x:Key="WarningPopUpGradient" StartPoint="0% 0%" EndPoint="0% 100%">
+    <GradientStop Offset="0" Color="{DynamicResource PrimaryDanger}"/>
+    <GradientStop Offset="1" Color="{DynamicResource WarningColor}"/>
   </LinearGradientBrush>
 </ResourceDictionary>

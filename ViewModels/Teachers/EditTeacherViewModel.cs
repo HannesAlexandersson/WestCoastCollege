@@ -67,7 +67,7 @@ public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewMod
         );
     }
     private async Task GetTeacher()
-    { //TODO fix the view the addrsses only have one textbox, none for postalcode or city
+    {
         try
         {
             var teacher = await _teacherService!.Find(_teacherId);
