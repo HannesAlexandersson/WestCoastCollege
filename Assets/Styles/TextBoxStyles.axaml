@@ -1,16 +1,22 @@
 <Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <Design.PreviewWith>
-    <Border Padding="20" Height="500">
-      <!-- Add Controls for Previewer Here -->
-      <!--   <TextBox /> -->
 
-      <ComboBox IsDropDownOpen="True"
-                Width="300">
-        <ComboBoxItem Classes="TextBlock.dropdown">Hej</ComboBoxItem>
-        <ComboBoxItem>Another course</ComboBoxItem>
-        <ComboBoxItem>Third course</ComboBoxItem>
-      </ComboBox>
+    <!--A BETTER NAME FOR THIS FILE WOULD BE FORMSTYLES-->
+    <Border Padding="20" Height="500">
+
+      <!-- Add Controls for Previewer Here -->
+      <StackPanel Spacing="15">
+        <CalendarDatePicker Width="300"
+                            ></CalendarDatePicker>
+      </StackPanel>
+
+      <!--  <ComboBox IsDropDownOpen="True"
+      Width="300">
+      <ComboBoxItem Classes="TextBlock.dropdown">Hej</ComboBoxItem>
+      <ComboBoxItem>Another course</ComboBoxItem>
+      <ComboBoxItem>Third course</ComboBoxItem>
+      </ComboBox> -->
     </Border>
   </Design.PreviewWith>
 
@@ -46,6 +52,23 @@
 
   <Style Selector="ComboBoxItem:selected">
     <Setter Property="Background" Value="{DynamicResource PrimaryBgColor}" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+  </Style>
+
+  <Style Selector="CalendarDatePicker">
+    <Setter Property="MinWidth" Value="300" />
+    <Setter Property="MaxWidth" Value="300" />
+    <Setter Property="Background" Value="#C5EDC6E5" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource PrimaryBorderColor}" />
+    <Setter Property="BorderThickness" Value="1" />
+  </Style>
+
+  <Style Selector="CalendarDatePicker Calendar">
+    <Setter Property="Background" Value="#C5EDC6E5" />
+    <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
+  </Style>
+  <Style Selector="CalendarDatePicker TextBlock">
     <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}" />
   </Style>
 </Styles>

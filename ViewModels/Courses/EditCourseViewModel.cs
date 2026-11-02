@@ -36,7 +36,7 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
     public partial DateTime EndDateOfCourse { get; set; }
 
     [ObservableProperty]
-    public partial Teacher TeacherOfcourse { get; set; }
+    public partial Teacher TeacherOfcourse { get; set; } = new();
     [ObservableProperty]
     public partial CourseTypeEnum TypeOfCourse { get; set; }
 
