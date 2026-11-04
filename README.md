@@ -10,7 +10,11 @@ dotnet run
 
 ## What you'll need
 
-But in order to get the app to work you'll need to take the mockdata from the folder Mockdata and import the json files into restDb. Then you'll need to create an AppSettings.json file in the root of the project,
+### RESTDB Data
+In order to get the app to work you'll need to take the mockdata from the folder Mockdata and import the json files into restDb. 
+
+### AppSettings.json
+Then you'll need to create an AppSettings.json file in the root of the project,
 and in that file insert from your own RestDb the ApiKey and BaseUrl: 
 ```json
 {
@@ -20,7 +24,7 @@ and in that file insert from your own RestDb the ApiKey and BaseUrl:
     }
 }
 ```
-
+The database documents need to have the same datatypes and names as the json files.
 If this isnt done properly the app wont load any data and it will probably crash. 
 
 ### What is this?
