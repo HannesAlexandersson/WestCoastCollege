@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using WestCoastCollege.Interfaces;
@@ -7,7 +6,7 @@ using WestCoastCollege.RestDbModels;
 
 namespace WestCoastCollege.Services;
 
-public class CourseServices : IService<Course, CourseRestDb> // implement the interface whit the list method
+public class CourseServices : IService<Course, CourseRestDb>
 {
     public async Task Add(Course course)
     {

@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewModel
+public partial class EditTeacherViewModel : ViewModelBase
 {
     private readonly IService<Teacher, TeacherRestDb>? _teacherService;
     private readonly IService<Course, CourseRestDb>? _courseService;
@@ -85,7 +85,7 @@ public partial class EditTeacherViewModel : ViewModelBase, IInitializableViewMod
             FirstNameOfTeacher = teacher.FirstName;
             LastNameOfTeacher = teacher.LastName;
             PhoneNumberOfTeacher = teacher.PhoneNumber;
-            EmailOfTeacher = teacher.Email ?? ""; // email is allowed to be null/empty string
+            EmailOfTeacher = teacher.Email ?? "";
             TeacherAddresses = new ObservableCollection<Address>(teacher.Addresses);
             TeacherSubjectFields = new ObservableCollection<FieldOfKnowledge>(teacher.SubjectFields);
         }

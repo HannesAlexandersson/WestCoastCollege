@@ -22,7 +22,7 @@
       <StackPanel >
 
 
-        <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="white" BorderThickness="0" Padding="10 30" >
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" BorderBrush="{DynamicResource White-100}" BorderThickness="0" Padding="10 30" >
 
           <StackPanel>
             <StackPanel Orientation="Horizontal" Spacing="20">
@@ -141,7 +141,7 @@
 
 
     <Popup IsOpen="{Binding ShowDialog}" Placement="Center">
-      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="White" BorderThickness="2" CornerRadius="30">
+      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="{DynamicResource White-500}" BorderThickness="2" CornerRadius="30">
         <StackPanel>
           <StackPanel Spacing="20">
             <TextBlock Padding="20" Text="Are you sure you want to add this student?" Foreground="{DynamicResource danger}" FontSize="30" />

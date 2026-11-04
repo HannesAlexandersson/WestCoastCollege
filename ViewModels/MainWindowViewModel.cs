@@ -1,12 +1,7 @@
-using System;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using WestCoastCollege.Utils;
 using WestCoastCollege.Factories;
 using WestCoastCollege.Enums;
-using WestCoastCollege.Models;
-using WestCoastCollege.Interfaces;
-using WestCoastCollege.Classes;
 using System.Threading.Tasks;
 
 namespace WestCoastCollege.ViewModels;
@@ -131,7 +126,7 @@ public partial class MainWindowViewModel : ViewModelBase
         await ((EditCourseViewModel)CurrentView).Init(courseId);
     }
     [RelayCommand]
-    private async Task GoToAddNewCourse() // cant use the generci goto since the init needs to be awaited!
+    private async Task GoToAddNewCourse()
     {
         _currentPage = PageViewsEnum.AddNewCourse;
         UpdateBackButton();
@@ -160,7 +155,7 @@ public partial class MainWindowViewModel : ViewModelBase
         await ((EditTeacherViewModel)CurrentView).Init(teacherId);
     }
     [RelayCommand]
-    private async Task GoToAddNewTeacher() // cant use the generci goto since the init needs to be awaited!
+    private async Task GoToAddNewTeacher()
     {
         _currentPage = PageViewsEnum.AddNewTeacher;
         UpdateBackButton();

@@ -7,7 +7,7 @@ using WestCoastCollege.RestDbModels;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class ExpandedCourseViewModel : ViewModelBase, IInitializableViewModel
+public partial class ExpandedCourseViewModel : ViewModelBase
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
     private string _courseId = string.Empty;

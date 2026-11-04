@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -12,6 +13,12 @@ namespace WestCoastCollege.ViewModels;
 public partial class CoursesViewModel : ViewModelBase
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
+
+    private readonly MainWindowViewModel? _mainWindowVm;
+
+    [ObservableProperty]
+    public partial bool ShowDialog { get; set; }
+
     [ObservableProperty]
     public partial Course? SelectedCourse { get; set; }
     [ObservableProperty]
@@ -20,11 +27,11 @@ public partial class CoursesViewModel : ViewModelBase
     {
         PageTitle = "Courses";
     }
-    public CoursesViewModel(IService<Course, CourseRestDb> service)
+    public CoursesViewModel(IService<Course, CourseRestDb> service, MainWindowViewModel mainWindowVm)
     {
         PageTitle = "Courses";
         _courseService = service;
-
+        _mainWindowVm = mainWindowVm;
         Init();
     }
 
@@ -45,6 +52,44 @@ public partial class CoursesViewModel : ViewModelBase
 
             Console.Write(ex.Message);
         }
+    }
+
+    [RelayCommand]
+    public void ShowPopUp(string courseId)
+    {
+        _mainWindowVm!.IsBusy = true;
+        SelectedCourse = Courses.FirstOrDefault(s => s.CourseId == courseId);
+        if (SelectedCourse is not null)
+        {
+            ShowDialog = true;
+        }
+
+    }
+    [RelayCommand]
+    private async Task Confirm()
+    {
+        if (SelectedCourse is null)
+            return;
+
+        try
+        {
+            await Delete(SelectedCourse.CourseId);
+            ShowDialog = false;
+            SelectedCourse = null;
+            _mainWindowVm!.IsBusy = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    [RelayCommand]
+    private void Abort()
+    {
+        ShowDialog = false;
+
+        _mainWindowVm!.IsBusy = false;
     }
 
     private async void Init()

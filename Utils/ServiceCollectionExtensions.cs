@@ -1,7 +1,6 @@
 using System;
 using Client.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
-using WestCoastCollege.Classes;
 using WestCoastCollege.Enums;
 using WestCoastCollege.Factories;
 using WestCoastCollege.Interfaces;

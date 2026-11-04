@@ -4,7 +4,7 @@ using WestCoastCollege.Interfaces;
 using WestCoastCollege.Models;
 
 namespace WestCoastCollege.Factories;
-// the factorys job is to create the course objects
+
 public class CourseFactory : ICourseFactory
 {
     public Course Create(string courseId, string title, int courseLength, DateTime startDate, DateTime endDate, Teacher courseTeacher, CourseTypeEnum courseType)

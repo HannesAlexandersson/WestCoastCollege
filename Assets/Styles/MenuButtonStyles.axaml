@@ -5,18 +5,8 @@
       <!-- Add Controls for Previewer Here -->
 
       <StackPanel>
-
-        <!-- <Button FontSize="20" >
-        <StackPanel Orientation="Horizontal">
-        <Label FontFamily="{DynamicResource IconFont}" Content="&#xe2c2;" />
-        <Label Content="Test btn" />
-        </StackPanel>
-        </Button> -->
-
         <Button Classes="danger" FontFamily="{DynamicResource IconFont}" Content="&#xe4a6;" />
         <Button Classes="safe" FontFamily="{DynamicResource IconFont}" Content="&#xe4a6;" />
-
-
       </StackPanel>
 
 

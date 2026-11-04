@@ -35,7 +35,7 @@
       </Grid>
 
       <Border Grid.Row="1"
-              BorderBrush="White"
+              BorderBrush="{DynamicResource White-100}"
               BorderThickness="0 0 0 2"
               Padding="0 0 0 10" />
 
@@ -81,14 +81,14 @@
 
     </Grid>
     <Popup IsOpen="{Binding ShowDialog}" Placement="Center">
-      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="White" BorderThickness="2" CornerRadius="30">
+      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="{DynamicResource White-100}" BorderThickness="2" CornerRadius="30">
 
         <StackPanel>
           <StackPanel Spacing="20">
             <TextBlock Padding="20" Text="This isnt possible in this prototype build" Foreground="{DynamicResource danger}" FontSize="30" />
           </StackPanel>
           <StackPanel Spacing="20" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Classes="warning" Content="OK" Padding="10" Command="{Binding ConfirmCommand}" />
+            <Button Classes="warning" Content="OK" Command="{Binding ConfirmCommand}" />
 
           </StackPanel>
         </StackPanel>

@@ -1,6 +1,6 @@
 namespace WestCoastCollege.Enums;
 
-public enum PageViewsEnum // this shall help our factory to create correct viewmodel to correct view
+public enum PageViewsEnum
 {
     Unknown,
     Home,
