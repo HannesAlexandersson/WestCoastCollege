@@ -54,3 +54,28 @@ In both the 'list all' views, and the slug view there is a "delete" button. It's
 ### Add a new object
 When in the 'list all' view of any datatype, there is a "add new" button on the top left side of the screen. Press this button to get to the 'Add new' view. Here you can fill out a form to add new students/teachers and courses. 
 
+
+# Grade and requirements
+## For 'G'
+The assignment requires the app to be able to : 
+- List courses -> CHECK with the CoursesView & ViewModel
+- Add courses -> CHECK with the AddCourseView and ViewModel
+- Delete courses -> CHECK with the CoursesView & ViewModel
+- List Students -> CHECK with the StudentsView & ViewModel
+- Add Students -> CHECK with the AddStudentsView & ViewModel
+- List Teachers -> CHECK with the TeachersView & ViewModel
+- Add Teachers -> CHECK with the AddTeachersView & ViewModel
+- Handle a teachers subjectfields - CHECK with the EditTeachersView & ViewModel
+
+In Addition to all this, the app also needs to be utilizing MVVM and use RestDB as database -> CHECK & CHECK
+Also all design and coloring must be handled as dynamic resources -> CHECK
+
+## For 'VG'
+- The app must use Dependency Injection -> CHECK
+- All communication with RestDb must be divided into interface and implementation -> CHECK
+- Teachers and Courses should be editable -> CHECK 
+
+
+### SUMMARY
+So its clear to me that all requiremnts for VG is fulfilled. All classes and types have a base view where all objects in the db of that type/class is listed. They also have an 'expanded' view
+where the full information of an perticular object is rendered. In addition to this there is also a 'Edit' view and a 'Add new' view for alclasses where the user can edit and object and add new objects to the db.  
