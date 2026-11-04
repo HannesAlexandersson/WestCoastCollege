@@ -17,7 +17,7 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
-        var collection = new ServiceCollection(); // En lista av beroenden som appen har eller kommer att ha... bygger på interfacet ISrviceCollection
+        var collection = new ServiceCollection(); // a list of dependencies that the app will have, built on the interface ISrviceCollection
         collection.AddServices();
 
         var services = collection.BuildServiceProvider(); // this looks in colection which is all in the framweork that is a service, then build compile all that and put the result in services. IE paket all services and put them inservices to we can access them easily.
@@ -28,7 +28,6 @@ public partial class App : Application
         {
             desktop.MainWindow = new MainWindow
             {
-                // DataContext = new MainWindowViewModel(),
                 DataContext = vm // connect to whatever viemodel that vm is, after it have gotten the required service
             };
         }

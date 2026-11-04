@@ -13,7 +13,7 @@ using System.Linq;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class EditCourseViewModel : ViewModelBase, IInitializableViewModel
+public partial class EditCourseViewModel : ViewModelBase
 {
     private readonly IService<Course, CourseRestDb>? _courseService;
     private readonly IService<Teacher, TeacherRestDb>? _teacherService;
@@ -21,6 +21,8 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
     private string _courseId = string.Empty;
     private string _objectId = string.Empty;
     private readonly ICourseFactory? _courseFactory;
+
+    public Array CourseTypeEnums => Enum.GetValues<CourseTypeEnum>(); // for the combobox alternatives
     [ObservableProperty]
     public partial bool ShowDialog { get; set; }
     [ObservableProperty]
@@ -113,20 +115,16 @@ public partial class EditCourseViewModel : ViewModelBase, IInitializableViewMode
            TypeOfCourse
        );
 
-            await _courseService!.Update(course, _objectId); // use RestDb's own id column to update
+            await _courseService!.Update(course, _objectId);
 
             ShowDialog = false;
+            _mainWindowVm!.IsBusy = false;
+            ClearData();
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
-        finally
-        {
-            _mainWindowVm!.IsBusy = false;
-            ClearData();
-        }
-
     }
 
     [RelayCommand]

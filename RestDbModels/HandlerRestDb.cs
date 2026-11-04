@@ -1,4 +1,3 @@
-using System;
 using WestCoastCollege.Models;
 
 namespace WestCoastCollege.RestDbModels;

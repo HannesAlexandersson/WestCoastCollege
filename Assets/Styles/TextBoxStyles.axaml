@@ -7,19 +7,10 @@
 
       <!-- Add Controls for Previewer Here -->
       <StackPanel Spacing="15">
-        <!--   <CalendarDatePicker Width="300"
-        ></CalendarDatePicker> -->
         <TextBox Width="200"
                  Text="NameOfSubject"
                  />
       </StackPanel>
-
-      <!--  <ComboBox IsDropDownOpen="True"
-      Width="300">
-      <ComboBoxItem Classes="TextBlock.dropdown">Hej</ComboBoxItem>
-      <ComboBoxItem>Another course</ComboBoxItem>
-      <ComboBoxItem>Third course</ComboBoxItem>
-      </ComboBox> -->
     </Border>
   </Design.PreviewWith>
 

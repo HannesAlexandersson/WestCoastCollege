@@ -6,7 +6,7 @@ using WestCoastCollege.Models;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class ExpandedStudentViewModel : ViewModelBase, IInitializableViewModel
+public partial class ExpandedStudentViewModel : ViewModelBase
 {
     private readonly IService<Student, StudentRestDb>? _studentService;
     private string _studentId = string.Empty;

@@ -1,4 +1,3 @@
-using System;
 using WestCoastCollege.Enums;
 
 namespace WestCoastCollege.Models;

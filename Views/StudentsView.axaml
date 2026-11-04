@@ -35,7 +35,7 @@
     </Grid>
 
     <Border Grid.Row="1"
-            BorderBrush="White"
+            BorderBrush="{DynamicResource White-100}"
             BorderThickness="0 0 0 2"
             Padding="0 0 0 10" />
 
@@ -64,7 +64,7 @@
                       Classes="safe"
                       HorizontalAlignment="Left" />
               <Button Grid.Column="6"
-                      Command="{Binding $parent[UserControl].DataContext.DeleteCommand}"
+                      Command="{Binding $parent[UserControl].DataContext.ShowPopUpCommand}"
                       CommandParameter="{Binding StudentId}"
                       FontFamily="{DynamicResource IconFont}"
                       Content="&#xE4F6;"
@@ -75,6 +75,18 @@
         </ItemsControl.ItemTemplate>
       </ItemsControl>
     </ScrollViewer>
-
+    <Popup IsOpen="{Binding ShowDialog}" Placement="Center">
+      <Border Padding="30" Background="{DynamicResource WarningPopUpGradient}" BorderBrush="{DynamicResource White-100}" BorderThickness="2" CornerRadius="30">
+        <StackPanel>
+          <StackPanel Spacing="20">
+            <TextBlock Padding="20" Text="Are you sure you want to delete this student?" Foreground="{DynamicResource danger}" FontSize="30" />
+          </StackPanel>
+          <StackPanel Spacing="20" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Classes="Warning" Content="Abort" Command="{Binding AbortCommand}" />
+            <Button Classes="Warning" Content="OK" Command="{Binding ConfirmCommand}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Popup>
   </Grid>
 </UserControl>

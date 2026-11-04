@@ -13,8 +13,9 @@ namespace WestCoastCollege.ViewModels;
 
 public partial class AddNewCourseViewModel : ViewModelBase
 {
+    public Array CourseTypeEnums => Enum.GetValues<CourseTypeEnum>(); // for the combobox alternatives
     private readonly IService<Course, CourseRestDb>? _courseService;
-    private readonly IService<Teacher, TeacherRestDb>? _teacherService; // we need to let the user choose a teacher from the actual list of teachers
+    private readonly IService<Teacher, TeacherRestDb>? _teacherService;
     private readonly ICourseFactory? _courseFactory;
     private readonly MainWindowViewModel? _mainWindowVm;
 
@@ -23,6 +24,7 @@ public partial class AddNewCourseViewModel : ViewModelBase
 
     [ObservableProperty]
     private Teacher? _selectedTeacher;
+
     [ObservableProperty]
     public partial bool ShowDialog { get; set; }
 

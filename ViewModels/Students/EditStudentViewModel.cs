@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -12,7 +11,7 @@ using System.Linq;
 
 namespace WestCoastCollege.ViewModels;
 
-public partial class EditStudentViewModel : ViewModelBase, IInitializableViewModel
+public partial class EditStudentViewModel : ViewModelBase
 {
     private readonly IService<Student, StudentRestDb>? _studentService;
     private readonly IService<Course, CourseRestDb>? _courseService;
